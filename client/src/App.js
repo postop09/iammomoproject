@@ -1,18 +1,14 @@
 import { ThemeProvider } from "styled-components";
 import GlobalStyle from "./GlobalStyle";
 import theme from "./theme";
-import Nav from "./components/MainPage/Nav";
-import MainPage from "./pages/MainPage/MainPage";
+import AppRoutes from "./Routes";
 
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <div>
-        <Nav />
-        <MainPage />
-      </div>
+        <AppRoutes />
     </ThemeProvider>
   );
 }
