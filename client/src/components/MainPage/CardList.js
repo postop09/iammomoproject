@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import Card from './Card'
 
-export default function CardList({setIsClicked}) {
-  const handleClick = (e) => {
-    console.log(e.target);
+export default function CardList({setIsClicked, setQuestion, listQuestion}) {
+  
+  const handleClick = () => {
     setIsClicked((prev) => !prev);
+    let questionNum = parseInt(Math.random() * listQuestion.length)
+    setQuestion(listQuestion[questionNum]);
   }
 
   return (

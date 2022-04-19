@@ -1,8 +1,11 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useState } from 'react'
 import styled, { keyframes } from 'styled-components'
 import theme from '../../theme'
+import AnnounceLogin from './AnnounceLogin';
 
-export default function ModalCard({setIsClicked}) {
+export default function ModalCard({setIsClicked, isLoggedIn, Question}) {
+  const [announceLogin, setAnnounceLogin] = useState(true);
   const ModalClose = () => {
     let result = window.confirm('정말 취소할까요?');
     if (result) {
@@ -10,24 +13,32 @@ export default function ModalCard({setIsClicked}) {
     }
   }
   const ModalCloseSec = (e) => {
-    console.log(e.target.tagName === 'ARTICLE');
+    if (e.target.id === 'modal_card') {
+      let result = window.confirm('정말 취소할까요?');
+      if (result) {
+        setIsClicked((prev) => !prev)
+      }
+    } else if (e.target.tagName === 'TEXTAREA') {
+      setAnnounceLogin((prev) => !prev)
+    } 
   }
 
   return (
-    <SecModalCard onClick={ModalCloseSec}>
+    <SecModalCard onClick={ModalCloseSec} id='modal_card'>
       <WrapModalCard>
         <BackBox>
           <ImgBack src={require('../../assets/img/img_back.jpg')} alt=''/>
         </BackBox>
         <FrontBox>
-          <TxtQuestion>당신은 어떤 모모입니까?</TxtQuestion>
-          <TxtArea />
+          <TxtQuestion>{Question}</TxtQuestion>
+          {isLoggedIn ? <TxtArea /> : <TxtArea disabled />}
           <WrapBtn>
             <BtnCancel type='button' onClick={ModalClose}>취소</BtnCancel>
             <BtnSubmit type='submit'>글 입력 완료</BtnSubmit>
           </WrapBtn>
         </FrontBox>
       </WrapModalCard>
+      {announceLogin ? '' : <AnnounceLogin setAnnounceLogin={setAnnounceLogin} />}
     </SecModalCard>
   )
 }
@@ -97,13 +108,14 @@ const FrontBox = styled.form`
   animation: ${RotateBackCard} 2s ease-in-out forwards;
 `
 const TxtQuestion = styled.strong`
+  line-height: 1.4rem;
   font-size: 1.2rem;
 `
 const TxtArea = styled.textarea`
   border: 2px solid ${theme.color.mellow};
   border-radius: 7px;
   width: 100%;
-  height: 80%;
+  height: 75%;
   margin-top: 20px;
   font-family: ${theme.font.basic_font};
   /* background-color: ${theme.color.pantone}; */
