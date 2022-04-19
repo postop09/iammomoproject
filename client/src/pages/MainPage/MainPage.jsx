@@ -27,7 +27,7 @@ export default function MainPage() {
         <SideTxt />
         <SideTxt />
       </section>
-      {isClicked ? <ModalCard setIsClicked={setIsClicked} /> : ''}
+      {isClicked ? <ModalCard setIsClicked={setIsClicked} isLoggedIn={isLoggedIn} /> : ''}
     </WrapMain>
   )
 }

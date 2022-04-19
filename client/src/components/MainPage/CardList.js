@@ -4,7 +4,6 @@ import Card from './Card'
 
 export default function CardList({setIsClicked}) {
   const handleClick = (e) => {
-    console.log(e.target);
     setIsClicked((prev) => !prev);
   }
 
