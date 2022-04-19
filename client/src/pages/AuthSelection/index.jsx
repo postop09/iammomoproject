@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import background from "../../assets/authselection.jpeg";
+import background from "../../assets/img/authselection.jpeg";
 
 const AuthSelection = () => {
   return (

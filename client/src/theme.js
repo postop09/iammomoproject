@@ -5,7 +5,7 @@ const color = {
 }
 
 const font = {
-  basic_font : 'Gamja Flower'
+  basic_font : 'Noto Serif KR'
 }
 
 const theme = {
