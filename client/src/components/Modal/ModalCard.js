@@ -4,14 +4,13 @@ import styled, { keyframes } from 'styled-components'
 import theme from '../../theme'
 import AnnounceLogin from './AnnounceLogin';
 
-export default function ModalCard({setIsClicked, isLoggedIn}) {
+export default function ModalCard({setIsClicked, isLoggedIn, Question}) {
   const [announceLogin, setAnnounceLogin] = useState(true);
   const ModalClose = () => {
     let result = window.confirm('정말 취소할까요?');
     if (result) {
       setIsClicked((prev) => !prev)
     }
-    fetch();
   }
   const ModalCloseSec = (e) => {
     if (e.target.id === 'modal_card') {
@@ -23,7 +22,7 @@ export default function ModalCard({setIsClicked, isLoggedIn}) {
       setAnnounceLogin((prev) => !prev)
     } 
   }
-  
+
   return (
     <SecModalCard onClick={ModalCloseSec} id='modal_card'>
       <WrapModalCard>
@@ -31,7 +30,7 @@ export default function ModalCard({setIsClicked, isLoggedIn}) {
           <ImgBack src={require('../../assets/img/img_back.jpg')} alt=''/>
         </BackBox>
         <FrontBox>
-          <TxtQuestion>당신은 어떤 모모입니까?</TxtQuestion>
+          <TxtQuestion>{Question}</TxtQuestion>
           {isLoggedIn ? <TxtArea /> : <TxtArea disabled />}
           <WrapBtn>
             <BtnCancel type='button' onClick={ModalClose}>취소</BtnCancel>
@@ -109,13 +108,14 @@ const FrontBox = styled.form`
   animation: ${RotateBackCard} 2s ease-in-out forwards;
 `
 const TxtQuestion = styled.strong`
+  line-height: 1.4rem;
   font-size: 1.2rem;
 `
 const TxtArea = styled.textarea`
   border: 2px solid ${theme.color.mellow};
   border-radius: 7px;
   width: 100%;
-  height: 80%;
+  height: 75%;
   margin-top: 20px;
   font-family: ${theme.font.basic_font};
   /* background-color: ${theme.color.pantone}; */
