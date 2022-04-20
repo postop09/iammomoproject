@@ -7,7 +7,6 @@ const Login = () => {
         <InputWrapper>
           <label>이메일 주소</label>
           <input name="email" type="email" placeholder="ID@iammomo.com" />
-          {/* <div>ㅎㅇㅎㅇ</div> */}
         </InputWrapper>
         <InputWrapper>
           <label>비밀번호</label>
