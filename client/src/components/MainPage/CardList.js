@@ -1,11 +1,12 @@
-import React from 'react'
-import styled from 'styled-components'
-import Card from './Card'
+import styled from 'styled-components';
+import Card from './Card';
+import questionData from '../../database/questionData.json';
 
-export default function CardList({setIsClicked}) {
-  const handleClick = (e) => {
-    console.log(e.target);
+export default function CardList({setIsClicked, setQuestion}) {
+  const handleClick = () => {
     setIsClicked((prev) => !prev);
+    let questionNum = parseInt(Math.random() * questionData.length)
+    setQuestion(questionData[questionNum].topic);
   }
 
   return (

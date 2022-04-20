@@ -8,6 +8,7 @@ import ModalCard from '../../components/Modal/ModalCard'
 export default function MainPage() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
+  const [Question, setQuestion] = useState('');
 
   return (
     <WrapMain>
@@ -15,7 +16,7 @@ export default function MainPage() {
         <TxtMain><TxtBlock>하루 5분</TxtBlock> 나에게 솔직해지는 시간</TxtMain> :
         <TxtMain><TxtBlock>하루 5분</TxtBlock> 가장 솔직해지는 시간</TxtMain>
       }
-      <CardList setIsClicked={setIsClicked} />
+      <CardList setIsClicked={setIsClicked} setQuestion={setQuestion} />
       {isLoggedIn ?
         '' :
         <WrapTxtInfo>
@@ -27,7 +28,7 @@ export default function MainPage() {
         <SideTxt />
         <SideTxt />
       </section>
-      {isClicked ? <ModalCard setIsClicked={setIsClicked} /> : ''}
+      {isClicked ? <ModalCard setIsClicked={setIsClicked} isLoggedIn={isLoggedIn} Question={Question} /> : ''}
     </WrapMain>
   )
 }
