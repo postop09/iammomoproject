@@ -2,16 +2,24 @@ package dev.sideproject.momo.entity;
 
 import javax.persistence.*;
 
+
 @Entity
 @Table(name = "topic")
-public class TopicEntity {
-
+public class TopicEntity extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String title;
+
+    public TopicEntity() {
+        this.id = id;
+        this.title = title;
+    }
+
+    //    @LastModifiedDate // 조회한  Entity 값을 변경할 때 시간이 자동 저장
+//    private LocalDateTime modifiedDate;
 
 
     public Long getId() {

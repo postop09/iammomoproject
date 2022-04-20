@@ -1,5 +1,6 @@
 package dev.sideproject.momo.service;
 
+import dev.sideproject.momo.entity.TopicEntity;
 import dev.sideproject.momo.model.TopicDto;
 
 import java.util.Collection;

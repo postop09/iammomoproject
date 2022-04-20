@@ -1,4 +1,4 @@
-package dev.sideproject.momo;
+package dev.sideproject.momo.controller;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;

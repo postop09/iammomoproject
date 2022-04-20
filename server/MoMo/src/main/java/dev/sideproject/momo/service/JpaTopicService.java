@@ -17,7 +17,8 @@ public class JpaTopicService implements TopicService{
     private final TopicRepository topicRepository;
 
 
-    public JpaTopicService(TopicRepository topicRepository) {
+    public JpaTopicService(
+       TopicRepository topicRepository) {
         this.topicRepository = topicRepository;
     }
 
@@ -28,7 +29,9 @@ public class JpaTopicService implements TopicService{
         topicEntity.setTitle(dto.getTitle());
         topicEntity = this.topicRepository.save(topicEntity);
         return new TopicDto(
-                topicEntity.getId(), topicEntity.getTitle()
+                topicEntity.getId(),
+                topicEntity.getTitle(),
+                topicEntity.getCreateAt()
         );
     }
 
@@ -37,7 +40,12 @@ public class JpaTopicService implements TopicService{
         List<TopicDto> topicDtoList = new ArrayList<>();
 
         this.topicRepository.findAll().forEach(topicEntity ->
-                topicDtoList.add(new TopicDto(topicEntity.getId(), topicEntity.getTitle())));
+                topicDtoList.add(
+                        new TopicDto(
+                                topicEntity.getId(),
+                                topicEntity.getTitle(),
+                                topicEntity.getCreateAt()
+                        )));
         return topicDtoList;
     }
 
@@ -50,7 +58,8 @@ public class JpaTopicService implements TopicService{
 
         return new TopicDto(
                 topicEntity.getId(),
-                topicEntity.getTitle()
+                topicEntity.getTitle(),
+                topicEntity.getCreateAt()
         );
     }
 

@@ -1,7 +1,9 @@
 package dev.sideproject.momo.controller;
 
+import dev.sideproject.momo.entity.TopicEntity;
 import dev.sideproject.momo.model.TopicDto;
 import dev.sideproject.momo.service.TopicService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,7 +17,8 @@ public class TopicController {
     private final TopicService topicService;
 
 
-    public TopicController(TopicService topicService) {
+    public TopicController(
+            @Autowired TopicService topicService) {
         this.topicService = topicService;
     }
 
