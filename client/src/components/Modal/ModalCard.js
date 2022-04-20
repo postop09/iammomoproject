@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useState } from 'react'
 import styled, { keyframes } from 'styled-components'
 import theme from '../../theme'
@@ -20,7 +19,7 @@ export default function ModalCard({setIsClicked, isLoggedIn, Question}) {
       }
     } else if (e.target.tagName === 'TEXTAREA') {
       setAnnounceLogin((prev) => !prev)
-    } 
+    }
   }
 
   return (

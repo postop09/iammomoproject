@@ -4,6 +4,7 @@ import AuthSelection from "./pages/AuthSelection";
 import Login from "./pages/Login";
 import MainPage from "./pages/MainPage/MainPage";
 import Register from "./pages/Register";
+import SharePage from "./pages/SharePage/SharePage";
 
 const Layout  = () => {
   return (
@@ -19,6 +20,7 @@ const AppRoutes = () => {
     <Routes>
       <Route path='/' element={<Layout />}>
         <Route index element={<MainPage />} />
+        <Route path="/momoshare" element={<SharePage />} />
       </Route>
         <Route path="/authselection" element={<AuthSelection />} />
         <Route path="/register" element={<Register />} />
