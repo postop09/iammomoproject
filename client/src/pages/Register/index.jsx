@@ -109,7 +109,16 @@ const Register = () => {
     navigate("/");
   };
 
-  const submitHanler = () => {};
+  const submitHanler = async () => {
+    await axios
+      .post("/api/topic", {
+        title: "postData",
+      })
+      .then((data) => {
+        console.log(data.data);
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <Wrapper>
@@ -136,7 +145,9 @@ const Register = () => {
                 onChange={onChangeUserNameHandler}
                 // value={userName}
               />
-              {/* <div show={isName.toString()}>ㅎㅇㅎㅇ</div> */}
+              {userName.length > 0 && (
+                <div className={isName ? "green" : "red"}>{nameError}</div>
+              )}
             </InputWrapper>
             <InputWrapper>
               <label>이메일 주소</label>
@@ -147,7 +158,9 @@ const Register = () => {
                 onChange={onChangeEmailHandler}
                 value={email}
               />
-              {/* <div>ㅎㅇㅎㅇ</div> */}
+              {email.length > 0 && (
+                <div className={isEmail ? "green" : "red"}>{emailError}</div>
+              )}
             </InputWrapper>
             <InputWrapper>
               <label>비밀번호</label>
@@ -158,7 +171,11 @@ const Register = () => {
                 onChange={onChangePasswordHandler}
                 value={password}
               />
-              {/* <div>ㅎㅇㅎㅇ</div> */}
+              {password.length > 0 && (
+                <div className={isPassword ? "green" : "red"}>
+                  {passwordError}
+                </div>
+              )}
             </InputWrapper>
             <InputWrapper>
               <label>비밀번호 확인</label>
@@ -169,7 +186,11 @@ const Register = () => {
                 onChange={onChangeConfirmPasswordHandler}
                 value={confirmPassword}
               />
-              {/* <div>ㅎㅇㅎㅇ</div> */}
+              {confirmPassword.length > 0 && (
+                <div className={isPasswordConfirm ? "green" : "red"}>
+                  {confirmPasswordError}
+                </div>
+              )}
             </InputWrapper>
             <TermsWrapper>
               <label>약관 동의</label>
@@ -319,7 +340,13 @@ const InputWrapper = styled.div`
   }
   > div {
     margin-top: 0.5rem;
-    /* color: ${(props) => (props.show === "true" ? "green" : "red")}; */
+    font-size: 0.8rem;
+    &.red {
+      color: red;
+    }
+    &.green {
+      color: green;
+    }
   }
 `;
 
