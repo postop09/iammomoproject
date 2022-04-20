@@ -1,8 +1,8 @@
-import axios from 'axios';
 import React, { useState } from 'react'
 import styled, { keyframes } from 'styled-components'
 import theme from '../../theme'
 import AnnounceLogin from './AnnounceLogin';
+// import axios from 'axios';
 
 export default function ModalCard({setIsClicked, isLoggedIn, Question}) {
   const [announceLogin, setAnnounceLogin] = useState(true);
@@ -11,6 +11,7 @@ export default function ModalCard({setIsClicked, isLoggedIn, Question}) {
     if (result) {
       setIsClicked((prev) => !prev)
     }
+    // fetch();
   }
   const ModalCloseSec = (e) => {
     if (e.target.id === 'modal_card') {
@@ -20,8 +21,13 @@ export default function ModalCard({setIsClicked, isLoggedIn, Question}) {
       }
     } else if (e.target.tagName === 'TEXTAREA') {
       setAnnounceLogin((prev) => !prev)
-    } 
+    }
   }
+
+  // const fetch = async() => {
+  //   const res = await axios.delete('/topic/1');
+  //   console.log(res);
+  // }
 
   return (
     <SecModalCard onClick={ModalCloseSec} id='modal_card'>
