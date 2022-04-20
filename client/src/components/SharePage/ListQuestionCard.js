@@ -4,17 +4,17 @@ import QuestionCard from './QuestionCard';
 import testData from '../../database/testData.json';
 import theme from '../../theme';
 
-export default function ListQuestionCard({topic}) {
+export default function ListQuestionCard({topic, setIsClicked, setCardId}) {
   return (
     <ListShare>
       {testData.map((data) => {
         if (topic === '질문 선택') {
           return (
-            <QuestionCard key={data.postId} contents={data.contents} createDate={data.createDate} />
+            <QuestionCard key={data.postId} contents={data.contents} createDate={data.createDate} setIsClicked={setIsClicked} setCardId={setCardId} postId={data.postId} />
           )
         } else if (data.topic === topic) {
           return (
-            <QuestionCard key={data.postId} contents={data.contents} createDate={data.createDate} />
+            <QuestionCard key={data.postId} contents={data.contents} createDate={data.createDate} setIsClicked={setIsClicked} setCardId={setCardId} postId={data.postId} />
           )
         }
       })}

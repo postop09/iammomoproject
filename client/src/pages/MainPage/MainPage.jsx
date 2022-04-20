@@ -58,7 +58,7 @@ const WrapTxtInfo = styled.p`
   margin: 10px 0px;
   font-size: .9rem;
 `
-const IconTri = styled.div`
+const IconTri = styled.span`
   display: inline-block;
   font-size: .6rem;
   animation: ${MoveUpDown} 1s infinite ease-out alternate;

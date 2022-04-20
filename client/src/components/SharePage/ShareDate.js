@@ -3,11 +3,11 @@ import styled from 'styled-components';
 import theme from '../../theme';
 import ListShareCard from './ListShareCard';
 
-export default function ShareDate() {
+export default function ShareDate({setIsClicked, setCardId}) {
   return (
     <WrapShare>
       <TxtMain><TxtBlock>오늘</TxtBlock>누군가 솔직했던 시간</TxtMain>
-      <ListShareCard />
+      <ListShareCard setIsClicked={setIsClicked} setCardId={setCardId} />
     </WrapShare>
   )
 }

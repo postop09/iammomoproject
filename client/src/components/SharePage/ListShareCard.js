@@ -1,23 +1,28 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 import testData from '../../database/testData.json';
 import theme from '../../theme';
-import ShareCard from './ShareCard'
+import ShareCard from './ShareCard';
+// import axios from 'axios';
 
-
-export default function ListShareCard() {
+export default function ListShareCard({setIsClicked, setCardId}) {
   const newDate = new Date();
-  let year = newDate.getFullYear();
-  let month = newDate.getMonth() + 1;
-  let date = newDate.getDate();
+  let year = newDate.getUTCFullYear();
+  let month = newDate.getUTCMonth() + 1;
+  let date = newDate.getUTCDate();
   let today = `${year}-0${month}-${date}`;
 
+  // const fetch = async() => {
+  //   const res = await axios.get('http://52.79.45.37:8080/api/topic');
+  //   console.log(res);
+  // }
+  
   return (
     <ListShare>
       {testData.map((data) => {
         if (data.createDate === today) {
           return (
-            <ShareCard key={data.postId} dataQuestion={data.topic} />
+            <ShareCard key={data.postId} dataQuestion={data.topic} setIsClicked={setIsClicked} setCardId={setCardId} id={data.postId} />
           )
         }
       })}

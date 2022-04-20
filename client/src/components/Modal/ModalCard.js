@@ -5,13 +5,13 @@ import AnnounceLogin from './AnnounceLogin';
 
 export default function ModalCard({setIsClicked, isLoggedIn, Question}) {
   const [announceLogin, setAnnounceLogin] = useState(true);
-  const ModalClose = () => {
+  const modalClose = () => {
     let result = window.confirm('정말 취소할까요?');
     if (result) {
       setIsClicked((prev) => !prev)
     }
   }
-  const ModalCloseSec = (e) => {
+  const modalCloseSec = (e) => {
     if (e.target.id === 'modal_card') {
       let result = window.confirm('정말 취소할까요?');
       if (result) {
@@ -23,7 +23,7 @@ export default function ModalCard({setIsClicked, isLoggedIn, Question}) {
   }
 
   return (
-    <SecModalCard onClick={ModalCloseSec} id='modal_card'>
+    <SecModalCard onClick={modalCloseSec} id='modal_card'>
       <WrapModalCard>
         <BackBox>
           <ImgBack src={require('../../assets/img/img_back.jpg')} alt=''/>
@@ -32,7 +32,7 @@ export default function ModalCard({setIsClicked, isLoggedIn, Question}) {
           <TxtQuestion>{Question}</TxtQuestion>
           {isLoggedIn ? <TxtArea /> : <TxtArea disabled />}
           <WrapBtn>
-            <BtnCancel type='button' onClick={ModalClose}>취소</BtnCancel>
+            <BtnCancel type='button' onClick={modalClose}>취소</BtnCancel>
             <BtnSubmit type='submit'>글 입력 완료</BtnSubmit>
           </WrapBtn>
         </FrontBox>
