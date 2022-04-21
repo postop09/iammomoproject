@@ -24,11 +24,11 @@ export default function ModalOthersCard({setIsClicked, cardId}) {
         return (
           <SecModalShareCard key={data.postId} onClick={modalCloseSec}>
             <WrapShare>
-              <WrapColorBox>{data.contents}</WrapColorBox>
+              <WrapColorBox readOnly value={data.contents}></WrapColorBox>
               <WrapTxt>
                 <TxtTitle>{data.topic}</TxtTitle>
                 <TxtDate>{data.createDate}</TxtDate>
-                <BtnClose onClick={() => {fetch()}}>
+                <BtnClose>
                   X<TxtHide>글 상세보기창 닫기</TxtHide>
                 </BtnClose>
               </WrapTxt>
@@ -64,14 +64,18 @@ const WrapShare = styled.div`
   background-color: #ffffff;
   list-style: none;
 `
-const WrapColorBox = styled.p`
+const WrapColorBox = styled.textarea`
   width: 100%;
   height: 40vh;
   margin-bottom: 10px;
   padding: 10px;
   line-height: 1.7rem;
+  font-size: 1rem;
+  font-family: ${theme.font.basic_font};
   background-color: ${theme.color.mellow};
   overflow-y: scroll;
+  resize: none;
+  cursor: default;
 `
 const WrapTxt = styled.div`
   width: 100%;
