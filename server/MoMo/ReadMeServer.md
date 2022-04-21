@@ -15,5 +15,9 @@
 * Topic CRUD API 생성
 
 ### 2022-04-20 개발상황
-* CORS에러 해결 
-* Topic Entity CreateAt 추가 
+* CORS 에러 해결 
+* (프론트 요구사항) Topic Entity CreateAt 추가 
+* Topic CRUD 서버 업데이트
+
+### 2022-04-21 개발상황
+* User CRUD API 생성

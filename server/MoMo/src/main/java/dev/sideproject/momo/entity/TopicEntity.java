@@ -1,6 +1,8 @@
 package dev.sideproject.momo.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -13,6 +15,14 @@ public class TopicEntity extends BaseEntity {
 
     private String title;
 
+
+    @OneToMany(
+            fetch = FetchType.LAZY,
+            targetEntity = PostEntity.class,
+            mappedBy = "topicEntity"
+    )
+    private List<PostEntity> postEntityList = new ArrayList<>();
+
     public TopicEntity() {
         this.id = id;
         this.title = title;
@@ -21,6 +31,14 @@ public class TopicEntity extends BaseEntity {
     //    @LastModifiedDate // 조회한  Entity 값을 변경할 때 시간이 자동 저장
 //    private LocalDateTime modifiedDate;
 
+
+    public List<PostEntity> getPostEntityList() {
+        return postEntityList;
+    }
+
+    public void setPostEntityList(List<PostEntity> postEntityList) {
+        this.postEntityList = postEntityList;
+    }
 
     public Long getId() {
         return id;
