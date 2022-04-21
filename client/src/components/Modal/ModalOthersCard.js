@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import theme from '../../theme';
 import testData from '../../database/testData.json';
+// import axios from 'axios';
 
 export default function ModalOthersCard({setIsClicked, cardId}) {
   const modalCloseSec = (e) => {
@@ -10,6 +11,13 @@ export default function ModalOthersCard({setIsClicked, cardId}) {
     }
   }
   
+  // const fetch = async() => {
+  //   const res = await axios.get('http://52.79.45.37:8080/api/post' );
+  //   console.log(res);
+
+  //   const resTwo = await axios.get('http://52.79.45.37:8080/api/topic');
+  //   console.log(resTwo);
+  // }
   return (
     testData.map((data) => {
       if (data.postId === +cardId) {
@@ -20,7 +28,7 @@ export default function ModalOthersCard({setIsClicked, cardId}) {
               <WrapTxt>
                 <TxtTitle>{data.topic}</TxtTitle>
                 <TxtDate>{data.createDate}</TxtDate>
-                <BtnClose>
+                <BtnClose onClick={() => {fetch()}}>
                   X<TxtHide>글 상세보기창 닫기</TxtHide>
                 </BtnClose>
               </WrapTxt>
@@ -58,11 +66,12 @@ const WrapShare = styled.div`
 `
 const WrapColorBox = styled.p`
   width: 100%;
-  height: 80%;
+  height: 40vh;
   margin-bottom: 10px;
   padding: 10px;
   line-height: 1.7rem;
   background-color: ${theme.color.mellow};
+  overflow-y: scroll;
 `
 const WrapTxt = styled.div`
   width: 100%;
@@ -83,7 +92,9 @@ const TxtDate = styled.small`
   color: #6e6e6e;
 `
 const BtnClose = styled.button`
-  float: right;
+  position: absolute;
+  right: 2vw;
+  bottom: 10px;
   box-shadow: 2px 1px 5px 1px #00000050;
   border-radius: 100%;
   padding: 4px 7px;

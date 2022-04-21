@@ -10,13 +10,15 @@ export default function MainPage() {
   const [isClicked, setIsClicked] = useState(false);
   const [Question, setQuestion] = useState('');
 
+  const [topic, setTopic] = useState([]);
+
   return (
     <WrapMain>
       {isLoggedIn ?
         <TxtMain><TxtBlock>하루 5분</TxtBlock> 나에게 솔직해지는 시간</TxtMain> :
         <TxtMain><TxtBlock>하루 5분</TxtBlock> 가장 솔직해지는 시간</TxtMain>
       }
-      <CardList setIsClicked={setIsClicked} setQuestion={setQuestion} />
+      <CardList setIsClicked={setIsClicked} setQuestion={setQuestion} topic={topic} setTopic={setTopic} />
       {isLoggedIn ?
         '' :
         <WrapTxtInfo>

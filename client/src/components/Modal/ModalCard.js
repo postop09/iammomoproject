@@ -17,9 +17,10 @@ export default function ModalCard({setIsClicked, isLoggedIn, Question}) {
       if (result) {
         setIsClicked((prev) => !prev)
       }
-    } else if (e.target.tagName === 'TEXTAREA') {
-      setAnnounceLogin((prev) => !prev)
     }
+  }
+  const modalLoginOpen = () => {
+      setAnnounceLogin((prev) => !prev)
   }
 
   return (
@@ -30,7 +31,7 @@ export default function ModalCard({setIsClicked, isLoggedIn, Question}) {
         </BackBox>
         <FrontBox>
           <TxtQuestion>{Question}</TxtQuestion>
-          {isLoggedIn ? <TxtArea /> : <TxtArea disabled />}
+          {isLoggedIn ? <TxtArea /> : <TxtArea readOnly onClick={modalLoginOpen} />}
           <WrapBtn>
             <BtnCancel type='button' onClick={modalClose}>취소</BtnCancel>
             <BtnSubmit type='submit'>글 입력 완료</BtnSubmit>
