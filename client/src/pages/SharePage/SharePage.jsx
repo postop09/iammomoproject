@@ -20,6 +20,6 @@ export default function SharePage() {
 }
 
 const WrapMain = styled.main`
-  min-height: 95vh;
+  min-height: 100vh;
   background-color: ${theme.color.pantone};
 `

@@ -14,7 +14,7 @@ export default function ShareDate({setIsClicked, setCardId}) {
 
 const WrapShare = styled.section`
   max-height: 60vh;
-  padding: 5vh 10px 0;
+  padding: 10vh 10px 0;
   font-family: ${theme.font.basic_font};
   text-align: center;
   

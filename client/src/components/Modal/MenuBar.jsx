@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router";
 import styled from "styled-components";
+import theme from "../../theme";
 
 const MenuBar = (props) => {
   const navigate = useNavigate();
@@ -53,6 +54,8 @@ const Wrapper = styled.div`
   position: fixed;
   background-color: white;
   border: 2px solid black;
+  border-left: none;
+  font-family: ${theme.font.basic_font};
   z-index: 2;
 `;
 
@@ -68,8 +71,8 @@ const HeadSection = styled.section`
 
 const BodySection = styled.section`
   text-align: center;
-  font-size: 1.3rem;
-  padding-bottom: 20rem;
+  font-size: 1.1rem;
+  padding-bottom: 21rem;
   > div {
     padding-bottom: 1rem;
   }
@@ -77,7 +80,7 @@ const BodySection = styled.section`
 
 const FooterSection = styled.section`
   text-align: center;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   > div {
     padding-bottom: 1rem;
   }

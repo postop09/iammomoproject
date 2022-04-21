@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Card from './Card';
-import questionData from '../../database/questionData.json';
+// import questionData from '../../database/questionData.json';
 import axios from 'axios';
 import { useEffect } from 'react';
 
@@ -47,6 +47,7 @@ const ListCards = styled.ul`
   overflow-x: scroll;
   column-gap: 2vw;
   margin: 60px 10px 0px;
+  padding: 10px 0;
   &::-webkit-scrollbar {
     display: none;
   }
