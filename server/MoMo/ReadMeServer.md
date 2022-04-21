@@ -21,3 +21,5 @@
 
 ### 2022-04-21 개발상황
 * User CRUD API 생성
+* Post CRUD API 생성
+* Swagger 적용
