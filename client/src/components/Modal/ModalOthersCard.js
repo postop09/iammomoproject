@@ -5,7 +5,7 @@ import testData from '../../database/testData.json';
 
 export default function ModalOthersCard({setIsClicked, cardId}) {
   const modalCloseSec = (e) => {
-    if (e.target.tagName === 'ARTICLE') {
+    if (e.target.tagName === 'ARTICLE' || e.target.tagName === 'BUTTON') {
       setIsClicked((prev) => !prev); 
     }
   }
@@ -20,6 +20,9 @@ export default function ModalOthersCard({setIsClicked, cardId}) {
               <WrapTxt>
                 <TxtTitle>{data.topic}</TxtTitle>
                 <TxtDate>{data.createDate}</TxtDate>
+                <BtnClose>
+                  X<TxtHide>글 상세보기창 닫기</TxtHide>
+                </BtnClose>
               </WrapTxt>
             </WrapShare>
           </SecModalShareCard>
@@ -78,4 +81,20 @@ const TxtDate = styled.small`
   margin-top: 10px;
   font-size: .9rem;
   color: #6e6e6e;
+`
+const BtnClose = styled.button`
+  float: right;
+  box-shadow: 2px 1px 5px 1px #00000050;
+  border-radius: 100%;
+  padding: 4px 7px;
+  background-color: ${theme.color.mellow};
+  cursor: pointer;
+`
+const TxtHide = styled.span`
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
 `
