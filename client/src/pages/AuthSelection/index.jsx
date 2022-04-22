@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import background from "../../assets/img/authselection.jpeg";
+import theme from "../../theme";
 
 const AuthSelection = () => {
   return (
@@ -28,6 +29,7 @@ const AuthSelection = () => {
 export default AuthSelection;
 
 const Wrapper = styled.div`
+  font-family: ${theme.font.gothic_font};
   > img {
     position: fixed;
     height: 100%;

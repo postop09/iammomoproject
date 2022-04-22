@@ -40,4 +40,7 @@ const ListShare = styled.ul`
   margin: 40px 0;
   padding: 2vh 0;
   overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `

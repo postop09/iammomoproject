@@ -25,10 +25,9 @@ export default function ListQuestionCard({topic, setIsClicked, setCardId}) {
 const ListShare = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  column-gap: 2.3vw;
+  column-gap: 2vw;
   row-gap: 3vh;
   border-bottom: 2px solid ${theme.color.mellow};
-  margin: 35px 0;
+  margin: 35px 0 0;
   padding: 2vh 0;
-  overflow-y: scroll;
 `

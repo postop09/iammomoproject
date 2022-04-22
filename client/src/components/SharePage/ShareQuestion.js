@@ -31,7 +31,6 @@ const WrapShare = styled.section`
   padding: 3vh 10px 0;
   font-family: ${theme.font.basic_font};
   text-align: center;
-  overflow-y: scroll;
 `
 const TxtMain = styled.div`
   text-align: center;

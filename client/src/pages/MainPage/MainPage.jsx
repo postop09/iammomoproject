@@ -43,12 +43,13 @@ const MoveUpDown = keyframes`
 
 const WrapMain = styled.main`
   padding-top: 10vh;
-  font-family: ${theme.font.basic_font};
+  font-family: ${theme.font.gothic_font};
   text-align: center;
 `
 const TxtMain = styled.strong`
-  text-align: center;
+  font-family: ${theme.font.basic_font};
   font-size: 1.1rem;
+  text-align: center;
 `
 const TxtBlock = styled.span`
   display: block;
