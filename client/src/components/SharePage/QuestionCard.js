@@ -2,11 +2,15 @@ import React from 'react'
 import styled from 'styled-components'
 import theme from '../../theme'
 
-export default function QuestionCard({contents, createDate}) {
+export default function QuestionCard({contents, createDate, postId, setIsClicked, setCardId}) {
   const [year, month, date] = createDate.split('-');
+  const openModal = (e) => {
+    setIsClicked((prev) => !prev);
+    setCardId(e.currentTarget.id);
+  }
 
   return (
-    <SecShareCard>
+    <SecShareCard onClick={openModal} id={postId}>
       <BtnCard>
         <WrapColorBox></WrapColorBox>
         <WrapTxt>

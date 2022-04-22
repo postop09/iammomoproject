@@ -1,3 +1,5 @@
+import './assets/font/font.css';
+
 const color = {
   camel : '#b0846a',
   mellow : '#d8b998',
@@ -5,7 +7,8 @@ const color = {
 }
 
 const font = {
-  basic_font : 'Noto Serif KR'
+  basic_font : 'Noto Serif KR',
+  gothic_font : 'appleGothic'
 }
 
 const theme = {

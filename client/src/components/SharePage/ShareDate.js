@@ -3,18 +3,18 @@ import styled from 'styled-components';
 import theme from '../../theme';
 import ListShareCard from './ListShareCard';
 
-export default function ShareDate() {
+export default function ShareDate({setIsClicked, setCardId}) {
   return (
     <WrapShare>
       <TxtMain><TxtBlock>오늘</TxtBlock>누군가 솔직했던 시간</TxtMain>
-      <ListShareCard />
+      <ListShareCard setIsClicked={setIsClicked} setCardId={setCardId} />
     </WrapShare>
   )
 }
 
 const WrapShare = styled.section`
   max-height: 60vh;
-  padding: 5vh 10px 0;
+  padding: 10vh 10px 0;
   font-family: ${theme.font.basic_font};
   text-align: center;
   

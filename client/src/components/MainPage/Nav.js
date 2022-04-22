@@ -9,7 +9,7 @@ export default function Nav() {
     setModal(!modal);
   };
   return (
-    <header>
+    <Header>
       <WrapHeader>
         <BtnMenu onClick={modalHandler}>
           <ImgMenu
@@ -21,10 +21,17 @@ export default function Nav() {
       <ModalWrapper>
         {modal && <MenuBar setModal={setModal} modal={modal} />}
       </ModalWrapper>
-    </header>
+    </Header>
   );
 }
 
+const Header = styled.header`
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  background-color: #fff;
+  z-index: 100;
+`
 const WrapHeader = styled.div`
   display: flex;
   align-items: center;

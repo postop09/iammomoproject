@@ -2,9 +2,14 @@ import React from 'react'
 import styled from 'styled-components'
 import theme from '../../theme'
 
-export default function ShareCard({dataQuestion}) {
+export default function ShareCard({dataQuestion, setIsClicked, setCardId, id}) {
+  const openModal = (e) => {
+    setIsClicked((prev) => !prev);
+    setCardId(e.currentTarget.id);
+  }
+  
   return (
-    <SecShareCard>
+    <SecShareCard onClick={openModal} id={id}>
       <BtnCard>
         <WrapColorBox></WrapColorBox>
         <WrapTxt>

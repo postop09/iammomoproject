@@ -10,24 +10,23 @@ export default function MainPage() {
   const [isClicked, setIsClicked] = useState(false);
   const [Question, setQuestion] = useState('');
 
+  const [topic, setTopic] = useState([]);
+
   return (
     <WrapMain>
+      <TxtHeading>모모 프로젝트에 오신것을 환영합니다.</TxtHeading>
       {isLoggedIn ?
         <TxtMain><TxtBlock>하루 5분</TxtBlock> 나에게 솔직해지는 시간</TxtMain> :
         <TxtMain><TxtBlock>하루 5분</TxtBlock> 가장 솔직해지는 시간</TxtMain>
       }
-      <CardList setIsClicked={setIsClicked} setQuestion={setQuestion} />
+      <CardList setIsClicked={setIsClicked} setQuestion={setQuestion} topic={topic} setTopic={setTopic} />
       {isLoggedIn ?
         '' :
         <WrapTxtInfo>
           위 카드를 선택해주세요. <IconTri>▲</IconTri>
         </WrapTxtInfo>
       }
-      <section>
         <SideTxt />
-        <SideTxt />
-        <SideTxt />
-      </section>
       {isClicked ? <ModalCard setIsClicked={setIsClicked} isLoggedIn={isLoggedIn} Question={Question} /> : ''}
     </WrapMain>
   )
@@ -43,11 +42,13 @@ const MoveUpDown = keyframes`
 `
 
 const WrapMain = styled.main`
-  padding-top: 5vh;
-  font-family: ${theme.font.basic_font};
+  padding-top: 10vh;
+  font-family: ${theme.font.gothic_font};
   text-align: center;
 `
 const TxtMain = styled.strong`
+  font-family: ${theme.font.basic_font};
+  font-size: 1.1rem;
   text-align: center;
 `
 const TxtBlock = styled.span`
@@ -58,8 +59,16 @@ const WrapTxtInfo = styled.p`
   margin: 10px 0px;
   font-size: .9rem;
 `
-const IconTri = styled.div`
+const IconTri = styled.span`
   display: inline-block;
   font-size: .6rem;
   animation: ${MoveUpDown} 1s infinite ease-out alternate;
+`
+const TxtHeading = styled.h2`
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
 `

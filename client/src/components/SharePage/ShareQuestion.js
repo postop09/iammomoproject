@@ -4,7 +4,7 @@ import theme from '../../theme';
 import ListQuestionCard from './ListQuestionCard';
 import questionData from '../../database/questionData.json';
 
-export default function ShareQuestion() {
+export default function ShareQuestion({setIsClicked, setCardId}) {
   const [topic, setTopic] = useState('질문 선택');
   const selectedTopic = (e) => {
     setTopic(e.target.value);
@@ -14,7 +14,7 @@ export default function ShareQuestion() {
     <WrapShare>
       <TxtMain>
         <WrapSelect onChange={selectedTopic}>
-          <Option value='질문 선택' selected>질문 선택(전체 보기)</Option>
+          <Option value='질문 선택'>질문 선택(전체 보기)</Option>
           {questionData.map((data) => {
             return (
               <Option key={data.id} value={data.topic}>{data.topic}</Option>
@@ -22,7 +22,7 @@ export default function ShareQuestion() {
           })}
         </WrapSelect>
       </TxtMain>
-      <ListQuestionCard topic={topic} />
+      <ListQuestionCard topic={topic} setIsClicked={setIsClicked} setCardId={setCardId} />
     </WrapShare>
   )
 }
@@ -31,15 +31,10 @@ const WrapShare = styled.section`
   padding: 3vh 10px 0;
   font-family: ${theme.font.basic_font};
   text-align: center;
-  overflow-y: scroll;
 `
 const TxtMain = styled.div`
   text-align: center;
 `
-// const TxtBlock = styled.span`
-//   display: block;
-//   line-height: 25px;
-// `
 const WrapSelect = styled.select`
   border: none;
   border-bottom: 2px solid ${theme.color.camel};
