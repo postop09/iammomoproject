@@ -1,9 +1,19 @@
+import axios from "axios";
+import { useCallback } from "react";
 import { useNavigate } from "react-router";
 import styled from "styled-components";
+<<<<<<< HEAD
 import theme from "../../theme";
+=======
+import useSWR from "swr";
+import fetcher from "../../utils/fetcher";
+import { Link } from "react-router-dom";
+>>>>>>> 101497030eb0d28c7a285eb36ca1ff14593bd1e1
 
 const MenuBar = (props) => {
   const navigate = useNavigate();
+
+  const { data, mutate } = useSWR("/api/users/auth", fetcher);
 
   const registerHandler = () => {
     navigate("/register");
@@ -17,9 +27,16 @@ const MenuBar = (props) => {
     props.setModal(!props.modal);
   };
 
+  const onLogout = useCallback(() => {
+    axios
+      .post("/api/users/logout", { id: data._id }, { withCredentials: true })
+      .then(() => mutate(false, false));
+  });
+
   return (
     <Wrapper>
       <HeadSection>
+<<<<<<< HEAD
         <button type="button" onClick={registerHandler}>회원가입</button>
         <button type="button" onClick={loginHandler}>로그인</button>
       </HeadSection>
@@ -35,6 +52,49 @@ const MenuBar = (props) => {
       <FooterSection>
         <button type="button" onClick={() => {navigate('/')}}>About Us</button>
         <button type="button" onClick={() => {navigate('/')}}>Contact Us</button>
+=======
+        {data?.isAuth ? (
+          <div>
+            <button onClick={onLogout}>로그아웃</button>
+          </div>
+        ) : (
+          <div>
+            <div onClick={registerHandler}>회원가입</div>
+            <div onClick={loginHandler}>로그인</div>
+          </div>
+        )}
+      </HeadSection>
+      <BodySection>
+        <div>
+          <Linkto to="/info" state={{ label: "bemomo" }}>
+            MOMO 되기
+          </Linkto>
+        </div>
+        <div>
+          <Linkto to="/info" state={{ label: "rules" }}>
+            MOMO 규칙
+          </Linkto>
+        </div>
+
+        <div>My MOMO</div>
+        <div>My Question</div>
+        <div>MOMO 알람</div>
+      </BodySection>
+      <FooterSection>
+        <div>
+          {" "}
+          <Linkto to="/info" state={{ label: "aboutus" }}>
+            About Us
+          </Linkto>
+        </div>
+
+        <div>
+          {" "}
+          <Linkto to="/info" state={{ label: "contactus" }}>
+            Contact Us
+          </Linkto>
+        </div>
+>>>>>>> 101497030eb0d28c7a285eb36ca1ff14593bd1e1
       </FooterSection>
     </Wrapper>
   );
@@ -64,12 +124,26 @@ const Wrapper = styled.div`
 const HeadSection = styled.section`
   display: flex;
   justify-content: space-around;
+<<<<<<< HEAD
   margin: 1rem 0.5rem;
   padding-bottom: 2rem;
   > button {
     font-size: .9rem;
     text-decoration: underline;
     font-family: ${theme.font.basic_font};
+=======
+  /* margin: 1rem 0.5rem;
+  padding-bottom: 2rem; */
+  > div {
+    display: flex;
+    justify-content: space-around;
+    text-decoration: underline;
+    margin: 1rem 0.5rem;
+    padding-bottom: 2rem;
+    > div:first-child {
+      margin-right: 1rem;
+    }
+>>>>>>> 101497030eb0d28c7a285eb36ca1ff14593bd1e1
   }
 `;
 
@@ -91,4 +165,10 @@ const FooterSection = styled.section`
     font-size: 1rem;
     font-family: ${theme.font.basic_font};
   }
+`;
+
+const Linkto = styled(Link)`
+  text-decoration: none;
+  font-size: 1.3rem;
+  color: black;
 `;

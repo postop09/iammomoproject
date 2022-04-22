@@ -16,12 +16,6 @@ public class TopicEntity extends BaseEntity {
     private String title;
 
 
-    @OneToMany(
-            fetch = FetchType.LAZY,
-            targetEntity = PostEntity.class,
-            mappedBy = "topicEntity"
-    )
-    private List<PostEntity> postEntityList = new ArrayList<>();
 
     public TopicEntity() {
         this.id = id;
@@ -32,12 +26,9 @@ public class TopicEntity extends BaseEntity {
 //    private LocalDateTime modifiedDate;
 
 
-    public List<PostEntity> getPostEntityList() {
-        return postEntityList;
-    }
-
-    public void setPostEntityList(List<PostEntity> postEntityList) {
-        this.postEntityList = postEntityList;
+    public TopicEntity(Long id, String title) {
+        this.id = id;
+        this.title = title;
     }
 
     public Long getId() {
@@ -54,5 +45,13 @@ public class TopicEntity extends BaseEntity {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    @Override
+    public String toString() {
+        return "TopicEntity{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                '}';
     }
 }
