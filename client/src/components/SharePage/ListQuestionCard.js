@@ -28,6 +28,7 @@ const ListShare = styled.ul`
   column-gap: 2.3vw;
   row-gap: 3vh;
   border-bottom: 2px solid ${theme.color.mellow};
-  margin: 40px 0;
+  margin: 35px 0;
+  padding: 2vh 0;
   overflow-y: scroll;
 `

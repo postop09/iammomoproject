@@ -38,5 +38,6 @@ const ListShare = styled.ul`
   border-bottom: 2px solid ${theme.color.mellow};
   max-height: 45vh;
   margin: 40px 0;
+  padding: 2vh 0;
   overflow-y: scroll;
 `

@@ -27,7 +27,7 @@ const MenuBar = (props) => {
         <button type="button" onClick={() => {navigate('/');modalHandler();}}>MOMO</button>
         <button type="button" onClick={() => {navigate('/beamomo');modalHandler();}}>MOMO 되기</button>
         <button type="button" onClick={() => {navigate('/')}}>MOMO 규칙</button>
-        <button type="button" onClick={() => {navigate('/')}}>My MOMO</button>
+        <button type="button" onClick={() => {navigate('/mymomo');modalHandler();}}>My MOMO</button>
         <button type="button" onClick={() => {navigate('/')}}>My Question</button>
         <button type="button" onClick={() => {navigate('/momoshare');modalHandler();}}>MOMO Library</button>
         <button type="button" onClick={() => {navigate('/')}}>MOMO 알람</button>

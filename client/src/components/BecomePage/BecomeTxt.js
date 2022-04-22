@@ -50,7 +50,7 @@ export default function BecomeTxt() {
           <TxtBlock>다양한 질문으로 글을 쓰고 </TxtBlock>
           <TxtBlock>나의 모모 글을 모아서 보세요.</TxtBlock>
         </TxtBox>
-        <BtnLink type='button' onClick={() => {navigate('/')}}>
+        <BtnLink type='button' onClick={() => {navigate('/mymomo')}}>
           My MOMO 보기
         </BtnLink>
       </div>

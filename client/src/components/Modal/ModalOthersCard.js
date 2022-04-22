@@ -18,6 +18,14 @@ export default function ModalOthersCard({setIsClicked, cardId}) {
   //   const resTwo = await axios.get('http://52.79.45.37:8080/api/topic');
   //   console.log(resTwo);
   // }
+
+  //   const resTwo = await axios.post('http://52.79.45.37:8080/auth/signup', {
+  //     username: 'robotyunsik',
+  //     password: '12345',
+  //     passwordCheck: '12345'
+  //   });
+  //   console.log(resTwo);
+  // }
   return (
     testData.map((data) => {
       if (data.postId === +cardId) {
