@@ -2,13 +2,10 @@ import axios from "axios";
 import { useCallback } from "react";
 import { useNavigate } from "react-router";
 import styled from "styled-components";
-<<<<<<< HEAD
 import theme from "../../theme";
-=======
 import useSWR from "swr";
 import fetcher from "../../utils/fetcher";
 import { Link } from "react-router-dom";
->>>>>>> 101497030eb0d28c7a285eb36ca1ff14593bd1e1
 
 const MenuBar = (props) => {
   const navigate = useNavigate();
@@ -36,23 +33,6 @@ const MenuBar = (props) => {
   return (
     <Wrapper>
       <HeadSection>
-<<<<<<< HEAD
-        <button type="button" onClick={registerHandler}>회원가입</button>
-        <button type="button" onClick={loginHandler}>로그인</button>
-      </HeadSection>
-      <BodySection>
-        <button type="button" onClick={() => {navigate('/');modalHandler();}}>MOMO</button>
-        <button type="button" onClick={() => {navigate('/beamomo');modalHandler();}}>MOMO 되기</button>
-        <button type="button" onClick={() => {navigate('/')}}>MOMO 규칙</button>
-        <button type="button" onClick={() => {navigate('/mymomo');modalHandler();}}>My MOMO</button>
-        <button type="button" onClick={() => {navigate('/')}}>My Question</button>
-        <button type="button" onClick={() => {navigate('/momoshare');modalHandler();}}>MOMO Library</button>
-        <button type="button" onClick={() => {navigate('/')}}>MOMO 알람</button>
-      </BodySection>
-      <FooterSection>
-        <button type="button" onClick={() => {navigate('/')}}>About Us</button>
-        <button type="button" onClick={() => {navigate('/')}}>Contact Us</button>
-=======
         {data?.isAuth ? (
           <div>
             <button onClick={onLogout}>로그아웃</button>
@@ -65,36 +45,17 @@ const MenuBar = (props) => {
         )}
       </HeadSection>
       <BodySection>
-        <div>
-          <Linkto to="/info" state={{ label: "bemomo" }}>
-            MOMO 되기
-          </Linkto>
-        </div>
-        <div>
-          <Linkto to="/info" state={{ label: "rules" }}>
-            MOMO 규칙
-          </Linkto>
-        </div>
-
-        <div>My MOMO</div>
-        <div>My Question</div>
-        <div>MOMO 알람</div>
+        <button type="button" onClick={() => {navigate('/');modalHandler();}}>MOMO</button>
+        <button type="button" onClick={() => {navigate('/beamomo');modalHandler();}}>MOMO 되기</button>
+        <button type="button" onClick={() => {navigate('/rules');modalHandler();}}>MOMO 규칙</button>
+        <button type="button" onClick={() => {navigate('/mymomo');modalHandler();}}>My MOMO</button>
+        <button type="button" onClick={() => {navigate('/');modalHandler();}}>My Question</button>
+        <button type="button" onClick={() => {navigate('/momoshare');modalHandler();}}>MOMO Library</button>
+        <button type="button" onClick={() => {navigate('/');modalHandler();}}>MOMO 알람</button>
       </BodySection>
       <FooterSection>
-        <div>
-          {" "}
-          <Linkto to="/info" state={{ label: "aboutus" }}>
-            About Us
-          </Linkto>
-        </div>
-
-        <div>
-          {" "}
-          <Linkto to="/info" state={{ label: "contactus" }}>
-            Contact Us
-          </Linkto>
-        </div>
->>>>>>> 101497030eb0d28c7a285eb36ca1ff14593bd1e1
+        <button type="button" onClick={() => {navigate('/about');modalHandler();}}>About Us</button>
+        <button type="button" onClick={() => {navigate('/contact');modalHandler();}}>Contact Us</button>
       </FooterSection>
     </Wrapper>
   );
@@ -117,21 +78,12 @@ const Wrapper = styled.div`
   background-color: white;
   border: 2px solid black;
   border-left: none;
-  
   z-index: 2;
 `;
 
 const HeadSection = styled.section`
   display: flex;
   justify-content: space-around;
-<<<<<<< HEAD
-  margin: 1rem 0.5rem;
-  padding-bottom: 2rem;
-  > button {
-    font-size: .9rem;
-    text-decoration: underline;
-    font-family: ${theme.font.basic_font};
-=======
   /* margin: 1rem 0.5rem;
   padding-bottom: 2rem; */
   > div {
@@ -140,10 +92,10 @@ const HeadSection = styled.section`
     text-decoration: underline;
     margin: 1rem 0.5rem;
     padding-bottom: 2rem;
+    font-size: .9rem;
     > div:first-child {
       margin-right: 1rem;
     }
->>>>>>> 101497030eb0d28c7a285eb36ca1ff14593bd1e1
   }
 `;
 

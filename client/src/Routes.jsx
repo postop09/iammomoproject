@@ -1,11 +1,11 @@
 import { Routes, Route, Outlet } from "react-router-dom";
+import Aboutus from "./components/InfoPage/Aboutus";
+import Contactus from "./components/InfoPage/Contactus";
+import Rules from "./components/InfoPage/Rules";
 import Nav from "./components/MainPage/Nav";
 import AuthSelection from "./pages/AuthSelection";
-<<<<<<< HEAD
 import BecomePage from "./pages/BecomePage/BecomePage";
-=======
 import Info from "./pages/Info";
->>>>>>> 101497030eb0d28c7a285eb36ca1ff14593bd1e1
 import Login from "./pages/Login";
 import MainPage from "./pages/MainPage/MainPage";
 import MyPage from "./pages/MyPage/MyPage";
@@ -29,11 +29,13 @@ const AppRoutes = () => {
         <Route path="/momoshare" element={<SharePage />} />
         <Route path="/mymomo" element={<MyPage />} />
         <Route path="/beamomo" element={<BecomePage />} />
+        <Route path="/rules" element={<Rules />} />
+        <Route path="/about" element={<Aboutus />} />
+        <Route path="/contact" element={<Contactus />} />
       </Route>
       <Route path="/authselection" element={<AuthSelection />} />
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/info" element={<Info />} />
     </Routes>
   );
 };
