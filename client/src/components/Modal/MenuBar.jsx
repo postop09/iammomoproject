@@ -20,19 +20,21 @@ const MenuBar = (props) => {
   return (
     <Wrapper>
       <HeadSection>
-        <div onClick={registerHandler}>회원가입</div>
-        <div onClick={loginHandler}>로그인</div>
+        <button type="button" onClick={registerHandler}>회원가입</button>
+        <button type="button" onClick={loginHandler}>로그인</button>
       </HeadSection>
       <BodySection>
-        <div>MOMO 되기</div>
-        <div>MOMO 규칙</div>
-        <div>My MOMO</div>
-        <div>My Question</div>
-        <div>MOMO 알람</div>
+        <button type="button" onClick={() => {navigate('/');modalHandler();}}>MOMO</button>
+        <button type="button" onClick={() => {navigate('/beamomo');modalHandler();}}>MOMO 되기</button>
+        <button type="button" onClick={() => {navigate('/')}}>MOMO 규칙</button>
+        <button type="button" onClick={() => {navigate('/')}}>My MOMO</button>
+        <button type="button" onClick={() => {navigate('/')}}>My Question</button>
+        <button type="button" onClick={() => {navigate('/momoshare');modalHandler();}}>MOMO Library</button>
+        <button type="button" onClick={() => {navigate('/')}}>MOMO 알람</button>
       </BodySection>
       <FooterSection>
-        <div>About Us</div>
-        <div>Contact Us</div>
+        <button type="button" onClick={() => {navigate('/')}}>About Us</button>
+        <button type="button" onClick={() => {navigate('/')}}>Contact Us</button>
       </FooterSection>
     </Wrapper>
   );
@@ -55,7 +57,7 @@ const Wrapper = styled.div`
   background-color: white;
   border: 2px solid black;
   border-left: none;
-  font-family: ${theme.font.basic_font};
+  
   z-index: 2;
 `;
 
@@ -64,24 +66,29 @@ const HeadSection = styled.section`
   justify-content: space-around;
   margin: 1rem 0.5rem;
   padding-bottom: 2rem;
-  > div {
+  > button {
+    font-size: .9rem;
     text-decoration: underline;
+    font-family: ${theme.font.basic_font};
   }
 `;
 
 const BodySection = styled.section`
   text-align: center;
-  font-size: 1.1rem;
-  padding-bottom: 21rem;
-  > div {
+  padding-bottom: 13rem;
+  > button {
     padding-bottom: 1rem;
+    font-size: 1rem;
+    font-family: ${theme.font.basic_font};
   }
 `;
 
 const FooterSection = styled.section`
   text-align: center;
-  font-size: 1.1rem;
-  > div {
+  
+  > button {
     padding-bottom: 1rem;
+    font-size: 1rem;
+    font-family: ${theme.font.basic_font};
   }
 `;

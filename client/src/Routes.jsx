@@ -1,6 +1,7 @@
 import { Routes, Route, Outlet } from "react-router-dom";
 import Nav from "./components/MainPage/Nav";
 import AuthSelection from "./pages/AuthSelection";
+import BecomePage from "./pages/BecomePage/BecomePage";
 import Login from "./pages/Login";
 import MainPage from "./pages/MainPage/MainPage";
 import Register from "./pages/Register";
@@ -21,6 +22,7 @@ const AppRoutes = () => {
       <Route path='/' element={<Layout />}>
         <Route index element={<MainPage />} />
         <Route path="/momoshare" element={<SharePage />} />
+        <Route path="/beamomo" element={<BecomePage />} />
       </Route>
         <Route path="/authselection" element={<AuthSelection />} />
         <Route path="/register" element={<Register />} />

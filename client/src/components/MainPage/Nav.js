@@ -30,6 +30,7 @@ const Header = styled.header`
   top: 0;
   width: 100vw;
   background-color: #fff;
+  z-index: 100;
 `
 const WrapHeader = styled.div`
   display: flex;
