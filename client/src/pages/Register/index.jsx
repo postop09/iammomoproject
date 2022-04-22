@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faL } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import axios from "axios";
@@ -111,9 +111,14 @@ const Register = () => {
 
   const submitHanler = async () => {
     await axios
-      .post("/api/topic", {
-        title: "postData",
-      })
+      .post(
+        "/auth/signup?username=sasasasa&password=1234&password_check=1234",
+        {
+          name: userName,
+          email: email,
+          password: password,
+        }
+      )
       .then((data) => {
         console.log(data.data);
       })

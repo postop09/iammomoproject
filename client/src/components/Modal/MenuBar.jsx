@@ -1,8 +1,15 @@
+import axios from "axios";
+import { useCallback } from "react";
 import { useNavigate } from "react-router";
 import styled from "styled-components";
+import useSWR from "swr";
+import fetcher from "../../utils/fetcher";
+import { Link } from "react-router-dom";
 
 const MenuBar = (props) => {
   const navigate = useNavigate();
+
+  const { data, mutate } = useSWR("/api/users/auth", fetcher);
 
   const registerHandler = () => {
     navigate("/register");
@@ -16,22 +23,56 @@ const MenuBar = (props) => {
     props.setModal(!props.modal);
   };
 
+  const onLogout = useCallback(() => {
+    axios
+      .post("/api/users/logout", { id: data._id }, { withCredentials: true })
+      .then(() => mutate(false, false));
+  });
+
   return (
     <Wrapper>
       <HeadSection>
-        <div onClick={registerHandler}>회원가입</div>
-        <div onClick={loginHandler}>로그인</div>
+        {data?.isAuth ? (
+          <div>
+            <button onClick={onLogout}>로그아웃</button>
+          </div>
+        ) : (
+          <div>
+            <div onClick={registerHandler}>회원가입</div>
+            <div onClick={loginHandler}>로그인</div>
+          </div>
+        )}
       </HeadSection>
       <BodySection>
-        <div>MOMO 되기</div>
-        <div>MOMO 규칙</div>
+        <div>
+          <Linkto to="/info" state={{ label: "bemomo" }}>
+            MOMO 되기
+          </Linkto>
+        </div>
+        <div>
+          <Linkto to="/info" state={{ label: "rules" }}>
+            MOMO 규칙
+          </Linkto>
+        </div>
+
         <div>My MOMO</div>
         <div>My Question</div>
         <div>MOMO 알람</div>
       </BodySection>
       <FooterSection>
-        <div>About Us</div>
-        <div>Contact Us</div>
+        <div>
+          {" "}
+          <Linkto to="/info" state={{ label: "aboutus" }}>
+            About Us
+          </Linkto>
+        </div>
+
+        <div>
+          {" "}
+          <Linkto to="/info" state={{ label: "contactus" }}>
+            Contact Us
+          </Linkto>
+        </div>
       </FooterSection>
     </Wrapper>
   );
@@ -59,10 +100,17 @@ const Wrapper = styled.div`
 const HeadSection = styled.section`
   display: flex;
   justify-content: space-around;
-  margin: 1rem 0.5rem;
-  padding-bottom: 2rem;
+  /* margin: 1rem 0.5rem;
+  padding-bottom: 2rem; */
   > div {
+    display: flex;
+    justify-content: space-around;
     text-decoration: underline;
+    margin: 1rem 0.5rem;
+    padding-bottom: 2rem;
+    > div:first-child {
+      margin-right: 1rem;
+    }
   }
 `;
 
@@ -81,4 +129,10 @@ const FooterSection = styled.section`
   > div {
     padding-bottom: 1rem;
   }
+`;
+
+const Linkto = styled(Link)`
+  text-decoration: none;
+  font-size: 1.3rem;
+  color: black;
 `;
