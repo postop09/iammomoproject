@@ -3,7 +3,14 @@ import styled from "styled-components";
 const Rules = () => {
   return (
     <Wrapper>
-      <Background>MOMO</Background>
+      <BackgroundWrapper>
+        <Background>
+          <TxtBack>M</TxtBack>
+          <TxtBack>O</TxtBack>
+          <TxtBack>M</TxtBack>
+          <TxtBack>O</TxtBack>
+        </Background>
+      </BackgroundWrapper>
       <Header>
         <div>
           <div>안녕하세요.</div>
@@ -57,29 +64,45 @@ const Wrapper = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: ${(props) => props.theme.color.pantone};
-  padding: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   line-height: 150%;
-  padding-top: 2rem;
+  margin-top: 2.5rem;
+  font-family: ${(props) => props.theme.font.gothic_font};
+`;
+
+const BackgroundWrapper = styled.div`
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 `;
 
 const Background = styled.div`
   position: absolute;
-  font-size: 10rem;
-  opacity: 0.2;
-  writing-mode: vertical-rl;
-  text-orientation: upright;
-  /* letter-spacing: 30%; */
-  text-align: center;
-  margin-left: 20rem;
+  top: 30vh;
+  right: -97px;
+  line-height: 16rem;
+  font-size: 20rem;
+  font-weight: 700;
+  opacity: 0.1;
+  user-select: none;
+  cursor: default;
+  /* height: 100%; */
+`;
+
+const TxtBack = styled.span`
+  display: block;
 `;
 
 const Header = styled.div`
-  /* margin-top: 1rem; */
+  padding-top: 2rem;
   margin-bottom: 2rem;
   > div:first-child {
     padding-bottom: 1.1rem;
   }
   > div {
+    padding-bottom: 1rem;
     > div {
       font-size: 1.2rem;
       padding-bottom: 0.5rem;
@@ -93,16 +116,17 @@ const Body = styled.div`
 
 const BodyHeader = styled.div`
   font-size: 1.2rem;
-  padding-bottom: 0.5rem;
+  padding-bottom: 1rem;
 `;
 
 const BodyParagraph = styled.div`
   font-weight: bold;
-  padding-bottom: 0.5rem;
+  padding-bottom: 1rem;
 `;
 
 const BodySubParagraph = styled.div`
   padding-bottom: 0.5rem;
+  padding-bottom: 1rem;
 `;
 
 const Rule = styled.div`

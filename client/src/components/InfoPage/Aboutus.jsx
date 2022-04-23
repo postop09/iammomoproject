@@ -1,11 +1,21 @@
+import styled from "styled-components";
+
 const Aboutus = () => {
   return (
-    <div>
-      <div>
-        안녕하세요. 여러분. 아임그라운드 I’mground 팀입니다. 이 사이트는 누가
-        만들었을까 궁금하셨나요? 그렇다면 아임그라운드 팀이 어떻게 만들어졌는지
-        부터 알려드릴게요.
-      </div>
+    <Wrapper>
+      <BackgroundWrapper>
+        <Background>
+          <TxtBack>M</TxtBack>
+          <TxtBack>O</TxtBack>
+          <TxtBack>M</TxtBack>
+          <TxtBack>O</TxtBack>
+        </Background>
+      </BackgroundWrapper>
+      <Greet>
+        <div>안녕하세요.</div> 여러분. 아임그라운드 I’mground 팀입니다. 이
+        사이트는 누가 만들었을까 궁금하셨나요? 그렇다면 아임그라운드 팀이 어떻게
+        만들어졌는지 부터 알려드릴게요.
+      </Greet>
       <div>
         저희는 우연히 함께 ‘프로젝트 라이언’에서 진행하는 한 수업에 참여하면서
         만나게 되었습니다. 4명이 모여 강제로? 사이드 프로젝트에 대해 이야기를
@@ -25,13 +35,70 @@ const Aboutus = () => {
         공감하기 시작했던 경험을 여러분과 함께 하고 싶어졌습니다. 그렇게 I’m
         MOMO 프로젝트를 시작하게 되었습니다.
       </div>
-      <div>
-        모모 프로젝트는 부족한 첫 발을 내딛고 있습니다. 많은 관심과 피드백
-        부탁드립니다. 오늘도 함께 ‘모모' 해보아요! 긴 글을 읽어주셔서
-        감사합니다. 아임그라운드 팀 올림
-      </div>
-    </div>
+      <Footer>
+        모모 프로젝트는 부족한 첫 발을 내딛고 있습니다.
+        <br /> 많은 관심과 피드백 부탁드립니다. <br />
+        오늘도 함께 <Momo>‘모모'</Momo>
+        해보아요! <br />긴 글을 읽어주셔서 감사합니다. <br />
+        아임그라운드 팀 올림
+      </Footer>
+    </Wrapper>
   );
 };
 
 export default Aboutus;
+
+const Wrapper = styled.div`
+  width: 100vw;
+  height: 100vh;
+  background-color: ${(props) => props.theme.color.pantone};
+  padding-left: 1rem;
+  padding-right: 1rem;
+  line-height: 150%;
+  margin-top: 2.5rem;
+  font-family: ${(props) => props.theme.font.gothic_font};
+`;
+
+const BackgroundWrapper = styled.div`
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+`;
+
+const Background = styled.div`
+  position: absolute;
+  top: 30vh;
+  right: -97px;
+  line-height: 16rem;
+  font-size: 20rem;
+  font-weight: 700;
+  opacity: 0.1;
+  user-select: none;
+  cursor: default;
+  /* height: 100%; */
+`;
+
+const TxtBack = styled.span`
+  display: block;
+`;
+
+const Greet = styled.div`
+  padding-top: 2rem;
+  margin-bottom: 1rem;
+  > div {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+`;
+
+const Momo = styled.span`
+  color: orange;
+`;
+
+const Footer = styled.div`
+  font-size: 1.1rem;
+  margin-top: 1rem;
+  line-height: 150%;
+`;
