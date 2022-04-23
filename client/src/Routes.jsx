@@ -5,6 +5,7 @@ import Rules from "./components/InfoPage/Rules";
 import Nav from "./components/MainPage/Nav";
 import AuthSelection from "./pages/AuthSelection";
 import BecomePage from "./pages/BecomePage/BecomePage";
+import DetailPage from "./pages/DetailPage/DetailPage";
 import Info from "./pages/Info";
 import Login from "./pages/Login";
 import MainPage from "./pages/MainPage/MainPage";
@@ -36,6 +37,7 @@ const AppRoutes = () => {
       <Route path="/authselection" element={<AuthSelection />} />
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/mymomo/:postId" element={<DetailPage />} />
     </Routes>
   );
 };

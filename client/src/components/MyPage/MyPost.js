@@ -4,15 +4,12 @@ import theme from '../../theme'
 import testData from '../../database/testData.json';
 import MyCards from './MyCards';
 
-
 export default function MyPost() {
   const [topic, setTopic] = useState('내가 작성한 글');
   const selectedTopic = (e) => {
     setTopic(e.target.value);
   }
-
   const [myTopic, setMyTopic] = useState([]);
-
   useEffect(() => {
     testData.map((post) => {
       if (post.userId === 1) {
@@ -23,15 +20,6 @@ export default function MyPost() {
   const category = myTopic.filter((element, index) => {
     return myTopic.indexOf(element) === index;
   })
-  
-
-  // testcode
-  // const arr = [10, 22, 34, 10, 24];
-  // const uniqueArr = arr.filter((element, index) => {
-  //     return arr.indexOf(element) === index;
-  //   });
-
-  // console.log(uniqueArr);
 
   return (
     <WrapShare>
