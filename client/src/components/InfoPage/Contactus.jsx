@@ -1,30 +1,32 @@
 import emailjs from "@emailjs/browser";
 import { useRef, useState } from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router";
 
 const Contactus = () => {
   const form = useRef();
   const textareaRef = useRef();
   const [text, setText] = useState("");
+  const navigate = useNavigate();
 
   const sendEmail = (e) => {
     e.preventDefault();
-    console.log(textareaRef.current.value);
-    // emailjs
-    //   .sendForm(
-    //     "service_fh82etj",
-    //     "template_8r55dd8",
-    //     form.current,
-    //     "Tyx-mlVjk1lFp7ZkO"
-    //   )
-    //   .then(
-    //     (result) => {
-    //       console.log(result.text);
-    //     },
-    //     (error) => {
-    //       console.log(error.text);
-    //     }
-    //   );
+    emailjs
+      .sendForm(
+        process.env.REACT_APP_EMAIL_SERVICE,
+        process.env.REACT_APP_EMAIL_TEMPLATE,
+        form.current,
+        process.env.REACT_APP_EMAIL_ID
+      )
+      .then(
+        (result) => {
+          navigate("/");
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
   };
 
   const onTyping = (event) => {
@@ -34,6 +36,14 @@ const Contactus = () => {
 
   return (
     <Wrapper>
+      <BackgroundWrapper>
+        <Background>
+          <TxtBack>M</TxtBack>
+          <TxtBack>O</TxtBack>
+          <TxtBack>M</TxtBack>
+          <TxtBack>O</TxtBack>
+        </Background>
+      </BackgroundWrapper>
       <Piece>
         <PieceHeader>자주 묻는질문(FAQ)</PieceHeader>
         <FAQ>
@@ -89,14 +99,45 @@ const Wrapper = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: ${(props) => props.theme.color.pantone};
-  padding: 1rem;
+  font-family: ${(props) => props.theme.font.gothic_font};
+  /* padding: 1rem; */
+  padding-left: 1rem;
+  padding-right: 1rem;
   line-height: 150%;
-  padding-top: 2rem;
+  margin-top: 2.5rem;
+  /* padding-top: 5rem; */
+  /* padding-bottom: 10rem; */
+`;
+
+const BackgroundWrapper = styled.div`
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -1;
+`;
+
+const Background = styled.div`
+  position: absolute;
+  top: 30vh;
+  right: -97px;
+  line-height: 16rem;
+  font-size: 20rem;
+  font-weight: 700;
+  opacity: 0.1;
+  user-select: none;
+  cursor: default;
+  overflow: hidden;
+`;
+
+const TxtBack = styled.span`
+  display: block;
 `;
 
 const Piece = styled.div`
   border-bottom: solid 1px black;
   margin-bottom: 1rem;
+  padding-top: 1rem;
 `;
 
 const PieceHeader = styled.div`

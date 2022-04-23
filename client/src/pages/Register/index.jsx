@@ -111,15 +111,12 @@ const Register = () => {
 
   const submitHanler = async () => {
     await axios
-      .post(
-        "/auth/signup?username=sasasasa&password=1234&password_check=1234",
-        {
-          // name: userName,
-          username: userName,
-          password: password,
-          password_check: confirmPassword,
-        }
-      )
+      .post("/auth/signup?username=haha&password=1234&password_check=1234", {
+        // name: userName,
+        username: userName,
+        password: password,
+        password_check: confirmPassword,
+      })
       .then((data) => {
         console.log(data.data);
       })

@@ -3,6 +3,14 @@ import styled from "styled-components";
 const Aboutus = () => {
   return (
     <Wrapper>
+      <BackgroundWrapper>
+        <Background>
+          <TxtBack>M</TxtBack>
+          <TxtBack>O</TxtBack>
+          <TxtBack>M</TxtBack>
+          <TxtBack>O</TxtBack>
+        </Background>
+      </BackgroundWrapper>
       <Greet>
         <div>안녕하세요.</div> 여러분. 아임그라운드 I’mground 팀입니다. 이
         사이트는 누가 만들었을까 궁금하셨나요? 그렇다면 아임그라운드 팀이 어떻게
@@ -44,12 +52,39 @@ const Wrapper = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: ${(props) => props.theme.color.pantone};
-  padding: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   line-height: 150%;
-  padding-top: 2rem;
+  margin-top: 2.5rem;
+  font-family: ${(props) => props.theme.font.gothic_font};
+`;
+
+const BackgroundWrapper = styled.div`
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+`;
+
+const Background = styled.div`
+  position: absolute;
+  top: 30vh;
+  right: -97px;
+  line-height: 16rem;
+  font-size: 20rem;
+  font-weight: 700;
+  opacity: 0.1;
+  user-select: none;
+  cursor: default;
+  /* height: 100%; */
+`;
+
+const TxtBack = styled.span`
+  display: block;
 `;
 
 const Greet = styled.div`
+  padding-top: 2rem;
   margin-bottom: 1rem;
   > div {
     font-size: 1.2rem;
