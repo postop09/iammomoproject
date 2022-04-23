@@ -114,9 +114,10 @@ const Register = () => {
       .post(
         "/auth/signup?username=sasasasa&password=1234&password_check=1234",
         {
-          name: userName,
-          email: email,
+          // name: userName,
+          username: userName,
           password: password,
+          password_check: confirmPassword,
         }
       )
       .then((data) => {
