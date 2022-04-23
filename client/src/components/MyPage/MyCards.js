@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import theme from '../../theme'
 
-export default function MyCards({topic, contents, date}) {
+export default function MyCards({topic, contents, createDate}) {
   const [selecteCard, setSelecteCard] = useState(false);
 
   const changeMod = (e) => {
@@ -11,25 +11,13 @@ export default function MyCards({topic, contents, date}) {
   }
   return (
     <ItemCard onClick={changeMod}>
-        {selecteCard ?
-          <WrapCard>
-            <TxtareaOpen value={contents} readOnly></TxtareaOpen>
-            <WrapTxt>
-              <TxtTopic>{topic}</TxtTopic>
-              <TxtDate>{date}</TxtDate>
-            </WrapTxt>
-            <button>수정</button>
-            <button>삭제</button>
-          </WrapCard>
-          :
-          <WrapCard>
-            <Txtarea value={contents} readOnly></Txtarea>
-            <WrapTxt>
-              <TxtTopic>{topic}</TxtTopic>
-              <TxtDate>{date}</TxtDate>
-            </WrapTxt>
-          </WrapCard>
-        }
+      <WrapCard>
+        <Txtarea value={contents} readOnly></Txtarea>
+        <WrapTxt>
+          <TxtTopic>{topic}</TxtTopic>
+          <TxtDate>{createDate}</TxtDate>
+        </WrapTxt>
+      </WrapCard>
     </ItemCard>
   )
 }

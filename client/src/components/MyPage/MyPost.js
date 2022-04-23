@@ -4,11 +4,26 @@ import theme from '../../theme'
 import testData from '../../database/testData.json';
 import MyCards from './MyCards';
 
+
 export default function MyPost() {
   const [topic, setTopic] = useState('내가 작성한 글');
   const selectedTopic = (e) => {
     setTopic(e.target.value);
   }
+  testData.map((data) => {
+    if (data.userId === 1) {
+      console.log(data.topic);
+    }
+  })
+  
+  // testcode
+  // const arr = [10, 22, 34, 10, 24];
+  // const uniqueArr = arr.filter((element, index) => {
+  //     return arr.indexOf(element) === index;
+  //   });
+
+  // console.log(uniqueArr);
+
   return (
     <WrapShare>
       <TxtMain>
@@ -27,7 +42,7 @@ export default function MyPost() {
         {testData.map((data) => {
           if (data.userId === 1) {
             return (
-              < MyCards key={data.postId} topic={data.topic} contents={data.contents} date={data.createDate} />
+              < MyCards key={data.postId} {...data} />
             )
           }
         })}
