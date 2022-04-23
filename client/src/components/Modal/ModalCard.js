@@ -2,17 +2,20 @@ import React, { useState } from 'react'
 import styled, { keyframes } from 'styled-components'
 import theme from '../../theme'
 import AnnounceLogin from './AnnounceLogin';
+// import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function ModalCard({setIsClicked, isLoggedIn, Question}) {
   const [announceLogin, setAnnounceLogin] = useState(true);
-  const modalClose = () => {
-    let result = window.confirm('정말 취소할까요?');
-    if (result) {
-      setIsClicked((prev) => !prev)
-    }
-  }
+  const [myContents, setMyContents] = useState('');
+  const [saved, setSaved] = useState(false);
+  const [unlock, setUnlock] = useState(true);
+  const [btnAble, setBtnAble] = useState(true);
+
+  const navigate = useNavigate();
+  // 미로그인 함수
   const modalCloseSec = (e) => {
-    if (e.target.id === 'modal_card') {
+    if (e.target.id === 'modal_card' || e.target.name === 'btn_cancel') {
       let result = window.confirm('정말 취소할까요?');
       if (result) {
         setIsClicked((prev) => !prev)
@@ -20,7 +23,36 @@ export default function ModalCard({setIsClicked, isLoggedIn, Question}) {
     }
   }
   const modalLoginOpen = () => {
-      setAnnounceLogin((prev) => !prev)
+      setAnnounceLogin((prev) => !prev);
+  }
+
+  // 로그인 후 함수
+  // const fetchPost = async() => {
+  //   const res = await axios.post('url', {
+  //     topic: Question,
+  //     contents: myContents
+  //   });
+  //   console.log(res);
+  // }
+  const setValue = (e) => {
+    setMyContents(e.target.value);
+    console.log(myContents);
+    if (e.target.value === '') {
+      setBtnAble(true);
+    } else {
+      setBtnAble(false);
+    }
+  }
+  const btnSubmit = (e) => {
+    e.preventDefault();
+    if (myContents) {
+      const answer = window.confirm('저장할까요?');
+      if (answer) {
+        // fetchPost();
+        setSaved((prev) => !prev);
+        setUnlock(false);
+      }
+    }
   }
 
   return (
@@ -31,10 +63,18 @@ export default function ModalCard({setIsClicked, isLoggedIn, Question}) {
         </BackBox>
         <FrontBox>
           <TxtQuestion>{Question}</TxtQuestion>
-          {isLoggedIn ? <TxtArea /> : <TxtArea readOnly onClick={modalLoginOpen} />}
+          {unlock ? 
+            isLoggedIn ?
+              <TxtArea onKeyUp={setValue} />
+              : <TxtArea readOnly onClick={modalLoginOpen} /> :
+            <TxtArea readOnly />
+          }
           <WrapBtn>
-            <BtnCancel type='button' onClick={modalClose}>취소</BtnCancel>
-            <BtnSubmit type='submit'>글 입력 완료</BtnSubmit>
+            <BtnCancel type='button' name='btn_cancel'>닫기</BtnCancel>
+          {saved ?
+            <BtnSubmit type='button' onClick={() => {navigate('/momoshare')}}>다른 모모글 보러가기</BtnSubmit>
+            : <BtnSubmit type='submit' onClick={btnSubmit} disabled={btnAble} id='btn_submit'>글 입력 완료</BtnSubmit>
+          }
           </WrapBtn>
         </FrontBox>
       </WrapModalCard>
@@ -85,11 +125,11 @@ const BackBox = styled.div`
   backface-visibility: hidden;
   animation: ${RotateFrontCard} 2s ease-in-out forwards;
   `
-  const ImgBack = styled.img`
-    border-radius: 7px;
-    width: 100%;
-    height: 100%;
-  `
+const ImgBack = styled.img`
+  border-radius: 7px;
+  width: 100%;
+  height: 100%;
+`
 
 const FrontBox = styled.form`
   display: flex;
@@ -101,24 +141,27 @@ const FrontBox = styled.form`
   border-radius: 15px;
   width: 100%;
   height: 100%;
-  padding: 40px 30px 20px;
-  /* background-color: ${theme.color.mellow}; */
+  padding: 40px 20px 20px;
   background-color: #ffffff;
+  background-color: ${theme.color.mellow};
   backface-visibility: hidden;
   animation: ${RotateBackCard} 2s ease-in-out forwards;
 `
 const TxtQuestion = styled.strong`
   line-height: 1.4rem;
-  font-size: 1.2rem;
+  font-family: ${theme.font.basic_font};
+  font-size: 1.1rem;
 `
 const TxtArea = styled.textarea`
-  border: 2px solid ${theme.color.mellow};
+  border: 1px solid ${theme.color.camel};
   border-radius: 7px;
   width: 100%;
   height: 75%;
   margin-top: 20px;
+  padding: 5px;
   font-family: ${theme.font.basic_font};
-  /* background-color: ${theme.color.pantone}; */
+  font-size: .9rem;
+  background-color: ${theme.color.pantone};
   resize: none;
 `
 const WrapBtn = styled.div`
@@ -130,14 +173,17 @@ const BtnSubmit = styled.button`
   box-shadow: 2px 1px 3px #00000070;
   border: 2px solid ${theme.color.mellow};
   border-radius: 20px;
-  padding: 3px 7px;
-  font-family: ${theme.font.basic_font};
-  /* background-color: ${theme.color.pantone}; */
+  padding: 5px 10px;
+  font-family: ${theme.font.gothic_font};
+  font-size: .9rem;
+  background-color: ${theme.color.camel};
 `
 const BtnCancel = styled.button`
   box-shadow: 2px 1px 3px #00000070;
   border: 2px solid ${theme.color.mellow};
   border-radius: 20px;
   padding: 3px 7px;
-  font-family: ${theme.font.basic_font};
+  font-family: ${theme.font.gothic_font};
+  font-size: .9rem;
+  background-color: ${theme.color.camel};
 `
