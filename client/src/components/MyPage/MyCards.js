@@ -1,16 +1,13 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import theme from '../../theme'
 
-export default function MyCards({topic, contents, createDate}) {
-  const [selecteCard, setSelecteCard] = useState(false);
-
-  const changeMod = (e) => {
-    console.log(e.currentTarget);
-    setSelecteCard((prev) => !prev);
-  }
+export default function MyCards({topic, contents, createDate, postId}) {
+  const navigate = useNavigate();
+  
   return (
-    <ItemCard onClick={changeMod}>
+    <ItemCard onClick={() => {navigate(`/mymomo/${postId}`)}} id={postId}>
       <WrapCard>
         <Txtarea value={contents} readOnly></Txtarea>
         <WrapTxt>
@@ -42,17 +39,6 @@ const Txtarea = styled.textarea`
   background-color: #c5a97766;
   resize: none;
   overflow: hidden;
-`
-const TxtareaOpen = styled.textarea`
-  border: none;
-  width: 100%;
-  min-height: 23vh;
-  height: fit-content;
-  padding: 5px 10px;
-  font-family: ${theme.font.basic_font};
-  font-size: .9rem;
-  background-color: #c5a97766;
-  resize: none;
 `
 const WrapTxt = styled.p`
   display: flex;
