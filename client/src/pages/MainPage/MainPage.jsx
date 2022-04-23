@@ -6,10 +6,9 @@ import SideTxt from '../../components/MainPage/SideTxt'
 import ModalCard from '../../components/Modal/ModalCard'
 
 export default function MainPage() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [isClicked, setIsClicked] = useState(false);
   const [Question, setQuestion] = useState('');
-
   const [topic, setTopic] = useState([]);
 
   return (
