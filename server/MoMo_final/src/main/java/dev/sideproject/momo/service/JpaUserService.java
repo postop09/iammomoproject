@@ -2,6 +2,7 @@ package dev.sideproject.momo.service;
 
 import dev.sideproject.momo.entity.UserEntity;
 import dev.sideproject.momo.model.UserDto;
+import dev.sideproject.momo.model.UserPostInterface;
 import dev.sideproject.momo.repository.UserRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -101,6 +102,13 @@ public class JpaUserService implements UserService{
         UserEntity userEntity = userEntityOptional.get();
         this.userRepository.delete(userEntity);
         return true;
+    }
+
+    @Override
+    public Collection<UserPostInterface> findByUserPost(Long id) {
+        List<UserPostInterface> userPostList = this.userRepository.findByUserPost(id);
+
+        return userPostList;
     }
 
 

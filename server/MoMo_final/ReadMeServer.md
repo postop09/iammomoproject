@@ -7,7 +7,7 @@
 
 ### 2022-04-18 개발상황
 * API 명세서 제작
-* 기능 구현 정리 
+* [기능 구현 정리](https://docs.google.com/spreadsheets/d/1N9hlroYr8jF329h9Pk4APd2NBekYUOnbyEw2vAlHXUM/edit?usp=sharing) 
 
 ### 2022-04-19 개발상황
 * AWS 서버 구축 Nginx 설치
@@ -23,3 +23,13 @@
 * User CRUD API 생성
 * Post CRUD API 생성
 * Swagger 적용
+* (프론트 요구사항) POST CRUD 수정 + DB변경 
+
+### 2022-04-22 개발상황
+* 회원가입 API 구현 (test Project)
+* CORS 에러 해결 2
+* 로그인 API 테스트
+
+### 2022-04-23 개발상황
+* 나의 게시글 확인 기능 API 생성
+

@@ -2,6 +2,7 @@ package dev.sideproject.momo.controller;
 
 
 import dev.sideproject.momo.model.UserDto;
+import dev.sideproject.momo.model.UserPostInterface;
 import dev.sideproject.momo.service.UserService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.http.ResponseEntity;
@@ -59,6 +60,15 @@ public class UserController {
     public ResponseEntity<?> deleteUser(@PathVariable("id") Long id){
         this.userService.delete(id);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("{id}/post")
+    @ApiOperation(value = "내 게시글 확인")
+    public ResponseEntity<Collection<UserPostInterface>> userPost(
+            @PathVariable Long id){
+
+        Collection<UserPostInterface> result = this.userService.findByUserPost(id);
+        return  ResponseEntity.ok(result);
     }
 
 
