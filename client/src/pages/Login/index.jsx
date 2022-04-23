@@ -31,24 +31,29 @@ const Login = () => {
     setPassword(passwordCurrent);
   };
 
+  // const onLogin = useCallback(() => {
+  //   axios
+  //     .post(
+  //       "/api/users/login",
+  //       { email: email, password: password },
+  //       { withCredentials: true }
+  //     )
+  //     .then((response) => mutate())
+  //     .catch((err) => console.log(err));
+  // });
+
   const onLogin = useCallback(() => {
     axios
       .post(
-        "/api/users/login",
-        { email: email, password: password },
+        "/auth/login",
+        { username: email, password: password },
         { withCredentials: true }
       )
       .then((response) => mutate())
       .catch((err) => console.log(err));
   });
 
-  const onLogout = useCallback(() => {
-    axios
-      .post("/api/users/logout", { id: data._id }, { withCredentials: true })
-      .then(() => mutate(false, false));
-  });
-
-  if (data.isAuth) {
+  if (data?.isAuth) {
     console.log(data);
     return <Navigate replace to="/" />;
   }
@@ -85,7 +90,6 @@ const Login = () => {
         </form>
         <RegisterButton onClick={onLogin}>로그인</RegisterButton>
       </Wrapper>
-      <button onClick={onLogout}>로그아웃</button>
     </div>
   );
 };
