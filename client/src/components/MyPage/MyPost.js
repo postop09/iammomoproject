@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import theme from '../../theme'
 import testData from '../../database/testData.json';
@@ -9,25 +9,39 @@ export default function MyPost() {
   const selectedTopic = (e) => {
     setTopic(e.target.value);
   }
+  const [myTopic, setMyTopic] = useState([]);
+  useEffect(() => {
+    testData.map((post) => {
+      if (post.userId === 1) {
+        setMyTopic((prev) => [...prev, post.topic])
+      }
+    })
+  }, [])
+  const category = myTopic.filter((element, index) => {
+    return myTopic.indexOf(element) === index;
+  })
+
   return (
     <WrapShare>
       <TxtMain>
         <WrapSelect onChange={selectedTopic}>
           <Option value='내가 작성한 글'>내가 작성한 글(전체 보기)</Option>
-          {testData.map((data) => {
-            if (data.userId === 1) {
+          {category.map((data) => {
               return (
-                <Option key={data.postId} value={data.topic}>{data.topic}</Option>
+                <Option key={category.indexOf(data)} value={data}>{data}</Option>
               )
-            }
           })}
         </WrapSelect>
       </TxtMain>
       <ListCards>
         {testData.map((data) => {
-          if (data.userId === 1) {
+          if (data.userId === 1 && topic === '내가 작성한 글') {
             return (
-              < MyCards key={data.postId} topic={data.topic} contents={data.contents} date={data.createDate} />
+              < MyCards key={data.postId} {...data} />
+            )
+          } else if (data.userId === 1 && data.topic === topic) {
+            return (
+              < MyCards key={data.postId} {...data} />
             )
           }
         })}
