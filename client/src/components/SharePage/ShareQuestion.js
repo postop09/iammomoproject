@@ -1,28 +1,49 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import theme from '../../theme';
 import ListQuestionCard from './ListQuestionCard';
 import questionData from '../../database/questionData.json';
+import axios from 'axios';
 
-export default function ShareQuestion({setIsClicked, setCardId}) {
+export default function ShareQuestion({setIsClicked, setCardId, userId, url}) {
   const [topic, setTopic] = useState('질문 선택');
+  const [category, setCategory] = useState([]);
+  const [allPost, setAllPost] = useState([])
   const selectedTopic = (e) => {
     setTopic(e.target.value);
   }
-
+  const fetchGETtopic = async() => {
+    const res = await axios.get(`${url}/topic`);
+    console.log(res);
+    res.data.map((topicInfo) => {
+      setCategory((prev) => [...prev, topicInfo]);
+    })
+  }
+  const fetchGETpost = async() => {
+    const res = await axios.get(`${url}/post`);
+    console.log(res);
+    res.data.map((post) => {
+      setAllPost((prev) => [...prev, post]);
+    })
+  }
+  useEffect(() => {
+    fetchGETtopic();
+    fetchGETpost();
+  }, [])
+  
   return (
     <WrapShare>
       <TxtMain>
         <WrapSelect onChange={selectedTopic}>
           <Option value='질문 선택'>질문 선택(전체 보기)</Option>
-          {questionData.map((data) => {
+          {category.map((data) => {
             return (
-              <Option key={data.id} value={data.topic}>{data.topic}</Option>
+              <Option key={data.id} value={data.title}>{data.title}</Option>
             )
           })}
         </WrapSelect>
       </TxtMain>
-      <ListQuestionCard topic={topic} setIsClicked={setIsClicked} setCardId={setCardId} />
+      <ListQuestionCard topic={topic} setIsClicked={setIsClicked} setCardId={setCardId} allPost={allPost} />
     </WrapShare>
   )
 }

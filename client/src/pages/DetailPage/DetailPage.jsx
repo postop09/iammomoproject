@@ -9,6 +9,7 @@ export default function DetailPage() {
   const pickedPostId = window.location.pathname.split('/').pop();
   const [modal, setModal] = useState(false);
   const [modify, setModify] = useState(false);
+  const [myTopic, setMyTopic] = useState('')
   const [txtArea, setTxtArea] = useState('');
   const [myPost, setMyPost] = useState([]);
 
@@ -16,6 +17,8 @@ export default function DetailPage() {
   const userId = localStorage.getItem('userId');
   const fetchPUTpost = async() => {
     const res = await axios.put(`${url}/post/${pickedPostId}`, {
+      topic: myTopic,
+      userId: userId,
       content: txtArea
     });
     console.log(res);
@@ -25,6 +28,7 @@ export default function DetailPage() {
     console.log(res);
     res.data.map((post) => {
       if (post.id === +pickedPostId) {
+        setMyTopic(post.topic);
         setTxtArea(post.content);
         setMyPost((prev) => [...prev, post]);
       }
@@ -39,6 +43,7 @@ export default function DetailPage() {
     if (answer) {
       fetchPUTpost();
       setModify(false);
+      window.location.reload();
     }
   }
   const btnCancel = () => {
@@ -171,7 +176,7 @@ const SecTitle = styled.section`
   font-family: ${theme.font.basic_font};
 `
 const Title = styled.h3`
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 700;
   line-height: 1.5rem;
 `

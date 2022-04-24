@@ -1,41 +1,38 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import theme from '../../theme';
-import testData from '../../database/testData.json';
-// import axios from 'axios';
+// import testData from '../../database/testData.json';
+import axios from 'axios';
 
-export default function ModalOthersCard({setIsClicked, cardId}) {
+export default function ModalOthersCard({setIsClicked, cardId, url}) {
+  const [AllPost, setAllPost] = useState([])
+  const fetchGETpost = async() => {
+    const res = await axios.get(`${url}/post`);
+    console.log(res);
+    res.data.map((post) => {
+      return setAllPost((prev) => [...prev, post])
+    })
+  }
+  useEffect(() => {
+    fetchGETpost();
+  }, [])
+
   const modalCloseSec = (e) => {
     if (e.target.tagName === 'ARTICLE' || e.target.tagName === 'BUTTON') {
       setIsClicked((prev) => !prev); 
     }
   }
-  
-  // const fetch = async() => {
-  //   const res = await axios.get('http://52.79.45.37:8080/api/post' );
-  //   console.log(res);
 
-  //   const resTwo = await axios.get('http://52.79.45.37:8080/api/topic');
-  //   console.log(resTwo);
-  // }
-
-  //   const resTwo = await axios.post('http://52.79.45.37:8080/auth/signup', {
-  //     username: 'robotyunsik',
-  //     password: '12345',
-  //     passwordCheck: '12345'
-  //   });
-  //   console.log(resTwo);
-  // }
   return (
-    testData.map((data) => {
-      if (data.postId === +cardId) {
+    AllPost.map((data) => {
+      if (data.id === +cardId) {
         return (
-          <SecModalShareCard key={data.postId} onClick={modalCloseSec}>
+          <SecModalShareCard key={data.id} onClick={modalCloseSec}>
             <WrapShare>
-              <WrapColorBox readOnly value={data.contents}></WrapColorBox>
+              <WrapColorBox readOnly value={data.content}></WrapColorBox>
               <WrapTxt>
                 <TxtTitle>{data.topic}</TxtTitle>
-                <TxtDate>{data.createDate}</TxtDate>
+                {/* <TxtDate>{data.createDate}</TxtDate> */}
                 <BtnClose>
                   X<TxtHide>글 상세보기창 닫기</TxtHide>
                 </BtnClose>

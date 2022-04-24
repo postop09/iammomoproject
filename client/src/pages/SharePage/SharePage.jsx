@@ -13,10 +13,9 @@ export default function SharePage() {
 
   return (
     <WrapMain>
-      <ShareDate setIsClicked={setIsClicked} setCardId={setCardId} />
-      <ShareQuestion setIsClicked={setIsClicked} setCardId={setCardId} />
-      {isClicked ? <ModalOthersCard setIsClicked={setIsClicked} cardId={cardId} /> : ''}
-      {/* <ModalOthersCard /> */}
+      <ShareDate setIsClicked={setIsClicked} setCardId={setCardId} userId={userId} url={url} />
+      <ShareQuestion setIsClicked={setIsClicked} setCardId={setCardId} userId={userId} url={url} />
+      {isClicked ? <ModalOthersCard setIsClicked={setIsClicked} cardId={cardId} url={url} /> : ''}
     </WrapMain>
   )
 }

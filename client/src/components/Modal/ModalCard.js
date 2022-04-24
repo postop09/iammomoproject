@@ -142,7 +142,7 @@ const FrontBox = styled.form`
   border-radius: 15px;
   width: 100%;
   height: 100%;
-  padding: 40px 20px 20px;
+  padding: 20px 20px 20px;
   background-color: #ffffff;
   background-color: ${theme.color.mellow};
   backface-visibility: hidden;
@@ -158,7 +158,7 @@ const TxtArea = styled.textarea`
   border-radius: 7px;
   width: 100%;
   height: 75%;
-  margin-top: 20px;
+  margin-top: 10px;
   padding: 5px;
   font-family: ${theme.font.basic_font};
   font-size: .9rem;
@@ -174,6 +174,7 @@ const BtnSubmit = styled.button`
   box-shadow: 2px 1px 3px #00000070;
   border: 2px solid ${theme.color.mellow};
   border-radius: 20px;
+  margin-top: 5px;
   padding: 5px 10px;
   font-family: ${theme.font.gothic_font};
   font-size: .9rem;
@@ -183,7 +184,8 @@ const BtnCancel = styled.button`
   box-shadow: 2px 1px 3px #00000070;
   border: 2px solid ${theme.color.mellow};
   border-radius: 20px;
-  padding: 3px 7px;
+  margin-top: 5px;
+  padding: 3px 10px;
   font-family: ${theme.font.gothic_font};
   font-size: .9rem;
   background-color: ${theme.color.camel};

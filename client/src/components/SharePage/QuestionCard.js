@@ -3,11 +3,12 @@ import styled from 'styled-components'
 import theme from '../../theme'
 
 export default function QuestionCard({contents, createDate, postId, setIsClicked, setCardId}) {
-  const [year, month, date] = createDate.split('-');
+  // const [year, month, date] = createDate.split('-');
   const openModal = (e) => {
     setIsClicked((prev) => !prev);
     setCardId(e.currentTarget.id);
   }
+
 
   return (
     <SecShareCard onClick={openModal} id={postId}>
@@ -15,7 +16,7 @@ export default function QuestionCard({contents, createDate, postId, setIsClicked
         <WrapColorBox></WrapColorBox>
         <WrapTxt>
           <TxtTitle>{contents}</TxtTitle>
-          <TxtDate>{`${year}Y${month}M${date}D`}</TxtDate>
+          {/* <TxtDate>{createDate}</TxtDate> */}
         </WrapTxt>
       </BtnCard>
     </SecShareCard>
@@ -46,19 +47,19 @@ const WrapColorBox = styled.div`
 `
 const WrapTxt = styled.div`
   width: 100%;
-  padding: 7px 4px;
+  padding: 10px 3px;
   text-align: left;
 `
 const TxtTitle = styled.p`
   width: 85%;
-  margin-bottom: 3px;
   line-height: 1rem;
+  font-family: ${theme.font.gothic_font};
   font-size: .9rem;
   font-weight: 700;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 `
-const TxtDate = styled.p`
-  color: #6e6e6e;
-`
+// const TxtDate = styled.p`
+//   color: #6e6e6e;
+// `

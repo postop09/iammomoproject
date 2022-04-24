@@ -1,30 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import testData from '../../database/testData.json';
+// import testData from '../../database/testData.json';
 import theme from '../../theme';
 import ShareCard from './ShareCard';
-// import axios from 'axios';
+import axios from 'axios';
 
-export default function ListShareCard({setIsClicked, setCardId}) {
-  const newDate = new Date();
-  let year = newDate.getUTCFullYear();
-  let month = newDate.getUTCMonth() + 1;
-  let date = newDate.getUTCDate();
-  let today = `${year}-0${month}-${date}`;
+export default function ListShareCard({setIsClicked, setCardId, userId, url}) {
+  const [todayPost, setTodayPost] = useState([])
+  const today = new Date().toLocaleDateString();
 
-  // const fetch = async() => {
-  //   const res = await axios.get('http://52.79.45.37:8080/api/topic');
-  //   console.log(res);
-  // }
+  // 글 호출
+  const fetchGETpost = async() => {
+    const res = await axios.get(`${url}/post`);
+    console.log(res);
+    res.data.map((post) => {
+      const serverDay = new Date(post.createAt).toLocaleDateString();
+      if (serverDay === today) {
+        setTodayPost((prev) => [...prev, post])
+      }
+    })
+  }
+  useEffect(() => {
+    fetchGETpost();
+  }, [])
+  
   
   return (
     <ListShare>
-      {testData.map((data) => {
-        if (data.createDate === today) {
+      {todayPost.map((data) => {
           return (
-            <ShareCard key={data.postId} dataQuestion={data.topic} setIsClicked={setIsClicked} setCardId={setCardId} id={data.postId} />
+            <ShareCard key={data.id} id={data.id} dataQuestion={data.topic} setIsClicked={setIsClicked} setCardId={setCardId} />
           )
-        }
       })}
     </ListShare>
   )

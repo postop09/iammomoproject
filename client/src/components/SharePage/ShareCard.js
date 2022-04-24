@@ -14,7 +14,7 @@ export default function ShareCard({dataQuestion, setIsClicked, setCardId, id}) {
         <WrapColorBox></WrapColorBox>
         <WrapTxt>
           <TxtTitle>{dataQuestion}</TxtTitle>
-          <TxtDate>2020Y04M20D</TxtDate>
+          {/* <TxtDate>2020Y04M20D</TxtDate> */}
         </WrapTxt>
       </BtnCard>
     </SecShareCard>
@@ -45,13 +45,13 @@ const WrapColorBox = styled.div`
 `
 const WrapTxt = styled.div`
   width: 100%;
-  padding: 7px 4px;
+  padding: 10px 4px;
   text-align: left;
 `
 const TxtTitle = styled.p`
   width: 85%;
-  margin-bottom: 3px;
   line-height: 1rem;
+  font-family: ${theme.font.gothic_font};
   font-size: .9rem;
   font-weight: 700;
   white-space: nowrap;
