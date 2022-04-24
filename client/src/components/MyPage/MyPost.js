@@ -3,20 +3,35 @@ import styled from 'styled-components'
 import theme from '../../theme'
 import testData from '../../database/testData.json';
 import MyCards from './MyCards';
+import axios from 'axios';
 
-export default function MyPost() {
+export default function MyPost({userId, url}) {
   const [topic, setTopic] = useState('내가 작성한 글');
+  const [myTopic, setMyTopic] = useState([]);
+  const [myPost, setMyPost] = useState([]);
   const selectedTopic = (e) => {
     setTopic(e.target.value);
   }
-  const [myTopic, setMyTopic] = useState([]);
-  useEffect(() => {
-    testData.map((post) => {
-      if (post.userId === 1) {
-        setMyTopic((prev) => [...prev, post.topic])
-      }
+  const fetchGETuserpost = async() => {
+    const res = await axios.get(`${url}/user/${userId}/post`);
+    console.log(res);
+    res.data.map((post) => {
+        setMyTopic((prev) => [...prev, post.topic]);
+        setMyPost((prev) => [...prev, post]);
     })
+  }
+  
+  useEffect(() => {
+    fetchGETuserpost();
   }, [])
+
+  // useEffect(() => {
+  //   testData.map((post) => {
+  //     if (post.userId === 1) {
+  //       setMyTopic((prev) => [...prev, post.topic])
+  //     }
+  //   })
+  // }, [])
   const category = myTopic.filter((element, index) => {
     return myTopic.indexOf(element) === index;
   })
@@ -34,14 +49,14 @@ export default function MyPost() {
         </WrapSelect>
       </TxtMain>
       <ListCards>
-        {testData.map((data) => {
-          if (data.userId === 1 && topic === '내가 작성한 글') {
+        {myPost.map((data) => {
+          if (topic === '내가 작성한 글') {
             return (
-              < MyCards key={data.postId} {...data} />
+              < MyCards key={data.id} {...data} />
             )
-          } else if (data.userId === 1 && data.topic === topic) {
+          } else if (data.topic === topic) {
             return (
-              < MyCards key={data.postId} {...data} />
+              < MyCards key={data.id} {...data} />
             )
           }
         })}

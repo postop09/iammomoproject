@@ -17,10 +17,11 @@ export default function ModalMoreMenu({setModify, setModal, pickedPostId, url}) 
   }
   const postDelete = () => {
     const answer = window.confirm('정말 삭제할까요?');
+    const moveTo = () => navigate('/mymomo');
     if (answer) {
       fetchDELETEpost();
       setModal((prev) => !prev);
-      navigate('/mymomo');
+      setTimeout(moveTo, 1000);
     }
   }
 

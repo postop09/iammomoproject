@@ -10,13 +10,25 @@ export default function DetailPage() {
   const [modal, setModal] = useState(false);
   const [modify, setModify] = useState(false);
   const [txtArea, setTxtArea] = useState('');
+  const [myPost, setMyPost] = useState([]);
 
-  const url = 'http://52.79.45.37:8080';
+  const url = 'http://52.79.45.37:8080/api';
+  const userId = localStorage.getItem('userId');
   const fetchPUTpost = async() => {
     const res = await axios.put(`${url}/post/${pickedPostId}`, {
       content: txtArea
     });
     console.log(res);
+  }
+  const fetchGETuserpost = async() => {
+    const res = await axios.get(`${url}/user/${userId}/post`);
+    console.log(res);
+    res.data.map((post) => {
+      if (post.id === +pickedPostId) {
+        setTxtArea(post.content);
+        setMyPost((prev) => [...prev, post]);
+      }
+    })
   }
 
   const TxtModify = (e) => {
@@ -30,26 +42,30 @@ export default function DetailPage() {
     }
   }
   const btnCancel = () => {
-    const answer = window.confirm('저장할까요?')
+    const answer = window.confirm('취소할까요?')
     if (answer) {
       setModify(false);
     }
   }
 
   useEffect(() => {
-    testData.map((data) => {
-      if (data.postId === +pickedPostId) {
-        setTxtArea(data.contents);
-      }
-    })
-  }, [modify]);
-  
+    fetchGETuserpost();
+  }, []);
 
+  // 로컬
+  // useEffect(() => {
+  //   testData.map((data) => {
+  //     if (data.postId === +pickedPostId) {
+  //       setTxtArea(data.contents);
+  //     }
+  //   })
+  // }, [modify]);
+  
   return (
-    testData.map((data) => {
-      if (data.postId === +pickedPostId) {
+    myPost.map((data) => {
+      if (data.id === +pickedPostId) {
         return (
-          <div key={data.postId}>
+          <div key={data.id}>
             <Header>
               <TxtHide>내 글 상세보기/수정 페이지</TxtHide>
               <WrapHeader>
@@ -70,7 +86,7 @@ export default function DetailPage() {
                 <TxtHideH3>글 내용</TxtHideH3>
                 {modify ?
                   <ContentsModify value={txtArea} onChange={TxtModify} autoFocus></ContentsModify>
-                  : <Contents value={data.contents} readOnly></Contents>
+                  : <Contents value={data.content} readOnly></Contents>
                 }
               </SecContents>
               <BtnMore type='button' onClick={() => {setModal((prev) => !prev)}}>
@@ -152,20 +168,20 @@ const SecMain = styled.main`
 const SecTitle = styled.section`
   height: 16vh;
   padding: 8vh 10px 3vh;
-  font-family: ${theme.font.gothic_font};
+  font-family: ${theme.font.basic_font};
 `
 const Title = styled.h3`
   font-size: 1.3rem;
   font-weight: 700;
+  line-height: 1.5rem;
 `
 const SecContents = styled.section`
-  /* padding: 1vh 10px; */
+  padding: 0 10px;
 `
 const Contents = styled.textarea`
-  border: none;
-  border-top: 1px solid ${theme.color.camel};
+  border: 1px solid ${theme.color.camel};
   width: 100%;
-  height: 84vh;
+  height: 80vh;
   padding: 10px;
   font-family: ${theme.font.basic_font};
   font-size: 1rem;
@@ -177,7 +193,7 @@ const ContentsModify = styled.textarea`
   border: none;
   border: 3px solid ${theme.color.camel};
   width: 100%;
-  height: 84vh;
+  height: 80vh;
   padding: 10px 10px 60px;
   font-family: ${theme.font.basic_font};
   font-size: 1rem;

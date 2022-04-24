@@ -8,6 +8,8 @@ import theme from '../../theme';
 export default function SharePage() {
   const [isClicked, setIsClicked] = useState(false);
   const [cardId, setCardId] = useState();
+  const url = 'http://52.79.45.37:8080/api';
+  const userId = localStorage.getItem('userId');
 
   return (
     <WrapMain>

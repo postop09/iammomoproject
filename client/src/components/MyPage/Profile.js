@@ -1,22 +1,56 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import theme from '../../theme'
 import ModalNewQ from '../Modal/ModalNewQ';
 import axios from 'axios';
 
-export default function Profile() {
+export default function Profile({userId, url}) {
   const [newQ, setNewQ] = useState(false);
+  const [profile, setProfile] = useState();
+  const [email, setEmail] = useState();
   const openModal = () => {
     setNewQ(true);
   }
+  // 계정 호출
+  const fetchGETuser = async() => {
+    const res = await axios.get(`${url}/user/${userId}`);
+    console.log(res);
+    setProfile(res.data);
+    setEmail(res.data.email)
+  }
+  useEffect(() => {
+    fetchGETuser();
+  }, [])
 
+  // 계정 생성
+  // const fetchPOSTuser = async() => {
+  //   const res = await axios.post(`${url}/user`, {
+  //     email: 'postop09@naver.com',
+  //     password: '1234',
+  //     username: '조윤식'
+  //   });
+  //   console.log(res);
+  // }
+
+  // 회원가입/로그인 테스트
+  // const fetchTEST = async() => {
+  //   const res = await axios.post(`http://52.79.45.37:8080/auth/signup?username=haha&password=1234&password_check=1234`);
+  //   console.log(res);
+  // }
+  // const fetchTESTlogin = async() => {
+  //   const res = await axios.post(`http://52.79.45.37:8080/auth/login`, {
+  //     username: 'haha',
+  //     password: '1234'
+  //   });
+  //   console.log(res);
+  // }
   return (
     <SecProfile>
       <WrapProfile>
         <ImgProfile></ImgProfile>
         <WrapTxt>
           <TxtTitle>모모 <TxtHide>프로필</TxtHide></TxtTitle>
-          <TxtEmail>meoseon129@naver.com</TxtEmail>
+          <TxtEmail>{email}</TxtEmail>
           <ListBtn>
             <li>
               <BtnQuetion type='button' onClick={openModal}>질문 만들기</BtnQuetion>

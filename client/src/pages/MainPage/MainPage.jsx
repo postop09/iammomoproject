@@ -1,15 +1,32 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import theme from '../../theme'
 import CardList from '../../components/MainPage/CardList'
 import styled, { keyframes } from 'styled-components'
 import SideTxt from '../../components/MainPage/SideTxt'
 import ModalCard from '../../components/Modal/ModalCard'
+import axios from 'axios'
 
 export default function MainPage() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
   const [Question, setQuestion] = useState('');
   const [topic, setTopic] = useState([]);
+
+  // 계정 호출
+  const userId = 1; // 회원가입 response에서 id 저장한 값
+  const url = 'http://52.79.45.37:8080/api';
+  const fetchGETuser = async() => {
+    const res = await axios.get(`${url}/user/${userId}`);
+    console.log(res);
+    if (res.data) {
+      setIsLoggedIn(true);
+      localStorage.setItem('userId', res.data.id)
+    }
+  }
+  useEffect(() => {
+    fetchGETuser();
+  }, []);
+  
 
   return (
     <WrapMain>
@@ -18,7 +35,7 @@ export default function MainPage() {
         <TxtMain><TxtBlock>하루 5분</TxtBlock> 나에게 솔직해지는 시간</TxtMain> :
         <TxtMain><TxtBlock>하루 5분</TxtBlock> 가장 솔직해지는 시간</TxtMain>
       }
-      <CardList setIsClicked={setIsClicked} setQuestion={setQuestion} topic={topic} setTopic={setTopic} />
+      <CardList setIsClicked={setIsClicked} setQuestion={setQuestion} topic={topic} setTopic={setTopic} url={url} />
       {isLoggedIn ?
         '' :
         <WrapTxtInfo>
@@ -26,7 +43,7 @@ export default function MainPage() {
         </WrapTxtInfo>
       }
         <SideTxt />
-      {isClicked ? <ModalCard setIsClicked={setIsClicked} isLoggedIn={isLoggedIn} Question={Question} /> : ''}
+      {isClicked ? <ModalCard setIsClicked={setIsClicked} isLoggedIn={isLoggedIn} Question={Question} url={url} /> : ''}
     </WrapMain>
   )
 }

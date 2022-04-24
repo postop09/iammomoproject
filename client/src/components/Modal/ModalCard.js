@@ -2,16 +2,16 @@ import React, { useState } from 'react'
 import styled, { keyframes } from 'styled-components'
 import theme from '../../theme'
 import AnnounceLogin from './AnnounceLogin';
-// import axios from 'axios';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-export default function ModalCard({setIsClicked, isLoggedIn, Question}) {
+export default function ModalCard({setIsClicked, isLoggedIn, Question, url}) {
   const [announceLogin, setAnnounceLogin] = useState(true);
   const [myContents, setMyContents] = useState('');
   const [saved, setSaved] = useState(false);
   const [unlock, setUnlock] = useState(true);
   const [btnAble, setBtnAble] = useState(true);
-
+  const userId = localStorage.getItem('userId');
   const navigate = useNavigate();
   // 미로그인 함수
   const modalCloseSec = (e) => {
@@ -27,16 +27,17 @@ export default function ModalCard({setIsClicked, isLoggedIn, Question}) {
   }
 
   // 로그인 후 함수
-  // const fetchPost = async() => {
-  //   const res = await axios.post('url', {
-  //     topic: Question,
-  //     contents: myContents
-  //   });
-  //   console.log(res);
-  // }
+  const fetchPOSTpost = async() => {
+    const res = await axios.post(`${url}/post`, {
+      topic: Question,
+      content: myContents,
+      userId: userId
+    });
+    console.log(res);
+  }
+
   const setValue = (e) => {
     setMyContents(e.target.value);
-    console.log(myContents);
     if (e.target.value === '') {
       setBtnAble(true);
     } else {
@@ -48,7 +49,7 @@ export default function ModalCard({setIsClicked, isLoggedIn, Question}) {
     if (myContents) {
       const answer = window.confirm('저장할까요?');
       if (answer) {
-        // fetchPost();
+        fetchPOSTpost();
         setSaved((prev) => !prev);
         setUnlock(false);
       }

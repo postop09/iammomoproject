@@ -5,17 +5,17 @@ import theme from '../../theme'
 
 export default function ModalNewQ({setNewQ}) {
   const [inpTopic, setInpTopic] = useState('');
-  const url = 'http://52.79.45.37:8080';
-  const fetchPostQuestion = async() => {
+  const url = 'http://52.79.45.37:8080/api';
+  const fetchPOSTquestion = async() => {
     const res = await axios.post(`${url}/topic`, {
-      topic: inpTopic
+      title: inpTopic
     })
     console.log(res);
   }
   const BtnSubmit = () => {
     const answer = window.confirm('등록할까요?')
     if (answer) {
-      fetchPostQuestion();
+      fetchPOSTquestion();
       setNewQ(false);
     }
   }
