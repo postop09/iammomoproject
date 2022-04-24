@@ -1,30 +1,30 @@
 import styled from 'styled-components';
 import Card from './Card';
 import questionData from '../../database/questionData.json';
-// import axios from 'axios';
+import axios from 'axios';
 import { useEffect } from 'react';
 
-export default function CardList({setIsClicked, setQuestion, topic, setTopic}) {
+export default function CardList({setIsClicked, setQuestion, topic, setTopic, url}) {
   const handleClick = () => {
     setIsClicked((prev) => !prev);
-    // 로컬 데이터베이스
-    let questionNum = parseInt(Math.random() * questionData.length)
-    setQuestion(questionData[questionNum].topic);
-
     // 서버 API 호출
-    // let randomPick = parseInt(Math.random() * topic.length)
-    // setQuestion(topic[randomPick].title);
+    let randomPick = parseInt(Math.random() * topic.length);
+    setQuestion(topic[randomPick].title);
+    
+    // 로컬 데이터베이스
+    // let questionNum = parseInt(Math.random() * questionData.length)
+    // setQuestion(questionData[questionNum].topic);
   }
-  // const getTopic = async() => {
-  //   const res = await axios.get('http://52.79.45.37:8080/api/topic');
+  const fetchGETtopic = async() => {
+    const res = await axios.get(`${url}/topic`);
+    res.data.map((topic) => {
+      setTopic((prev) => [...prev, topic])
+    })
+  }
 
-  //   res.data.map((topic) => {
-  //     setTopic((prev) => [...prev, topic])
-  //   })
-  // }
-  // useEffect(() => {
-  //   getTopic();
-  // }, []);
+  useEffect(() => {
+    fetchGETtopic();
+  }, []);
   
 
   return (

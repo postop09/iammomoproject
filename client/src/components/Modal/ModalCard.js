@@ -2,16 +2,16 @@ import React, { useState } from 'react'
 import styled, { keyframes } from 'styled-components'
 import theme from '../../theme'
 import AnnounceLogin from './AnnounceLogin';
-// import axios from 'axios';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-export default function ModalCard({setIsClicked, isLoggedIn, Question}) {
+export default function ModalCard({setIsClicked, isLoggedIn, Question, url}) {
   const [announceLogin, setAnnounceLogin] = useState(true);
   const [myContents, setMyContents] = useState('');
   const [saved, setSaved] = useState(false);
   const [unlock, setUnlock] = useState(true);
   const [btnAble, setBtnAble] = useState(true);
-
+  const userId = localStorage.getItem('userId');
   const navigate = useNavigate();
   // 미로그인 함수
   const modalCloseSec = (e) => {
@@ -27,16 +27,17 @@ export default function ModalCard({setIsClicked, isLoggedIn, Question}) {
   }
 
   // 로그인 후 함수
-  // const fetchPost = async() => {
-  //   const res = await axios.post('url', {
-  //     topic: Question,
-  //     contents: myContents
-  //   });
-  //   console.log(res);
-  // }
+  const fetchPOSTpost = async() => {
+    const res = await axios.post(`${url}/post`, {
+      topic: Question,
+      content: myContents,
+      userId: userId
+    });
+    console.log(res);
+  }
+
   const setValue = (e) => {
     setMyContents(e.target.value);
-    console.log(myContents);
     if (e.target.value === '') {
       setBtnAble(true);
     } else {
@@ -48,7 +49,7 @@ export default function ModalCard({setIsClicked, isLoggedIn, Question}) {
     if (myContents) {
       const answer = window.confirm('저장할까요?');
       if (answer) {
-        // fetchPost();
+        fetchPOSTpost();
         setSaved((prev) => !prev);
         setUnlock(false);
       }
@@ -141,7 +142,7 @@ const FrontBox = styled.form`
   border-radius: 15px;
   width: 100%;
   height: 100%;
-  padding: 40px 20px 20px;
+  padding: 20px 20px 20px;
   background-color: #ffffff;
   background-color: ${theme.color.mellow};
   backface-visibility: hidden;
@@ -157,7 +158,7 @@ const TxtArea = styled.textarea`
   border-radius: 7px;
   width: 100%;
   height: 75%;
-  margin-top: 20px;
+  margin-top: 10px;
   padding: 5px;
   font-family: ${theme.font.basic_font};
   font-size: .9rem;
@@ -173,6 +174,7 @@ const BtnSubmit = styled.button`
   box-shadow: 2px 1px 3px #00000070;
   border: 2px solid ${theme.color.mellow};
   border-radius: 20px;
+  margin-top: 5px;
   padding: 5px 10px;
   font-family: ${theme.font.gothic_font};
   font-size: .9rem;
@@ -182,7 +184,8 @@ const BtnCancel = styled.button`
   box-shadow: 2px 1px 3px #00000070;
   border: 2px solid ${theme.color.mellow};
   border-radius: 20px;
-  padding: 3px 7px;
+  margin-top: 5px;
+  padding: 3px 10px;
   font-family: ${theme.font.gothic_font};
   font-size: .9rem;
   background-color: ${theme.color.camel};

@@ -3,16 +3,19 @@ import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import theme from '../../theme'
 
-export default function MyCards({topic, contents, createDate, postId}) {
+export default function MyCards({topic, content, create_At, id}) {
   const navigate = useNavigate();
-  
+  const createDate = new Date(create_At).toLocaleDateString();
+  const [year, month, dateDot] = createDate.split('. ');
+  const date = dateDot.slice(0, -1);
+
   return (
-    <ItemCard onClick={() => {navigate(`/mymomo/${postId}`)}} id={postId}>
+    <ItemCard onClick={() => {navigate(`/mymomo/${id}`)}} id={id}>
       <WrapCard>
-        <Txtarea value={contents} readOnly></Txtarea>
+        <Txtarea value={content} readOnly></Txtarea>
         <WrapTxt>
           <TxtTopic>{topic}</TxtTopic>
-          <TxtDate>{createDate}</TxtDate>
+          <TxtDate>{`${year}-${month}-${date}`}</TxtDate>
         </WrapTxt>
       </WrapCard>
     </ItemCard>

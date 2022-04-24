@@ -1,17 +1,27 @@
+import axios from 'axios';
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components'
 import theme from '../../theme'
 
-export default function ModalMoreMenu({setModify, setModal}) {
+export default function ModalMoreMenu({setModify, setModal, pickedPostId, url}) {
+  const navigate = useNavigate();
+
+  const fetchDELETEpost = async() => {
+    const res = await axios.delete(`${url}/post/${pickedPostId}`);
+    console.log(res);
+  }
   const postModify = () => {
     setModify(true);
     setModal((prev) => !prev);
   }
   const postDelete = () => {
     const answer = window.confirm('정말 삭제할까요?');
+    const moveTo = () => navigate('/mymomo');
     if (answer) {
+      fetchDELETEpost();
       setModal((prev) => !prev);
-      // axios.DELETE {postId: ...}
+      setTimeout(moveTo, 1000);
     }
   }
 

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
 import ModalMoreMenu from '../../components/Modal/ModalMoreMenu';
 import testData from '../../database/testData.json';
@@ -8,34 +9,68 @@ export default function DetailPage() {
   const pickedPostId = window.location.pathname.split('/').pop();
   const [modal, setModal] = useState(false);
   const [modify, setModify] = useState(false);
+  const [myTopic, setMyTopic] = useState('')
   const [txtArea, setTxtArea] = useState('');
+  const [myPost, setMyPost] = useState([]);
+
+  const url = 'http://52.79.45.37:8080/api';
+  const userId = localStorage.getItem('userId');
+  const fetchPUTpost = async() => {
+    const res = await axios.put(`${url}/post/${pickedPostId}`, {
+      topic: myTopic,
+      userId: userId,
+      content: txtArea
+    });
+    console.log(res);
+  }
+  const fetchGETuserpost = async() => {
+    const res = await axios.get(`${url}/user/${userId}/post`);
+    console.log(res);
+    res.data.map((post) => {
+      if (post.id === +pickedPostId) {
+        setMyTopic(post.topic);
+        setTxtArea(post.content);
+        setMyPost((prev) => [...prev, post]);
+      }
+    })
+  }
+
   const TxtModify = (e) => {
     setTxtArea(e.target.value);
   };
   const btnSaveTxt = () => {
     const answer = window.confirm('저장할까요?')
     if (answer) {
+      fetchPUTpost();
       setModify(false);
-      // axios.PUT {contents: txtArea}
+      window.location.reload();
     }
   }
   const btnCancel = () => {
-    setModify(false);
+    const answer = window.confirm('취소할까요?')
+    if (answer) {
+      setModify(false);
+    }
   }
-  useEffect(() => {
-    testData.map((data) => {
-      if (data.postId === +pickedPostId) {
-        setTxtArea(data.contents);
-      }
-    })
-  }, []);
-  
 
+  useEffect(() => {
+    fetchGETuserpost();
+  }, []);
+
+  // 로컬
+  // useEffect(() => {
+  //   testData.map((data) => {
+  //     if (data.postId === +pickedPostId) {
+  //       setTxtArea(data.contents);
+  //     }
+  //   })
+  // }, [modify]);
+  
   return (
-    testData.map((data) => {
-      if (data.postId === +pickedPostId) {
+    myPost.map((data) => {
+      if (data.id === +pickedPostId) {
         return (
-          <div key={data.postId}>
+          <div key={data.id}>
             <Header>
               <TxtHide>내 글 상세보기/수정 페이지</TxtHide>
               <WrapHeader>
@@ -56,13 +91,13 @@ export default function DetailPage() {
                 <TxtHideH3>글 내용</TxtHideH3>
                 {modify ?
                   <ContentsModify value={txtArea} onChange={TxtModify} autoFocus></ContentsModify>
-                  : <Contents value={txtArea} readOnly></Contents>
+                  : <Contents value={data.content} readOnly></Contents>
                 }
               </SecContents>
               <BtnMore type='button' onClick={() => {setModal((prev) => !prev)}}>
                 +<TxtHideSpan> 메뉴 더보기</TxtHideSpan>
               </BtnMore>
-              {modal ? <ModalMoreMenu setModify={setModify} setModal={setModal} /> : ''}
+              {modal ? <ModalMoreMenu setModify={setModify} setModal={setModal} pickedPostId={pickedPostId} url={url} /> : ''}
               {modify ?
                 <WrapBtn>
                   <BtnSave type='button' onClick={btnSaveTxt}>저장</BtnSave>
@@ -70,7 +105,6 @@ export default function DetailPage() {
                 </WrapBtn>
                 : ''
               }
-              
             </SecMain>
           </div>
         )
@@ -139,20 +173,20 @@ const SecMain = styled.main`
 const SecTitle = styled.section`
   height: 16vh;
   padding: 8vh 10px 3vh;
-  font-family: ${theme.font.gothic_font};
+  font-family: ${theme.font.basic_font};
 `
 const Title = styled.h3`
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 700;
+  line-height: 1.5rem;
 `
 const SecContents = styled.section`
-  /* padding: 1vh 10px; */
+  padding: 0 10px;
 `
 const Contents = styled.textarea`
-  border: none;
-  border-top: 1px solid ${theme.color.camel};
+  border: 1px solid ${theme.color.camel};
   width: 100%;
-  height: 84vh;
+  height: 80vh;
   padding: 10px;
   font-family: ${theme.font.basic_font};
   font-size: 1rem;
@@ -164,7 +198,7 @@ const ContentsModify = styled.textarea`
   border: none;
   border: 3px solid ${theme.color.camel};
   width: 100%;
-  height: 84vh;
+  height: 80vh;
   padding: 10px 10px 60px;
   font-family: ${theme.font.basic_font};
   font-size: 1rem;
