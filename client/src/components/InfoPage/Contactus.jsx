@@ -65,7 +65,9 @@ const Contactus = () => {
       <Piece>
         <PieceHeader>설문조사</PieceHeader>
         <div>모모 프로젝트가 더 발전할 수 있도록 설문조사에 참여해 주세요.</div>
-        <div>설문조사</div>
+        <a href="http://forms.gle/rg8j5LwQA8scgbfR9" target="_blank">
+          설문조사
+        </a>
       </Piece>
       <Piece>
         <PieceHeader>Contact</PieceHeader>
@@ -111,8 +113,8 @@ const Wrapper = styled.div`
 
 const BackgroundWrapper = styled.div`
   position: absolute;
-  width: 100vw;
-  height: 100vh;
+  /* width: 100vw;
+  height: 100vh; */
   overflow: hidden;
   z-index: -1;
 `;
@@ -135,9 +137,17 @@ const TxtBack = styled.span`
 `;
 
 const Piece = styled.div`
-  border-bottom: solid 1px black;
+  > div:first-child {
+    border-bottom: solid 1px black;
+  }
+
   margin-bottom: 1rem;
   padding-top: 1rem;
+  > a {
+    /* text-decoration: none; */
+    color: ${(props) => props.theme.color.camel};
+    padding-bottom: 1rem;
+  }
 `;
 
 const PieceHeader = styled.div`

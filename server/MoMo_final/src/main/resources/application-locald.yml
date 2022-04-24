@@ -2,7 +2,7 @@
 spring:
   config:
     activate:
-      on-profile: localn
+      on-profile: locald
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://happy.cwcrqv56w2zf.ap-northeast-2.rds.amazonaws.com/MoMo

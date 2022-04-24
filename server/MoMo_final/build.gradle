@@ -30,6 +30,10 @@ dependencies {
     runtimeOnly 'com.h2database:h2'
     runtimeOnly 'mysql:mysql-connector-java'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+
+//    implementation 'org.jetbrains:annotations:19.0.0'
+
 }
 
 tasks.named('test') {

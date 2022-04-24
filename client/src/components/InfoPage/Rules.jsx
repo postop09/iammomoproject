@@ -73,8 +73,8 @@ const Wrapper = styled.div`
 
 const BackgroundWrapper = styled.div`
   position: absolute;
-  width: 100vw;
-  height: 100vh;
+  /* width: 100vw;
+  height: 100vh; */
   overflow: hidden;
 `;
 
