@@ -1,18 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import theme from '../../theme'
-// import axios from 'axios';
+import ModalNewQ from '../Modal/ModalNewQ';
+import axios from 'axios';
 
 export default function Profile() {
+  const [newQ, setNewQ] = useState(false);
+  const openModal = () => {
+    setNewQ(true);
+  }
 
-  // const fetch = async() => {
-  //   const res = await axios.post('http://52.79.45.37:8080/auth/login', {
-  //     username: 'kingGod',
-  //     password: '1234',
-  //     password_check: '1234'
-  //   });
-  //   console.log(res);
-  // }
   return (
     <SecProfile>
       <WrapProfile>
@@ -22,7 +19,7 @@ export default function Profile() {
           <TxtEmail>meoseon129@naver.com</TxtEmail>
           <ListBtn>
             <li>
-              <BtnQuetion type='button' onClick={fetch}>질문 만들기</BtnQuetion>
+              <BtnQuetion type='button' onClick={openModal}>질문 만들기</BtnQuetion>
             </li>
             <li>
               <BtnProfile type='button'>프로필 수정</BtnProfile>
@@ -30,6 +27,10 @@ export default function Profile() {
           </ListBtn>
         </WrapTxt>
       </WrapProfile>
+      {newQ ?
+        <ModalNewQ setNewQ={setNewQ}/>
+        : ''
+      }
     </SecProfile>
   )
 }

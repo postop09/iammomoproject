@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
 import ModalMoreMenu from '../../components/Modal/ModalMoreMenu';
 import testData from '../../database/testData.json';
@@ -9,26 +10,39 @@ export default function DetailPage() {
   const [modal, setModal] = useState(false);
   const [modify, setModify] = useState(false);
   const [txtArea, setTxtArea] = useState('');
+
+  const url = 'http://52.79.45.37:8080';
+  const fetchPUTpost = async() => {
+    const res = await axios.put(`${url}/post/${pickedPostId}`, {
+      content: txtArea
+    });
+    console.log(res);
+  }
+
   const TxtModify = (e) => {
     setTxtArea(e.target.value);
   };
   const btnSaveTxt = () => {
     const answer = window.confirm('저장할까요?')
     if (answer) {
+      fetchPUTpost();
       setModify(false);
-      // axios.PUT {contents: txtArea}
     }
   }
   const btnCancel = () => {
-    setModify(false);
+    const answer = window.confirm('저장할까요?')
+    if (answer) {
+      setModify(false);
+    }
   }
+
   useEffect(() => {
     testData.map((data) => {
       if (data.postId === +pickedPostId) {
         setTxtArea(data.contents);
       }
     })
-  }, []);
+  }, [modify]);
   
 
   return (
@@ -56,13 +70,13 @@ export default function DetailPage() {
                 <TxtHideH3>글 내용</TxtHideH3>
                 {modify ?
                   <ContentsModify value={txtArea} onChange={TxtModify} autoFocus></ContentsModify>
-                  : <Contents value={txtArea} readOnly></Contents>
+                  : <Contents value={data.contents} readOnly></Contents>
                 }
               </SecContents>
               <BtnMore type='button' onClick={() => {setModal((prev) => !prev)}}>
                 +<TxtHideSpan> 메뉴 더보기</TxtHideSpan>
               </BtnMore>
-              {modal ? <ModalMoreMenu setModify={setModify} setModal={setModal} /> : ''}
+              {modal ? <ModalMoreMenu setModify={setModify} setModal={setModal} pickedPostId={pickedPostId} url={url} /> : ''}
               {modify ?
                 <WrapBtn>
                   <BtnSave type='button' onClick={btnSaveTxt}>저장</BtnSave>
@@ -70,7 +84,6 @@ export default function DetailPage() {
                 </WrapBtn>
                 : ''
               }
-              
             </SecMain>
           </div>
         )

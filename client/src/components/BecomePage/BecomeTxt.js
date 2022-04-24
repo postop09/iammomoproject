@@ -59,7 +59,7 @@ export default function BecomeTxt() {
           <TxtBlock>세상의 모든 모모들을 위해</TxtBlock>
           <TxtBlock>에티켓을 지켜주세요.</TxtBlock>
         </TxtBox>
-        <BtnLink type='button' onClick={() => {navigate('/')}}>
+        <BtnLink type='button' onClick={() => {navigate('/rules')}}>
           MOMO 규칙 확인하기
         </BtnLink>
       </div>
