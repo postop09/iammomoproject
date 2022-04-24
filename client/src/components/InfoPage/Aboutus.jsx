@@ -61,12 +61,12 @@ const Wrapper = styled.div`
 
 const BackgroundWrapper = styled.div`
   position: absolute;
-  width: 100vw;
-  height: 100vh;
+  /* width: 100vw;
+  height: 100vh; */
   overflow: hidden;
 `;
 
-const Background = styled.div`
+const Background = styled.p`
   position: absolute;
   top: 30vh;
   right: -97px;
@@ -76,7 +76,7 @@ const Background = styled.div`
   opacity: 0.1;
   user-select: none;
   cursor: default;
-  /* height: 100%; */
+  height: 100%;
 `;
 
 const TxtBack = styled.span`
