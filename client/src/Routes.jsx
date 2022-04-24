@@ -6,7 +6,6 @@ import Nav from "./components/MainPage/Nav";
 import AuthSelection from "./pages/AuthSelection";
 import BecomePage from "./pages/BecomePage/BecomePage";
 import DetailPage from "./pages/DetailPage/DetailPage";
-import Info from "./pages/Info";
 import Login from "./pages/Login";
 import MainPage from "./pages/MainPage/MainPage";
 import MyPage from "./pages/MyPage/MyPage";
