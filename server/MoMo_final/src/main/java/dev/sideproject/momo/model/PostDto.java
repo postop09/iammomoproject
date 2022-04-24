@@ -1,11 +1,17 @@
 package dev.sideproject.momo.model;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import java.time.Instant;
 
 public class PostDto {
-
+    @ApiModelProperty(value = "고유 id")
     private Long id;
+
+    @ApiModelProperty(value = "질문답변" , example = "오늘은 좋았어요")
     private String content;
+
+    @ApiModelProperty(value = "질문" , example = "기분이 어떤가요?")
     private String topic;
 
     private Long userId;

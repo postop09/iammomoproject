@@ -13,7 +13,7 @@ public interface UserRepository extends CrudRepository <UserEntity, Long> {
 
     @Query(
             nativeQuery = true,
-            value = "SELECT p.topic, p.content, p.create_at\n" +
+            value = "SELECT p.topic, p.content, p.create_at, p.id \n" +
                     "FROM user_momo u\n" +
                     "    INNER JOIN post p on u.id = p.user_id\n" +
                     "where u.id = :id"

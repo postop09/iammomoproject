@@ -24,7 +24,7 @@ public class TopicController {
     }
 
     @PostMapping
-    @ApiOperation(value = "질문 생성")
+    @ApiOperation(value = "질문 생성", notes = "title 만")
     public ResponseEntity<TopicDto> createTopic
             (@RequestBody TopicDto dto){
         return ResponseEntity.ok(topicService.create(dto));
@@ -50,7 +50,7 @@ public class TopicController {
     }
 
     @PutMapping("{topicId}")
-    @ApiOperation(value = "질문 수정")
+    @ApiOperation(value = "단일 질문 수정", notes = "title 만")
     public ResponseEntity<?> updateTopic
             (@PathVariable("topicId") Long id,
             @RequestBody TopicDto dto){

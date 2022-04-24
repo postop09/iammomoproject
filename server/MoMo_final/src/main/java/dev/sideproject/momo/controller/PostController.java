@@ -3,6 +3,7 @@ package dev.sideproject.momo.controller;
 import dev.sideproject.momo.model.PostDto;
 import dev.sideproject.momo.service.PostService;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +21,7 @@ public class PostController {
     }
 
     @PostMapping()
-    @ApiOperation(value = "게시글 생성")
+    @ApiOperation(value = "게시글 생성", notes = "content, topic, userId*** 넣기 (1.user & topic 먼저 생성 후 2. post 생성가능)")
     public ResponseEntity<PostDto> createPost(
             @RequestBody PostDto dto){
         PostDto result = this.postService.create(dto);
@@ -49,7 +50,7 @@ public class PostController {
     }
 
     @PutMapping("{postId}")
-    @ApiOperation(value = "게시글 수정")
+    @ApiOperation(value = "게시글 수정", notes = "content 만")
     public ResponseEntity<?> updatePost(
             @RequestBody PostDto dto,
             @PathVariable("postId") Long postId
