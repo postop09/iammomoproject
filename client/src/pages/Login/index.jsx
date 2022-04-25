@@ -8,10 +8,7 @@ import axios from "axios";
 import fetcher from "../../utils/fetcher";
 
 const Login = () => {
-  const { data, error, revalidate, mutate } = useSwr(
-    "/api/users/auth",
-    fetcher
-  );
+  // const { data, error, revalidate, mutate } = useSwr("/auth/signin", fetcher);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -45,16 +42,23 @@ const Login = () => {
   const onLogin = useCallback(() => {
     axios
       .post(
-        "/auth/login",
-        { username: email, password: password },
+        "/auth/signin",
+        { email: email, password: password },
         { withCredentials: true }
       )
-      .then((response) => mutate())
+      .then((response) => {
+        // mutate();
+        const accessToken = response.data.token;
+        axios.defaults.headers.common[
+          "Authorization"
+        ] = `Bearer ${accessToken}`;
+        window.localStorage.setItem("data", JSON.stringify(response.data));
+        console.log(window.localStorage.getItem("data").token);
+      })
       .catch((err) => console.log(err));
   });
 
-  if (data?.isAuth) {
-    console.log(data);
+  if (window.localStorage.getItem("data")) {
     return <Navigate replace to="/" />;
   }
 
