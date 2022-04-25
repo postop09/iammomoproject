@@ -42,9 +42,9 @@ export default function CardList({setIsClicked, setQuestion, topic, setTopic, ur
         centeredSlides={true}
         slidesPerView={"auto"}
         coverflowEffect={{
-          rotate: 0,
+          rotate: 10,
           stretch: 0,
-          depth: 700,
+          depth: 500,
           modifier: 1,
           slideShadows: true,
         }}

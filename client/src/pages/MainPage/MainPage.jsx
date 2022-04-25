@@ -38,11 +38,13 @@ export default function MainPage() {
       <CardList setIsClicked={setIsClicked} setQuestion={setQuestion} topic={topic} setTopic={setTopic} url={url} />
       {isLoggedIn ?
         '' :
-        <WrapTxtInfo>
-          위 카드를 선택해주세요. <IconTri>▲</IconTri>
-        </WrapTxtInfo>
+        <>
+          <WrapTxtInfo>
+            위 카드를 선택해주세요. <IconTri>▲</IconTri>
+          </WrapTxtInfo>
+          <SideTxt />
+        </>
       }
-        <SideTxt />
       {isClicked ? <ModalCard setIsClicked={setIsClicked} isLoggedIn={isLoggedIn} Question={Question} url={url} /> : ''}
     </WrapMain>
   )
