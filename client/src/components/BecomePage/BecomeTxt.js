@@ -42,7 +42,7 @@ export default function BecomeTxt() {
           <TxtBlock>다른 모모의 글을 구경해보세요.</TxtBlock>
         </TxtBox>
         <BtnLink type='button' onClick={() => {navigate('/momoshare')}}>
-          다른 모모의 글 보기
+          MOMO 글모음
         </BtnLink>
       </div>
       <div>
@@ -51,7 +51,7 @@ export default function BecomeTxt() {
           <TxtBlock>나의 모모 글을 모아서 보세요.</TxtBlock>
         </TxtBox>
         <BtnLink type='button' onClick={() => {navigate('/mymomo')}}>
-          My MOMO 보기
+          나의 MOMO
         </BtnLink>
       </div>
       <div>

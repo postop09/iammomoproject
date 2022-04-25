@@ -45,13 +45,10 @@ const MenuBar = (props) => {
         )}
       </HeadSection>
       <BodySection>
-        <button type="button" onClick={() => {navigate('/');modalHandler();}}>MOMO</button>
         <button type="button" onClick={() => {navigate('/beamomo');modalHandler();}}>MOMO 되기</button>
-        <button type="button" onClick={() => {navigate('/rules');modalHandler();}}>MOMO 규칙</button>
-        <button type="button" onClick={() => {navigate('/mymomo');modalHandler();}}>My MOMO</button>
-        <button type="button" onClick={() => {navigate('/');modalHandler();}}>My Question</button>
-        <button type="button" onClick={() => {navigate('/momoshare');modalHandler();}}>MOMO Library</button>
-        <button type="button" onClick={() => {navigate('/');modalHandler();}}>MOMO 알람</button>
+        <button type="button" onClick={() => {navigate('/mymomo');modalHandler();}}>나의 MOMO</button>
+        <button type="button" onClick={() => {navigate('/');modalHandler();}}>나만의 질문</button>
+        <button type="button" onClick={() => {navigate('/momoshare');modalHandler();}}>MOMO 글모음</button>
       </BodySection>
       <FooterSection>
         <button type="button" onClick={() => {navigate('/about');modalHandler();}}>About Us</button>
@@ -101,7 +98,7 @@ const HeadSection = styled.section`
 
 const BodySection = styled.section`
   text-align: center;
-  padding-bottom: 13rem;
+  padding-bottom: 21rem;
   > button {
     padding-bottom: 1rem;
     font-size: 1rem;

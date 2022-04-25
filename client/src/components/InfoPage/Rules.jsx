@@ -64,10 +64,10 @@ const Wrapper = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: ${(props) => props.theme.color.pantone};
+  padding-top: 5vh;
   padding-left: 1rem;
   padding-right: 1rem;
   line-height: 150%;
-  margin-top: 2.5rem;
   font-family: ${(props) => props.theme.font.gothic_font};
 `;
 
