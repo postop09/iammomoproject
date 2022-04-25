@@ -107,6 +107,7 @@ const SecModalCard = styled.article`
   width: 100vw;
   height: 100vh;
   background-color: #00000030;
+  z-index: 100;
 `
 const WrapModalCard = styled.div`
   position: absolute;
