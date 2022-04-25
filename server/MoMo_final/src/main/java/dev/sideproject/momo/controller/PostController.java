@@ -50,7 +50,7 @@ public class PostController {
     }
 
     @PutMapping("{postId}")
-    @ApiOperation(value = "게시글 수정", notes = "content 만")
+    @ApiOperation(value = "게시글 수정", notes = "content, topic, userId*** 넣기")
     public ResponseEntity<?> updatePost(
             @RequestBody PostDto dto,
             @PathVariable("postId") Long postId
