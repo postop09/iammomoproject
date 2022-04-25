@@ -5,6 +5,7 @@ import dev.sideproject.momo.model.JwtResponseDTO;
 import dev.sideproject.momo.model.JwtUserDTO;
 import dev.sideproject.momo.security.TokenProvider;
 import dev.sideproject.momo.service.JwtUserService;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -31,6 +32,7 @@ public class JwtUserController {
 
 
     @PostMapping("/signup")
+    @ApiOperation(value = "회원가입", notes = "email, username, password 필요")
     public ResponseEntity<?> registerUser(@RequestBody JwtUserDTO userDTO) {
         try {
             // 리퀘스트를 이용해 저장할 유저 만들기
@@ -58,6 +60,7 @@ public class JwtUserController {
     }
 
     @PostMapping("/signin")
+    @ApiOperation(value = "회원가입", notes = "email, username, password 필요")
     public ResponseEntity<?> authenticate(@RequestBody JwtUserDTO userDTO) {
         JwtUserEntity user = userService.getByCredentials(userDTO.getEmail(), userDTO.getPassword(), passwordEncoder);
 
