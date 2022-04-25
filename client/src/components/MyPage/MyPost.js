@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import theme from '../../theme'
-import testData from '../../database/testData.json';
 import MyCards from './MyCards';
 import axios from 'axios';
+// import testData from '../../database/testData.json';
 
 export default function MyPost({userId, url}) {
   const [topic, setTopic] = useState('내가 작성한 글');
@@ -14,17 +14,18 @@ export default function MyPost({userId, url}) {
   }
   const fetchGETuserpost = async() => {
     const res = await axios.get(`${url}/user/${userId}/post`);
-    console.log(res);
     res.data.map((post) => {
         setMyTopic((prev) => [...prev, post.topic]);
         setMyPost((prev) => [...prev, post]);
     })
   }
-  
   useEffect(() => {
     fetchGETuserpost();
   }, [])
 
+  const category = myTopic.filter((element, index) => {
+    return myTopic.indexOf(element) === index;
+  })
   // useEffect(() => {
   //   testData.map((post) => {
   //     if (post.userId === 1) {
@@ -32,9 +33,6 @@ export default function MyPost({userId, url}) {
   //     }
   //   })
   // }, [])
-  const category = myTopic.filter((element, index) => {
-    return myTopic.indexOf(element) === index;
-  })
 
   return (
     <WrapShare>

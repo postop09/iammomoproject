@@ -6,7 +6,6 @@ import axios from 'axios';
 
 export default function Profile({userId, url}) {
   const [newQ, setNewQ] = useState(false);
-  const [profile, setProfile] = useState();
   const [email, setEmail] = useState();
   const openModal = () => {
     setNewQ(true);
@@ -14,40 +13,12 @@ export default function Profile({userId, url}) {
   // 계정 호출
   const fetchGETuser = async() => {
     const res = await axios.get(`${url}/user/${userId}`);
-    console.log(res);
-    setProfile(res.data);
     setEmail(res.data.email)
   }
   useEffect(() => {
     fetchGETuser();
   }, [])
 
-  // 계정 생성
-  // const fetchPOSTuser = async() => {
-  //   const res = await axios.post(`${url}/user`, {
-  //     email: 'postop09@naver.com',
-  //     password: '1234',
-  //     username: '조윤식'
-  //   });
-  //   console.log(res);
-  // }
-
-  // 회원가입/로그인 테스트
-  // const fetchTEST = async() => {
-  //   const res = await axios.post(`http://52.79.45.37:8080/auth/signup`, {
-  //     email: 'test@naver.com',
-  //     username: 'user1',
-  //     password: 'asdf'
-  //   });
-  //   console.log(res);
-  // }
-  // const fetchTESTlogin = async() => {
-  //   const res = await axios.post(`http://52.79.45.37:8080/auth/signin`, {
-  //     email: 'test@naver.com',
-  //     password: 'asdf'
-  //   });
-  //   console.log(res);
-  // }
   return (
     <SecProfile>
       <WrapProfile>

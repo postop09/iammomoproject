@@ -13,7 +13,6 @@ export default function ShareDate({setIsClicked, setCardId, userId, url}) {
 }
 
 const WrapShare = styled.section`
-  max-height: 60vh;
   padding: 10vh 10px 0;
   font-family: ${theme.font.basic_font};
   text-align: center;
@@ -24,5 +23,6 @@ const TxtMain = styled.strong`
 `
 const TxtBlock = styled.span`
   display: block;
+  font-size: 1.1rem;
   line-height: 25px;
 `

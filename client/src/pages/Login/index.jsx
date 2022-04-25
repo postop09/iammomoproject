@@ -2,16 +2,13 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { Navigate, useNavigate } from "react-router";
-import useSwr from "swr";
 import { useCallback, useState } from "react";
 import axios from "axios";
-import fetcher from "../../utils/fetcher";
+// import useSwr from "swr";
+// import fetcher from "../../utils/fetcher";
 
 const Login = () => {
-  const { data, error, revalidate, mutate } = useSwr(
-    "/api/users/auth",
-    fetcher
-  );
+  // const { data, error, revalidate, mutate } = useSwr("/auth/signin", fetcher);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -45,19 +42,38 @@ const Login = () => {
   const onLogin = useCallback(() => {
     axios
       .post(
-        "/auth/login",
-        { username: email, password: password },
+        "/auth/signin",
+        { email: email, password: password },
         { withCredentials: true }
       )
-      .then((response) => mutate())
+      .then((response) => {
+        // mutate();
+        const accessToken = response.data.token;
+        axios.defaults.headers.common[
+          "Authorization"
+        ] = `Bearer ${accessToken}`;
+        window.localStorage.setItem("data", JSON.stringify(response.data));
+        console.log(response.data);
+        navigate("/");
+      })
       .catch((err) => console.log(err));
   });
 
-  if (data?.isAuth) {
-    console.log(data);
+  if (window.localStorage.getItem("data")) {
     return <Navigate replace to="/" />;
   }
-
+  // api/user
+  const fetchGETuser = async() => {
+    const url = 'http://52.79.45.37:8080/api';
+    const res = await axios.get(`${url}/user`);
+    console.log(res);
+    res.data.map((user) => {
+      if (user.email === email) {
+        localStorage.setItem('apiData', JSON.stringify(user));
+        localStorage.setItem('userId', user.id);
+      }
+    })
+  }
   return (
     <div>
       <HeaderWrapper>
@@ -88,7 +104,7 @@ const Login = () => {
             />
           </InputWrapper>
         </form>
-        <RegisterButton onClick={onLogin}>로그인</RegisterButton>
+        <RegisterButton onClick={() => {onLogin();fetchGETuser();}}>로그인</RegisterButton>
       </Wrapper>
     </div>
   );

@@ -11,10 +11,9 @@ export default function ShareCard({dataQuestion, setIsClicked, setCardId, id}) {
   return (
     <SecShareCard onClick={openModal} id={id}>
       <BtnCard>
-        <WrapColorBox></WrapColorBox>
+        <Txtarea readOnly></Txtarea>
         <WrapTxt>
           <TxtTitle>{dataQuestion}</TxtTitle>
-          {/* <TxtDate>2020Y04M20D</TxtDate> */}
         </WrapTxt>
       </BtnCard>
     </SecShareCard>
@@ -22,42 +21,38 @@ export default function ShareCard({dataQuestion, setIsClicked, setCardId, id}) {
 }
 
 const SecShareCard = styled.li`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 0 7px 1px #00000050;
-  width:30vw;
-  padding: 1vw;
-  font-size: .7rem;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  background-color: #ffffff;
-  list-style: none;
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 0 10px;
 `
 const BtnCard = styled.button`
+  box-shadow: 0 1px 3px 1px #00000050;
+  border-radius: 10px;
   width: 100%;
   padding: 0;
 `
-const WrapColorBox = styled.div`
+const Txtarea = styled.textarea`
+  border: none;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   width: 100%;
-  height: 12vh;
+  height: 23vh;
+  padding: 5px 10px;
+  font-family: ${theme.font.basic_font};
+  font-size: .9rem;
   background-color: ${theme.color.camel};
+  resize: none;
+  overflow: hidden;
 `
 const WrapTxt = styled.div`
   width: 100%;
-  padding: 10px 4px;
+  padding: 10px 10px 15px;
   text-align: left;
 `
 const TxtTitle = styled.p`
-  width: 85%;
   line-height: 1rem;
   font-family: ${theme.font.gothic_font};
-  font-size: .9rem;
+  font-size: 1rem;
   font-weight: 700;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-`
-const TxtDate = styled.p`
-  color: #6e6e6e;
+  line-height: 1.2rem;
 `

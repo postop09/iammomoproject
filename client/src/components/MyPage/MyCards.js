@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import theme from '../../theme'
 
-export default function MyCards({topic, content, create_At, id}) {
+export default function MyCards({topic, create_At, id}) {
   const navigate = useNavigate();
   const createDate = new Date(create_At).toLocaleDateString();
   const [year, month, dateDot] = createDate.split('. ');
@@ -12,7 +12,7 @@ export default function MyCards({topic, content, create_At, id}) {
   return (
     <ItemCard onClick={() => {navigate(`/mymomo/${id}`)}} id={id}>
       <WrapCard>
-        <Txtarea value={content} readOnly></Txtarea>
+        <Txtarea readOnly></Txtarea>
         <WrapTxt>
           <TxtTopic>{topic}</TxtTopic>
           <TxtDate>{`${year}-${month}-${date}`}</TxtDate>
@@ -46,8 +46,8 @@ const Txtarea = styled.textarea`
 const WrapTxt = styled.p`
   display: flex;
   flex-direction: column;
-  justify-content:space-between;
-  height: 8vh;
+  justify-content: space-between;
+  height: 9vh;
   padding: 10px 10px;
   font-family: ${theme.font.gothic_font};
   text-align: left;
@@ -55,6 +55,7 @@ const WrapTxt = styled.p`
 const TxtTopic = styled.strong`
   display: block;
   font-weight: 700;
+  line-height: 1.2rem;
 `
 const TxtDate = styled.small`
   font-size: .9rem;

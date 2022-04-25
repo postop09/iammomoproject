@@ -24,9 +24,7 @@ export default function Nav() {
           MOMO
         </BtnHome>
       </WrapHeader>
-      <ModalWrapper>
         {modal && <MenuBar setModal={setModal} modal={modal} />}
-      </ModalWrapper>
     </Header>
   );
 }
@@ -37,15 +35,6 @@ const Header = styled.header`
   width: 100vw;
   background-color: #fff;
   z-index: 100;
-  animation: modal-bg-show 3s;
-  @keyframes modal-bg-show {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
 `;
 const WrapHeader = styled.div`
   display: flex;
@@ -66,14 +55,3 @@ const BtnHome = styled.button`
   font-size: 1.1rem;
   cursor: pointer;
 `
-const ModalWrapper = styled.div`
-  animation: modal-bg-show 3s;
-  @keyframes modal-bg-show {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-`;

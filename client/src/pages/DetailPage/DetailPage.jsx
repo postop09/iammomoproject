@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import ModalMoreMenu from '../../components/Modal/ModalMoreMenu';
-import testData from '../../database/testData.json';
 import theme from '../../theme';
+// import testData from '../../database/testData.json';
 
 export default function DetailPage() {
   const pickedPostId = window.location.pathname.split('/').pop();
@@ -21,11 +21,9 @@ export default function DetailPage() {
       userId: userId,
       content: txtArea
     });
-    console.log(res);
   }
   const fetchGETuserpost = async() => {
     const res = await axios.get(`${url}/user/${userId}/post`);
-    console.log(res);
     res.data.map((post) => {
       if (post.id === +pickedPostId) {
         setMyTopic(post.topic);

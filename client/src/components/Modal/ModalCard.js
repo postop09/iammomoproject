@@ -33,7 +33,6 @@ export default function ModalCard({setIsClicked, isLoggedIn, Question, url}) {
       content: myContents,
       userId: userId
     });
-    console.log(res);
   }
 
   const setValue = (e) => {

@@ -2,8 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import theme from '../../theme'
 
-export default function QuestionCard({contents, createDate, postId, setIsClicked, setCardId}) {
-  // const [year, month, date] = createDate.split('-');
+export default function QuestionCard({contents, topic, postId, setIsClicked, setCardId}) {
   const openModal = (e) => {
     setIsClicked((prev) => !prev);
     setCardId(e.currentTarget.id);
@@ -13,10 +12,9 @@ export default function QuestionCard({contents, createDate, postId, setIsClicked
   return (
     <SecShareCard onClick={openModal} id={postId}>
       <BtnCard>
-        <WrapColorBox></WrapColorBox>
+      <Txtarea value={contents} readOnly></Txtarea>
         <WrapTxt>
-          <TxtTitle>{contents}</TxtTitle>
-          {/* <TxtDate>{createDate}</TxtDate> */}
+          <TxtTitle>{topic}</TxtTitle>
         </WrapTxt>
       </BtnCard>
     </SecShareCard>
@@ -24,42 +22,38 @@ export default function QuestionCard({contents, createDate, postId, setIsClicked
 }
 
 const SecShareCard = styled.li`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 0 7px 1px #00000050;
-  width:30vw;
-  padding: 1vw;
-  font-size: .7rem;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  background-color: #ffffff;
-  list-style: none;
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 0 10px;
 `
 const BtnCard = styled.button`
+  box-shadow: 0 1px 3px 1px #00000050;
+  border-radius: 10px;
   width: 100%;
   padding: 0;
 `
-const WrapColorBox = styled.div`
+const Txtarea = styled.textarea`
+  border: none;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   width: 100%;
-  height: 12vh;
+  height: 23vh;
+  padding: 5px 10px;
+  font-family: ${theme.font.basic_font};
+  font-size: .9rem;
   background-color: ${theme.color.mellow};
+  resize: none;
+  overflow: hidden;
 `
 const WrapTxt = styled.div`
   width: 100%;
-  padding: 10px 3px;
+  padding: 10px 10px 15px;
   text-align: left;
 `
 const TxtTitle = styled.p`
-  width: 85%;
   line-height: 1rem;
   font-family: ${theme.font.gothic_font};
-  font-size: .9rem;
+  font-size: 1rem;
   font-weight: 700;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  line-height: 1.2rem;
 `
-// const TxtDate = styled.p`
-//   color: #6e6e6e;
-// `

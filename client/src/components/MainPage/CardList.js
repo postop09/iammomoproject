@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import styled from 'styled-components';
-// import questionData from '../../database/questionData.json';
 import axios from 'axios';
+// import questionData from '../../database/questionData.json';
+
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -80,14 +80,3 @@ export default function CardList({setIsClicked, setQuestion, topic, setTopic, ur
     </section>
   )
 }
-
-// const ListCards = styled.ul`
-//   display: flex;
-//   overflow-x: scroll;
-//   column-gap: 2vw;
-//   margin: 60px 10px 0px;
-//   padding: 10px 0;
-//   &::-webkit-scrollbar {
-//     display: none;
-//   }
-// `

@@ -9,7 +9,6 @@ export default function ModalMoreMenu({setModify, setModal, pickedPostId, url}) 
 
   const fetchDELETEpost = async() => {
     const res = await axios.delete(`${url}/post/${pickedPostId}`);
-    console.log(res);
   }
   const postModify = () => {
     setModify(true);

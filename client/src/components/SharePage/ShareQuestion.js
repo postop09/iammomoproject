@@ -2,10 +2,9 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import theme from '../../theme';
 import ListQuestionCard from './ListQuestionCard';
-import questionData from '../../database/questionData.json';
 import axios from 'axios';
 
-export default function ShareQuestion({setIsClicked, setCardId, userId, url}) {
+export default function ShareQuestion({setIsClicked, setCardId, url}) {
   const [topic, setTopic] = useState('질문 선택');
   const [category, setCategory] = useState([]);
   const [allPost, setAllPost] = useState([])
@@ -14,14 +13,12 @@ export default function ShareQuestion({setIsClicked, setCardId, userId, url}) {
   }
   const fetchGETtopic = async() => {
     const res = await axios.get(`${url}/topic`);
-    console.log(res);
     res.data.map((topicInfo) => {
       setCategory((prev) => [...prev, topicInfo]);
     })
   }
   const fetchGETpost = async() => {
     const res = await axios.get(`${url}/post`);
-    console.log(res);
     res.data.map((post) => {
       setAllPost((prev) => [...prev, post]);
     })
@@ -49,7 +46,7 @@ export default function ShareQuestion({setIsClicked, setCardId, userId, url}) {
 }
 
 const WrapShare = styled.section`
-  padding: 3vh 10px 0;
+  padding: 5vh 10px 0;
   font-family: ${theme.font.basic_font};
   text-align: center;
 `

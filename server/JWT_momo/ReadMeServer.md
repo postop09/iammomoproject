@@ -16,17 +16,16 @@
 
 ### 2022-04-20 개발상황
 * CORS 에러 해결 
-* (프론트님 요구사항) Topic Entity CreateAt 추가 
+* Topic Entity CreateAt 추가 (프론트님 요구사항) 
 * Topic CRUD 서버 업데이트
 
 ### 2022-04-21 개발상황
 * User CRUD API 생성
 * Post CRUD API 생성
 * Swagger 적용
-* (프론트님 요구사항) POST CRUD 수정 + DB변경 
+* POST CRUD 수정 + DB변경 (프론트님 요구사항)
 
 ### 2022-04-22 개발상황
-* 회원가입 API 구현 (test Project)
 * CORS 에러 해결 2
 * 로그인 API 테스트
 
@@ -34,6 +33,9 @@
 * 나의 게시글 확인 기능 API 생성
 
 ### 2022-04-24 개발상황
-* swagger 명세서 업데이트 
-* (기획자님 요구사항) 데이터베이스 초기 데이터 삽입
-* 로그인 회원가입 구현 완료 (jwt)
+* swagger 명세서 업데이트
+* 데이터베이스 초기 데이터 삽입 (기획자님 요구사항)
+* JWT 토큰 로그인 회원가입 구현
+
+
+---
