@@ -21,16 +21,19 @@ import java.io.IOException;
 @Slf4j
 @Component
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
+    //모든 요청에 대해서 http 판단
 
     @Autowired
     private TokenProvider tokenProvider;
 
-    @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+    @Override               //request 오는 것을 체크하고 판단
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+            throws ServletException, IOException {
         try {
             // 리퀘스트에서 토큰 가져오기.
             String token = parseBearerToken(request);
             log.info("Filter is running...");
+
             // 토큰 검사하기. JWT이므로 인가 서버에 요청 하지 않고도 검증 가능.
             if (token != null && !token.equalsIgnoreCase("null")) {
                 // userId 가져오기. 위조 된 경우 예외 처리 된다.
@@ -55,6 +58,12 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     }
 
     private String parseBearerToken(HttpServletRequest request) {
+        /**
+         bearer token 은 token 포맷의 일종이다. 라이언트 사이드에서 REST API 호출 시 bearer 토큰을 포함하여 서버로 request 를 보내고,
+         서버는 연동된 DB 를 조회하여 클라이언트가 보낸 토큰이 valid 한 토큰인지 확인 후 서비스를 제공하거나,
+         invalid token 정도의 response 를 보낼 수 있으면 된다.
+         * */
+
         // Http 리퀘스트의 헤더를 파싱해 Bearer 토큰을 리턴한다.
         String bearerToken = request.getHeader("Authorization");
 

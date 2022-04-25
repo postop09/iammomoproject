@@ -60,14 +60,14 @@ public class JwtUserController {
     }
 
     @PostMapping("/signin")
-    @ApiOperation(value = "회원가입", notes = "email, username, password 필요")
+    @ApiOperation(value = "로그인", notes = "email, password 필요")
     public ResponseEntity<?> authenticate(@RequestBody JwtUserDTO userDTO) {
         JwtUserEntity user = userService.getByCredentials(userDTO.getEmail(), userDTO.getPassword(), passwordEncoder);
 
         if(user != null){
             final String token = tokenProvider.create(user);
             final JwtUserDTO responseUsetDTO = JwtUserDTO.builder()
-                    .email(user.getUsername())
+                    .email(user.getEmail())
                     .id(user.getId())
                     .token(token)
                     .build();

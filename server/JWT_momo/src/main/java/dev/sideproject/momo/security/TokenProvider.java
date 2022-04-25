@@ -13,7 +13,10 @@ import java.util.Date;
 
 @Service
 public class TokenProvider {
+    //토큰을 만들기 위한 클래스
+                                //jwt생성을 위한 키
     private static final String SECRET_KEY = "MMA8JPctFuna59f5";
+
 
     public String create(JwtUserEntity userEntity){
         // 기한 지금으로부터 1일로 설정
