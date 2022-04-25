@@ -10,8 +10,6 @@ import { Link } from "react-router-dom";
 const MenuBar = (props) => {
   const navigate = useNavigate();
 
-  const { data, mutate } = useSWR("/api/users/auth", fetcher);
-
   const registerHandler = () => {
     navigate("/register");
   };
@@ -25,15 +23,21 @@ const MenuBar = (props) => {
   };
 
   const onLogout = useCallback(() => {
-    axios
-      .post("/api/users/logout", { id: data._id }, { withCredentials: true })
-      .then(() => mutate(false, false));
+    // axios
+    //   .post(
+    //     "/api/users/logout",
+    //     { id: window.localStorage.getItem("data").id },
+    //     { withCredentials: true }
+    //   )
+    //   .then(() => window.localStorage.clear());
+    window.localStorage.clear();
+    console.log(1);
   });
 
   return (
     <Wrapper>
       <HeadSection>
-        {data?.isAuth ? (
+        {window.localStorage.getItem("data") ? (
           <div>
             <button onClick={onLogout}>로그아웃</button>
           </div>
@@ -45,17 +49,89 @@ const MenuBar = (props) => {
         )}
       </HeadSection>
       <BodySection>
-        <button type="button" onClick={() => {navigate('/');modalHandler();}}>MOMO</button>
-        <button type="button" onClick={() => {navigate('/beamomo');modalHandler();}}>MOMO 되기</button>
-        <button type="button" onClick={() => {navigate('/rules');modalHandler();}}>MOMO 규칙</button>
-        <button type="button" onClick={() => {navigate('/mymomo');modalHandler();}}>My MOMO</button>
-        <button type="button" onClick={() => {navigate('/');modalHandler();}}>My Question</button>
-        <button type="button" onClick={() => {navigate('/momoshare');modalHandler();}}>MOMO Library</button>
-        <button type="button" onClick={() => {navigate('/');modalHandler();}}>MOMO 알람</button>
+        <button
+          type="button"
+          onClick={() => {
+            navigate("/");
+            modalHandler();
+          }}
+        >
+          MOMO
+        </button>
+        <button
+          type="button"
+          onClick={() => {
+            navigate("/beamomo");
+            modalHandler();
+          }}
+        >
+          MOMO 되기
+        </button>
+        <button
+          type="button"
+          onClick={() => {
+            navigate("/rules");
+            modalHandler();
+          }}
+        >
+          MOMO 규칙
+        </button>
+        <button
+          type="button"
+          onClick={() => {
+            navigate("/mymomo");
+            modalHandler();
+          }}
+        >
+          My MOMO
+        </button>
+        <button
+          type="button"
+          onClick={() => {
+            navigate("/");
+            modalHandler();
+          }}
+        >
+          My Question
+        </button>
+        <button
+          type="button"
+          onClick={() => {
+            navigate("/momoshare");
+            modalHandler();
+          }}
+        >
+          MOMO Library
+        </button>
+        <button
+          type="button"
+          onClick={() => {
+            navigate("/");
+            modalHandler();
+          }}
+        >
+          MOMO 알람
+        </button>
       </BodySection>
       <FooterSection>
-        <button type="button" onClick={() => {navigate('/about');modalHandler();}}>About Us</button>
-        <button type="button" onClick={() => {navigate('/contact');modalHandler();}}>Contact Us</button>
+        <button
+          type="button"
+          onClick={() => {
+            navigate("/about");
+            modalHandler();
+          }}
+        >
+          About Us
+        </button>
+        <button
+          type="button"
+          onClick={() => {
+            navigate("/contact");
+            modalHandler();
+          }}
+        >
+          Contact Us
+        </button>
       </FooterSection>
     </Wrapper>
   );
@@ -92,7 +168,7 @@ const HeadSection = styled.section`
     text-decoration: underline;
     margin: 1rem 0.5rem;
     padding-bottom: 2rem;
-    font-size: .9rem;
+    font-size: 0.9rem;
     > div:first-child {
       margin-right: 1rem;
     }
@@ -111,7 +187,7 @@ const BodySection = styled.section`
 
 const FooterSection = styled.section`
   text-align: center;
-  
+
   > button {
     padding-bottom: 1rem;
     font-size: 1rem;
