@@ -33,7 +33,6 @@ export default function ModalCard({setIsClicked, isLoggedIn, Question, url}) {
       content: myContents,
       userId: userId
     });
-    console.log(res);
   }
 
   const setValue = (e) => {
@@ -107,6 +106,7 @@ const SecModalCard = styled.article`
   width: 100vw;
   height: 100vh;
   background-color: #00000030;
+  z-index: 100;
 `
 const WrapModalCard = styled.div`
   position: absolute;

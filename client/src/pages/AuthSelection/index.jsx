@@ -6,7 +6,7 @@ import theme from "../../theme";
 const AuthSelection = () => {
   return (
     <Wrapper>
-      <img src={background} />
+      <img src={background} alt='' />
       <HeaderWrapper>
         <div>I'm MOMO Project</div>
       </HeaderWrapper>
@@ -45,13 +45,11 @@ const Wrapper = styled.div`
 const HeaderWrapper = styled.div`
   display: flex;
   justify-content: center;
-  /* text-align: center; */
   align-items: center;
   font-size: 2.5rem;
 `;
 
 const BodyWrapper = styled.div`
-  /* display: flex; */
   justify-content: center;
   align-items: center;
   padding: 1rem;
@@ -62,7 +60,6 @@ const BodyWrapper = styled.div`
     text-align: center;
     color: lightgray;
     > div {
-      /* justify-content: center; */
       width: 50vw;
       :first-child {
         border-right: 1px solid lightgray;

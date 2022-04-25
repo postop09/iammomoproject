@@ -1,8 +1,14 @@
-import styled from 'styled-components';
-import Card from './Card';
-import questionData from '../../database/questionData.json';
+import React, { useEffect } from "react";
 import axios from 'axios';
-import { useEffect } from 'react';
+// import questionData from '../../database/questionData.json';
+
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
+import "./styles.css";
+import { EffectCoverflow, Pagination } from "swiper";
 
 export default function CardList({setIsClicked, setQuestion, topic, setTopic, url}) {
   const handleClick = () => {
@@ -28,29 +34,49 @@ export default function CardList({setIsClicked, setQuestion, topic, setTopic, ur
   
 
   return (
-      <ListCards onClick={handleClick}>
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-      </ListCards>
+      <section>
+      <Swiper
+        effect={"coverflow"}
+        loop={true}
+        grabCursor={true}
+        centeredSlides={true}
+        slidesPerView={"auto"}
+        coverflowEffect={{
+          rotate: 10,
+          stretch: 0,
+          depth: 500,
+          modifier: 1,
+          slideShadows: true,
+        }}
+        modules={[EffectCoverflow, Pagination]}
+        className="mySwiper"
+        onClick={handleClick}
+      >
+        <SwiperSlide>
+          <img src={require('../../assets/img/img_card4.jpeg')} alt=''/>
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src={require('../../assets/img/img_card7.jpeg')} alt=''/>
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src={require('../../assets/img/img_card6.jpeg')} alt=''/>
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src={require('../../assets/img/img_card3.jpeg')} alt=''/>
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src={require('../../assets/img/img_card8.jpeg')} alt=''/>
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src={require('../../assets/img/img_card5.jpeg')} alt=''/>
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src={require('../../assets/img/img_card2.jpeg')} alt=''/>
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src={require('../../assets/img/img_back.jpg')} alt=''/>
+        </SwiperSlide>
+      </Swiper>
+    </section>
   )
 }
-
-const ListCards = styled.ul`
-  display: flex;
-  overflow-x: scroll;
-  column-gap: 2vw;
-  margin: 60px 10px 0px;
-  padding: 10px 0;
-  &::-webkit-scrollbar {
-    display: none;
-  }
-`
-
-

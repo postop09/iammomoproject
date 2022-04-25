@@ -1,11 +1,11 @@
-import axios from "axios";
+// import axios from "axios";
 import { useCallback } from "react";
 import { useNavigate } from "react-router";
 import styled from "styled-components";
 import theme from "../../theme";
-import useSWR from "swr";
-import fetcher from "../../utils/fetcher";
-import { Link } from "react-router-dom";
+// import useSWR from "swr";
+// import fetcher from "../../utils/fetcher";
+// import { Link } from "react-router-dom";
 
 const MenuBar = (props) => {
   const navigate = useNavigate();
@@ -31,6 +31,7 @@ const MenuBar = (props) => {
     //   )
     //   .then(() => window.localStorage.clear());
     window.localStorage.clear();
+    window.location.reload();
     console.log(1);
   });
 
@@ -40,6 +41,7 @@ const MenuBar = (props) => {
         {window.localStorage.getItem("data") ? (
           <div>
             <button onClick={onLogout}>로그아웃</button>
+            <button>설정</button>
           </div>
         ) : (
           <div>
@@ -49,69 +51,10 @@ const MenuBar = (props) => {
         )}
       </HeadSection>
       <BodySection>
-        <button
-          type="button"
-          onClick={() => {
-            navigate("/");
-            modalHandler();
-          }}
-        >
-          MOMO
-        </button>
-        <button
-          type="button"
-          onClick={() => {
-            navigate("/beamomo");
-            modalHandler();
-          }}
-        >
-          MOMO 되기
-        </button>
-        <button
-          type="button"
-          onClick={() => {
-            navigate("/rules");
-            modalHandler();
-          }}
-        >
-          MOMO 규칙
-        </button>
-        <button
-          type="button"
-          onClick={() => {
-            navigate("/mymomo");
-            modalHandler();
-          }}
-        >
-          My MOMO
-        </button>
-        <button
-          type="button"
-          onClick={() => {
-            navigate("/");
-            modalHandler();
-          }}
-        >
-          My Question
-        </button>
-        <button
-          type="button"
-          onClick={() => {
-            navigate("/momoshare");
-            modalHandler();
-          }}
-        >
-          MOMO Library
-        </button>
-        <button
-          type="button"
-          onClick={() => {
-            navigate("/");
-            modalHandler();
-          }}
-        >
-          MOMO 알람
-        </button>
+        <button type="button" onClick={() => {navigate('/beamomo');modalHandler();}}>MOMO 되기</button>
+        <button type="button" onClick={() => {navigate('/mymomo');modalHandler();}}>나의 MOMO</button>
+        <button type="button" onClick={() => {navigate('/');modalHandler();}}>나만의 질문</button>
+        <button type="button" onClick={() => {navigate('/momoshare');modalHandler();}}>MOMO 글모음</button>
       </BodySection>
       <FooterSection>
         <button
@@ -136,18 +79,9 @@ const MenuBar = (props) => {
     </Wrapper>
   );
 };
-
 export default MenuBar;
 
-const Backdrop = styled.div`
-  width: 100vh;
-  height: 100vh;
-  background-color: rgba(255, 255, 255, 0);
-  z-index: 1;
-`;
-
 const Wrapper = styled.div`
-  /* top: 5rem; */
   width: 40vw;
   height: 80vh;
   position: fixed;
@@ -160,8 +94,6 @@ const Wrapper = styled.div`
 const HeadSection = styled.section`
   display: flex;
   justify-content: space-around;
-  /* margin: 1rem 0.5rem;
-  padding-bottom: 2rem; */
   > div {
     display: flex;
     justify-content: space-around;
@@ -177,7 +109,7 @@ const HeadSection = styled.section`
 
 const BodySection = styled.section`
   text-align: center;
-  padding-bottom: 13rem;
+  padding-bottom: 21rem;
   > button {
     padding-bottom: 1rem;
     font-size: 1rem;
@@ -193,10 +125,4 @@ const FooterSection = styled.section`
     font-size: 1rem;
     font-family: ${theme.font.basic_font};
   }
-`;
-
-const Linkto = styled(Link)`
-  text-decoration: none;
-  font-size: 1.3rem;
-  color: black;
 `;

@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import theme from '../../theme';
-// import testData from '../../database/testData.json';
 import axios from 'axios';
+// import testData from '../../database/testData.json';
 
 export default function ModalOthersCard({setIsClicked, cardId, url}) {
   const [AllPost, setAllPost] = useState([])
   const fetchGETpost = async() => {
     const res = await axios.get(`${url}/post`);
-    console.log(res);
     res.data.map((post) => {
       return setAllPost((prev) => [...prev, post])
     })
@@ -32,7 +31,6 @@ export default function ModalOthersCard({setIsClicked, cardId, url}) {
               <WrapColorBox readOnly value={data.content}></WrapColorBox>
               <WrapTxt>
                 <TxtTitle>{data.topic}</TxtTitle>
-                {/* <TxtDate>{data.createDate}</TxtDate> */}
                 <BtnClose>
                   X<TxtHide>글 상세보기창 닫기</TxtHide>
                 </BtnClose>
@@ -62,14 +60,17 @@ const WrapShare = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   box-shadow: 0 0 10px 2px #00000050;
-  width:80vw;
-  height: 50vh;
+  border-radius: 10px;
+  width:90vw;
+  height: 53vh;
   padding: 2vw;
   font-family: ${theme.font.basic_font};
-  background-color: #ffffff;
+  background-color: ${theme.color.mellow};
   list-style: none;
 `
 const WrapColorBox = styled.textarea`
+  border: 1px solid ${theme.color.camel};
+  border-radius: 10px;
   width: 100%;
   height: 40vh;
   margin-bottom: 10px;
@@ -77,7 +78,7 @@ const WrapColorBox = styled.textarea`
   line-height: 1.7rem;
   font-size: 1rem;
   font-family: ${theme.font.basic_font};
-  background-color: ${theme.color.mellow};
+  background-color: ${theme.color.pantone};
   overflow-y: scroll;
   resize: none;
   cursor: default;
@@ -94,12 +95,6 @@ const TxtTitle = styled.strong`
   font-size: 1.1rem;
   font-weight: 700;
 `
-const TxtDate = styled.small`
-  display: block;
-  margin-top: 10px;
-  font-size: .9rem;
-  color: #6e6e6e;
-`
 const BtnClose = styled.button`
   position: absolute;
   right: 2vw;
@@ -107,7 +102,7 @@ const BtnClose = styled.button`
   box-shadow: 2px 1px 5px 1px #00000050;
   border-radius: 100%;
   padding: 4px 7px;
-  background-color: ${theme.color.mellow};
+  background-color: ${theme.color.camel};
   cursor: pointer;
 `
 const TxtHide = styled.span`

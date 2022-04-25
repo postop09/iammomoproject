@@ -118,11 +118,22 @@ const Register = () => {
         password: password,
       })
       .then((data) => {
-        navigate("/login");
         console.log(data);
       })
-      .catch((err) => console.log(err));
+      // .catch((err) => console.log(err));
+    
   };
+  // api/user
+  const fetchPOSTuser = async() => {
+    const res = await axios.post(`http://52.79.45.37:8080/api/user`, {
+      username: userName,
+      email: email,
+      password: password
+    })
+    console.log(res);
+    localStorage.setItem('apiData', JSON.stringify(res.data));
+    navigate("/login");
+  }
 
   return (
     <Wrapper>
@@ -259,7 +270,7 @@ const Register = () => {
               check2
             )
           }
-          onClick={submitHanler}
+          onClick={() => {submitHanler();fetchPOSTuser();}}
         >
           회원가입
         </RegisterButton>

@@ -1,13 +1,16 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import theme from "../../theme";
 import MenuBar from "../Modal/MenuBar";
 
 export default function Nav() {
   const [modal, setModal] = useState(false);
-
   const modalHandler = () => {
     setModal(!modal);
   };
+  const navigate = useNavigate();
+
   return (
     <Header>
       <WrapHeader>
@@ -17,10 +20,11 @@ export default function Nav() {
             alt="메뉴열기"
           />
         </BtnMenu>
+        <BtnHome onClick={() => {navigate('/');setModal(false);}}>
+          MOMO
+        </BtnHome>
       </WrapHeader>
-      <ModalWrapper>
         {modal && <MenuBar setModal={setModal} modal={modal} />}
-      </ModalWrapper>
     </Header>
   );
 }
@@ -31,15 +35,6 @@ const Header = styled.header`
   width: 100vw;
   background-color: #fff;
   z-index: 100;
-  animation: modal-bg-show 3s;
-  @keyframes modal-bg-show {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
 `;
 const WrapHeader = styled.div`
   display: flex;
@@ -54,15 +49,9 @@ const BtnMenu = styled.button`
 const ImgMenu = styled.img`
   height: 70%;
 `;
-
-const ModalWrapper = styled.div`
-  animation: modal-bg-show 3s;
-  @keyframes modal-bg-show {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-`;
+const BtnHome = styled.button`
+  padding-bottom: 2px;
+  font-family: ${theme.font.gothic_font};
+  font-size: 1.1rem;
+  cursor: pointer;
+`

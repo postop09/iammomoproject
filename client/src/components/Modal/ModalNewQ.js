@@ -10,7 +10,6 @@ export default function ModalNewQ({setNewQ}) {
     const res = await axios.post(`${url}/topic`, {
       title: inpTopic
     })
-    console.log(res);
   }
   const BtnSubmit = () => {
     const answer = window.confirm('등록할까요?')

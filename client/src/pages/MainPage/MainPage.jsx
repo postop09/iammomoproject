@@ -4,7 +4,6 @@ import CardList from '../../components/MainPage/CardList'
 import styled, { keyframes } from 'styled-components'
 import SideTxt from '../../components/MainPage/SideTxt'
 import ModalCard from '../../components/Modal/ModalCard'
-import axios from 'axios'
 
 export default function MainPage() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -12,19 +11,11 @@ export default function MainPage() {
   const [Question, setQuestion] = useState('');
   const [topic, setTopic] = useState([]);
 
-  // 계정 호출
-  const userId = 1; // 회원가입 response에서 id 저장한 값
   const url = 'http://52.79.45.37:8080/api';
-  const fetchGETuser = async() => {
-    const res = await axios.get(`${url}/user/${userId}`);
-    console.log(res);
-    if (res.data) {
-      setIsLoggedIn(true);
-      localStorage.setItem('userId', res.data.id)
-    }
-  }
   useEffect(() => {
-    fetchGETuser();
+    if (JSON.parse(localStorage.getItem('data'))) {
+      setIsLoggedIn(true);
+    }
   }, []);
   
 
@@ -38,11 +29,13 @@ export default function MainPage() {
       <CardList setIsClicked={setIsClicked} setQuestion={setQuestion} topic={topic} setTopic={setTopic} url={url} />
       {isLoggedIn ?
         '' :
-        <WrapTxtInfo>
-          위 카드를 선택해주세요. <IconTri>▲</IconTri>
-        </WrapTxtInfo>
+        <>
+          <WrapTxtInfo>
+            위 카드를 선택해주세요. <IconTri>▲</IconTri>
+          </WrapTxtInfo>
+          <SideTxt />
+        </>
       }
-        <SideTxt />
       {isClicked ? <ModalCard setIsClicked={setIsClicked} isLoggedIn={isLoggedIn} Question={Question} url={url} /> : ''}
     </WrapMain>
   )

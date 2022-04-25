@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import theme from '../../theme'
 
 export default function SideTxt() {
   return (
@@ -45,7 +44,6 @@ const TxtSubtitle = styled.strong`
   display: block;
   margin: 20px 0 15px;
   line-height: 25px;
-  /* font-size: 1.1rem; */
   font-weight: 700;
 `
 const TxtBlock = styled.span`
