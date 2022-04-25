@@ -34,13 +34,17 @@ export default function Profile({userId, url}) {
 
   // 회원가입/로그인 테스트
   // const fetchTEST = async() => {
-  //   const res = await axios.post(`${url}`);
+  //   const res = await axios.post(`http://52.79.45.37:8080/auth/signup`, {
+  //     email: 'test@naver.com',
+  //     username: 'user1',
+  //     password: 'asdf'
+  //   });
   //   console.log(res);
   // }
   // const fetchTESTlogin = async() => {
-  //   const res = await axios.post(`${url}`, {
-  //     username: 'haha',
-  //     password: '1234'
+  //   const res = await axios.post(`http://52.79.45.37:8080/auth/signin`, {
+  //     email: 'test@naver.com',
+  //     password: 'asdf'
   //   });
   //   console.log(res);
   // }
