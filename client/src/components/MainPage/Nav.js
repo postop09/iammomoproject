@@ -41,17 +41,21 @@ const WrapHeader = styled.div`
   align-items: center;
   border-bottom: 1px solid lightgray;
   height: 42px;
+  padding: 1px 5px;
 `;
 const BtnMenu = styled.button`
   height: 90%;
+  padding: 0;
   cursor: pointer;
 `;
 const ImgMenu = styled.img`
   height: 80%;
 `;
 const BtnHome = styled.button`
+  margin-left: 5px;
+  padding: 0px 0 5px;
   font-family: ${theme.font.gothic_font};
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 700;
   cursor: pointer;
 `

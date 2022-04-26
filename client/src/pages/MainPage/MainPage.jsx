@@ -4,6 +4,7 @@ import CardList from '../../components/MainPage/CardList'
 import styled, { keyframes } from 'styled-components'
 import SideTxt from '../../components/MainPage/SideTxt'
 import ModalCard from '../../components/Modal/ModalCard'
+import ImgBack from '../../assets/img/img_paper1.jpg';
 
 export default function MainPage() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -55,7 +56,11 @@ const WrapMain = styled.main`
   padding-top: 10vh;
   font-family: ${theme.font.gothic_font};
   text-align: center;
-  background-color: ${theme.color.pantone};
+  /* background-color: ${theme.color.pantone}; */
+  background-image: url(${ImgBack});
+  background-position: center center;
+  background-size: cover;
+  
 `
 const TxtMain = styled.strong`
   font-family: ${theme.font.basic_font};

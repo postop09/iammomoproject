@@ -108,6 +108,7 @@ const BtnLink = styled.button`
   box-shadow: 0 2px 5px 1px #00000050;
   border-radius: 3px;
   margin-top: 1vh;
+  padding: 3px 7px;
   font-size: 1.2rem;
   font-weight: 700;
   font-family: ${theme.font.gothic_font};
