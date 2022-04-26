@@ -142,7 +142,7 @@ const FrontBox = styled.form`
   border-radius: 15px;
   width: 100%;
   height: 100%;
-  padding: 10px 10px 10px;
+  padding: 15px 10px 10px;
   background-color: #ffffff;
   background-color: ${theme.color.mellow};
   backface-visibility: hidden;

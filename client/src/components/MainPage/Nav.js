@@ -54,7 +54,7 @@ const ImgMenu = styled.img`
 const BtnHome = styled.button`
   margin-left: 5px;
   padding: 0px 0 5px;
-  font-family: ${theme.font.gothic_font};
+  font-family: ${theme.font.basic_font};
   font-size: 1.3rem;
   font-weight: 700;
   cursor: pointer;
