@@ -42,9 +42,9 @@ export default function CardList({setIsClicked, setQuestion, topic, setTopic, ur
         centeredSlides={true}
         slidesPerView={"auto"}
         coverflowEffect={{
-          rotate: 10,
+          rotate: 0,
           stretch: 0,
-          depth: 500,
+          depth: 300,
           modifier: 1,
           slideShadows: true,
         }}
@@ -52,7 +52,7 @@ export default function CardList({setIsClicked, setQuestion, topic, setTopic, ur
         className="mySwiper"
         onClick={handleClick}
       >
-        <SwiperSlide>
+        {/* <SwiperSlide>
           <img src={require('../../assets/img/img_card4.jpeg')} alt=''/>
         </SwiperSlide>
         <SwiperSlide>
@@ -60,18 +60,18 @@ export default function CardList({setIsClicked, setQuestion, topic, setTopic, ur
         </SwiperSlide>
         <SwiperSlide>
           <img src={require('../../assets/img/img_card6.jpeg')} alt=''/>
+        </SwiperSlide> */}
+        <SwiperSlide>
+        <img src={require('../../assets/img/img_back.jpg')} alt=''/>
         </SwiperSlide>
         <SwiperSlide>
-          <img src={require('../../assets/img/img_card3.jpeg')} alt=''/>
+        <img src={require('../../assets/img/img_back.jpg')} alt=''/>
         </SwiperSlide>
         <SwiperSlide>
-          <img src={require('../../assets/img/img_card8.jpeg')} alt=''/>
+        <img src={require('../../assets/img/img_back.jpg')} alt=''/>
         </SwiperSlide>
         <SwiperSlide>
-          <img src={require('../../assets/img/img_card5.jpeg')} alt=''/>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={require('../../assets/img/img_card2.jpeg')} alt=''/>
+        <img src={require('../../assets/img/img_back.jpg')} alt=''/>
         </SwiperSlide>
         <SwiperSlide>
           <img src={require('../../assets/img/img_back.jpg')} alt=''/>

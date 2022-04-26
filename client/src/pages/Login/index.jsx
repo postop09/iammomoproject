@@ -71,6 +71,7 @@ const Login = () => {
       if (user.email === email) {
         localStorage.setItem('apiData', JSON.stringify(user));
         localStorage.setItem('userId', user.id);
+        navigate("/");
       }
     })
   }
