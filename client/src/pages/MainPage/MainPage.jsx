@@ -51,9 +51,11 @@ const MoveUpDown = keyframes`
 `
 
 const WrapMain = styled.main`
+  min-height: 100vh;
   padding-top: 10vh;
   font-family: ${theme.font.gothic_font};
   text-align: center;
+  background-color: ${theme.color.pantone};
 `
 const TxtMain = styled.strong`
   font-family: ${theme.font.basic_font};

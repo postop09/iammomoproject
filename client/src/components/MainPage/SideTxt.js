@@ -4,7 +4,7 @@ import styled from 'styled-components'
 export default function SideTxt() {
   return (
       <SecTxt>
-        <TxtTitle>I am MOMO Project</TxtTitle>
+        <TxtTitle>I am <span>MOMO</span> Project</TxtTitle>
         <p>
           <TxtSubtitle>단 5분, 가장 솔직해지는 시간</TxtSubtitle>
           <TxtBlock>남들의 시선을 신경쓰느라</TxtBlock>
@@ -26,7 +26,7 @@ export default function SideTxt() {
           <TxtBlock>서로의 일상을 나누고</TxtBlock>
           <TxtBlock>공감하고 소통할 수 있는 곳입니다. </TxtBlock>
   
-          <TxtSubtitle>세상의 모든 모모를 위해</TxtSubtitle>
+          <TxtSubtitle><span>세상의 모든 모모를 위해</span></TxtSubtitle>
         </p>
       </SecTxt>
   )
@@ -39,12 +39,19 @@ const TxtTitle = styled.h3`
   margin-bottom: 40px;
   font-size: 1.3rem;
   font-weight: 700;
+  > span {
+    font-size: 1.4rem;
+    color: #d9730d;
+  }
 `
 const TxtSubtitle = styled.strong`
   display: block;
   margin: 20px 0 15px;
   line-height: 25px;
   font-weight: 700;
+  > span {
+    font-size: 1.2rem;
+  }
 `
 const TxtBlock = styled.span`
   display: block;
