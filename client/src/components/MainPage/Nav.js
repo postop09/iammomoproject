@@ -20,7 +20,7 @@ export default function Nav() {
             alt="메뉴열기"
           />
         </BtnMenu>
-        <BtnHome onClick={() => {navigate('/');setModal(false);}}>
+        <BtnHome onClick={() => {navigate('/'); setModal(false);}}>
           MOMO
         </BtnHome>
       </WrapHeader>
@@ -40,18 +40,18 @@ const WrapHeader = styled.div`
   display: flex;
   align-items: center;
   border-bottom: 1px solid lightgray;
-  height: 5vh;
+  height: 42px;
 `;
 const BtnMenu = styled.button`
   height: 90%;
   cursor: pointer;
 `;
 const ImgMenu = styled.img`
-  height: 70%;
+  height: 80%;
 `;
 const BtnHome = styled.button`
-  padding-bottom: 2px;
   font-family: ${theme.font.gothic_font};
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  font-weight: 700;
   cursor: pointer;
 `

@@ -124,7 +124,7 @@ const BackBox = styled.div`
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
-  animation: ${RotateFrontCard} 2s ease-in-out forwards;
+  animation: ${RotateFrontCard} 1s ease-in-out forwards;
   `
 const ImgBack = styled.img`
   border-radius: 7px;
@@ -146,7 +146,7 @@ const FrontBox = styled.form`
   background-color: #ffffff;
   background-color: ${theme.color.mellow};
   backface-visibility: hidden;
-  animation: ${RotateBackCard} 2s ease-in-out forwards;
+  animation: ${RotateBackCard} 1s ease-in-out forwards;
 `
 const TxtQuestion = styled.strong`
   line-height: 1.4rem;

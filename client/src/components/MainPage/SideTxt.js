@@ -11,7 +11,7 @@ export default function SideTxt() {
           <TxtBlock>가면을 쓰는 기분을 느끼시나요?</TxtBlock>
           <TxtBlock>솔직한 일상을 나눌 곳이 필요한가요?</TxtBlock>
   
-          <TxtSubtitle>I’m MOMO 프로젝트는 본격 ‘일상 공감’ 프로젝트입니다.</TxtSubtitle>
+          <TxtSubtitle><span>I’m MOMO 프로젝트는</span> 본격 ‘일상 공감’ 프로젝트입니다.</TxtSubtitle>
           <TxtBlock>아이엠 MOMO 프로젝트에서는</TxtBlock>
           <TxtBlock>단 하나의 이름, ‘모모’로 </TxtBlock>
           <TxtBlock>매일 단 5분, 다양한 일상을 나눕니다.</TxtBlock>
@@ -26,7 +26,7 @@ export default function SideTxt() {
           <TxtBlock>서로의 일상을 나누고</TxtBlock>
           <TxtBlock>공감하고 소통할 수 있는 곳입니다. </TxtBlock>
   
-          <TxtSubtitle><span>세상의 모든 모모를 위해</span></TxtSubtitle>
+          <TxtTitleBlock>세상의 모든 모모를 위해</TxtTitleBlock>
         </p>
       </SecTxt>
   )
@@ -34,6 +34,7 @@ export default function SideTxt() {
 
 const SecTxt = styled.section`
   margin-top: 80px;
+  padding-bottom: 20px;
 `
 const TxtTitle = styled.h3`
   margin-bottom: 40px;
@@ -50,8 +51,15 @@ const TxtSubtitle = styled.strong`
   line-height: 25px;
   font-weight: 700;
   > span {
-    font-size: 1.2rem;
+    display: block;
   }
+`
+const TxtTitleBlock = styled.span`
+  display: block;
+  margin: 20px 0 15px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 25px;
 `
 const TxtBlock = styled.span`
   display: block;

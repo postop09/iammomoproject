@@ -36,59 +36,72 @@ const MenuBar = (props) => {
   });
 
   return (
-    <Wrapper>
-      <HeadSection>
-        {window.localStorage.getItem("data") || window.localStorage.getItem("apiData") ? (
-          <div>
-            <button onClick={onLogout}>로그아웃</button>
-            <button>설정</button>
-          </div>
-        ) : (
-          <div>
-            <div onClick={registerHandler}>회원가입</div>
-            <div onClick={loginHandler}>로그인</div>
-          </div>
-        )}
-      </HeadSection>
-      <BodySection>
-        <button type="button" onClick={() => {navigate('/beamomo');modalHandler();}}>MOMO 되기</button>
-        <button type="button" onClick={() => {navigate('/mymomo');modalHandler();}}>나의 MOMO</button>
-        <button type="button" onClick={() => {navigate('/');modalHandler();}}>나만의 질문</button>
-        <button type="button" onClick={() => {navigate('/momoshare');modalHandler();}}>MOMO 글모음</button>
-      </BodySection>
-      <FooterSection>
-        <button
-          type="button"
-          onClick={() => {
-            navigate("/about");
-            modalHandler();
-          }}
-        >
-          About Us
-        </button>
-        <button
-          type="button"
-          onClick={() => {
-            navigate("/contact");
-            modalHandler();
-          }}
-        >
-          Contact Us
-        </button>
-      </FooterSection>
-    </Wrapper>
+    <OverWrap>
+      <Wrapper>
+        <HeadSection>
+          {window.localStorage.getItem("data") || window.localStorage.getItem("apiData") ? (
+            <div>
+              <button onClick={onLogout}>로그아웃</button>
+              <button>설정</button>
+            </div>
+          ) : (
+            <div>
+              <div onClick={registerHandler}>회원가입</div>
+              <div onClick={loginHandler}>로그인</div>
+            </div>
+          )}
+        </HeadSection>
+        <BodySection>
+          <button type="button" onClick={() => {navigate('/beamomo');modalHandler();}}>MOMO 되기</button>
+          <button type="button" onClick={() => {navigate('/mymomo');modalHandler();}}>나의 MOMO</button>
+          <button type="button" onClick={() => {navigate('/');modalHandler();}}>나만의 질문</button>
+          <button type="button" onClick={() => {navigate('/momoshare');modalHandler();}}>MOMO 글모음</button>
+        </BodySection>
+        <FooterSection>
+          <button
+            type="button"
+            onClick={() => {
+              navigate("/about");
+              modalHandler();
+            }}
+          >
+            About Us
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              navigate("/contact");
+              modalHandler();
+            }}
+          >
+            Contact Us
+          </button>
+        </FooterSection>
+      </Wrapper>
+    </OverWrap>
   );
 };
 export default MenuBar;
 
+const OverWrap = styled.div`
+  position: fixed;
+  top: 42px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #00000050;
+`
 const Wrapper = styled.div`
-  width: 40vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 154px;
   height: 80vh;
   position: fixed;
   background-color: white;
   border: 2px solid black;
   border-left: none;
-  z-index: 2;
+  z-index: 10;
 `;
 
 const HeadSection = styled.section`
@@ -106,10 +119,9 @@ const HeadSection = styled.section`
     }
   }
 `;
-
 const BodySection = styled.section`
+  margin-bottom: auto;
   text-align: center;
-  padding-bottom: 21rem;
   > button {
     padding-bottom: 1rem;
     font-size: 1rem;
@@ -119,7 +131,6 @@ const BodySection = styled.section`
 
 const FooterSection = styled.section`
   text-align: center;
-
   > button {
     padding-bottom: 1rem;
     font-size: 1rem;

@@ -50,6 +50,7 @@ table {
 button {
   background: inherit;
   border: none;
+  color: black;
 }
 `;
 

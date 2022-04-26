@@ -41,7 +41,7 @@ export default function DetailPage() {
     if (answer) {
       fetchPUTpost();
       setModify(false);
-      window.location.reload();
+      window.history.back();
     }
   }
   const btnCancel = () => {
