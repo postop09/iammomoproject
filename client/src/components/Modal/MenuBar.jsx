@@ -38,7 +38,7 @@ const MenuBar = (props) => {
   return (
     <Wrapper>
       <HeadSection>
-        {window.localStorage.getItem("data") ? (
+        {window.localStorage.getItem("data") || window.localStorage.getItem("apiData") ? (
           <div>
             <button onClick={onLogout}>로그아웃</button>
             <button>설정</button>

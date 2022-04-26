@@ -13,7 +13,7 @@ export default function MainPage() {
 
   const url = 'http://52.79.45.37:8080/api';
   useEffect(() => {
-    if (JSON.parse(localStorage.getItem('data'))) {
+    if (JSON.parse(localStorage.getItem('data')) || JSON.parse(localStorage.getItem('apiData'))) {
       setIsLoggedIn(true);
     }
   }, []);
