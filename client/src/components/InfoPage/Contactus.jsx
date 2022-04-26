@@ -36,14 +36,6 @@ const Contactus = () => {
 
   return (
     <Wrapper>
-      <BackgroundWrapper>
-        <Background>
-          <TxtBack>M</TxtBack>
-          <TxtBack>O</TxtBack>
-          <TxtBack>M</TxtBack>
-          <TxtBack>O</TxtBack>
-        </Background>
-      </BackgroundWrapper>
       <Piece>
         <PieceHeader>자주 묻는질문(FAQ)</PieceHeader>
         <FAQ>
@@ -74,11 +66,11 @@ const Contactus = () => {
         <form ref={form} onSubmit={sendEmail}>
           <InputWrapper>
             <label>Name</label>
-            <input type="text" name="user_name" />
+            <InpText type="text" name="user_name" />
           </InputWrapper>
           <InputWrapper>
             <label>Email</label>
-            <input type="email" name="user_email" />
+            <InpText type="email" name="user_email" />
           </InputWrapper>
           <InputWrapper>
             <label>Message</label>
@@ -99,41 +91,12 @@ export default Contactus;
 
 const Wrapper = styled.div`
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   background-color: ${(props) => props.theme.color.pantone};
   font-family: ${(props) => props.theme.font.gothic_font};
-  /* padding: 1rem; */
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding: 1rem 1rem;
   line-height: 150%;
   margin-top: 2.5rem;
-  /* padding-top: 5rem; */
-  /* padding-bottom: 10rem; */
-`;
-
-const BackgroundWrapper = styled.div`
-  position: absolute;
-  /* width: 100vw;
-  height: 100vh; */
-  overflow: hidden;
-  z-index: -1;
-`;
-
-const Background = styled.div`
-  position: absolute;
-  top: 30vh;
-  right: -97px;
-  line-height: 16rem;
-  font-size: 20rem;
-  font-weight: 700;
-  opacity: 0.1;
-  user-select: none;
-  cursor: default;
-  overflow: hidden;
-`;
-
-const TxtBack = styled.span`
-  display: block;
 `;
 
 const Piece = styled.div`
@@ -144,7 +107,6 @@ const Piece = styled.div`
   margin-bottom: 1rem;
   padding-top: 1rem;
   > a {
-    /* text-decoration: none; */
     color: ${(props) => props.theme.color.camel};
     padding-bottom: 1rem;
   }
@@ -165,22 +127,13 @@ const FAQ = styled.div`
 `;
 
 const InputWrapper = styled.div`
-  /* margin-bottom: 2rem; */
-  height: 5rem;
   > label {
     display: block;
-    margin-bottom: 0.5rem;
-  }
-  > input {
-    width: 100%;
-    height: 2rem;
-
-    border: 1px solid lightgray;
+    margin: 0.5rem 0;
   }
   > textarea {
     width: 100%;
     height: 4rem;
-
     border: 1px solid lightgray;
   }
   > div {
@@ -194,10 +147,16 @@ const InputWrapper = styled.div`
     }
   }
 `;
-
-const SubmitButton = styled.input`
-  margin-top: 1rem;
+const InpText = styled.input`
   width: 100%;
   height: 2rem;
+  border: 1px solid lightgray;
+`
+const SubmitButton = styled.input`
+  border: none;
+  border-radius: 30px;
+  margin-top: 1rem;
+  width: 100%;
+  height: 3rem;
   background-color: ${(props) => props.theme.color.camel};
 `;

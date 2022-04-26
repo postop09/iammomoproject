@@ -47,6 +47,9 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+select {
+  color: black;
+}
 button {
   background: inherit;
   border: none;

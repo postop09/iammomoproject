@@ -112,9 +112,9 @@ const WrapModalCard = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  width: 85vw;
-  height: 60vh;
+  transform: translate(-50%, -55%);
+  width: 72vw;
+  height: 55vh;
   perspective: 500px;
   `
 
@@ -142,7 +142,7 @@ const FrontBox = styled.form`
   border-radius: 15px;
   width: 100%;
   height: 100%;
-  padding: 20px 20px 20px;
+  padding: 10px 10px 10px;
   background-color: #ffffff;
   background-color: ${theme.color.mellow};
   backface-visibility: hidden;

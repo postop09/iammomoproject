@@ -3,14 +3,12 @@ import styled from "styled-components";
 const Rules = () => {
   return (
     <Wrapper>
-      <BackgroundWrapper>
         <Background>
           <TxtBack>M</TxtBack>
           <TxtBack>O</TxtBack>
           <TxtBack>M</TxtBack>
           <TxtBack>O</TxtBack>
         </Background>
-      </BackgroundWrapper>
       <Header>
         <div>
           <div>안녕하세요.</div>
@@ -62,21 +60,15 @@ export default Rules;
 
 const Wrapper = styled.div`
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   background-color: ${(props) => props.theme.color.pantone};
   padding-top: 5vh;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding: 2rem 1rem;
   line-height: 150%;
   font-family: ${(props) => props.theme.font.gothic_font};
-`;
-
-const BackgroundWrapper = styled.div`
-  position: absolute;
-  /* width: 100vw;
-  height: 100vh; */
   overflow: hidden;
 `;
+
 
 const Background = styled.div`
   position: absolute;
@@ -88,7 +80,6 @@ const Background = styled.div`
   opacity: 0.1;
   user-select: none;
   cursor: default;
-  /* height: 100%; */
 `;
 
 const TxtBack = styled.span`
@@ -134,9 +125,11 @@ const Rule = styled.div`
 `;
 
 const Footer = styled.div`
-  color: orange;
+  color: #d9730d;
 `;
 
 const Momo = styled.span`
-  color: orange;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #d9730d;
 `;

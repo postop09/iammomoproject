@@ -21,6 +21,11 @@ const MenuBar = (props) => {
   const modalHandler = () => {
     props.setModal(!props.modal);
   };
+  const modalclose = (e) => {
+    if (e.target.nodeName === 'ARTICLE') {
+      props.setModal(false);
+    }
+  };
 
   const onLogout = useCallback(() => {
     // axios
@@ -36,7 +41,7 @@ const MenuBar = (props) => {
   });
 
   return (
-    <OverWrap>
+    <OverWrap onClick={modalclose}>
       <Wrapper>
         <HeadSection>
           {window.localStorage.getItem("data") || window.localStorage.getItem("apiData") ? (
@@ -83,7 +88,7 @@ const MenuBar = (props) => {
 };
 export default MenuBar;
 
-const OverWrap = styled.div`
+const OverWrap = styled.article`
   position: fixed;
   top: 42px;
   left: 0;
@@ -96,7 +101,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   width: 154px;
-  height: 80vh;
+  height: 75vh;
   position: fixed;
   background-color: white;
   border: 2px solid black;
