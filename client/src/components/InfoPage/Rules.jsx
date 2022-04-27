@@ -59,6 +59,7 @@ const Rules = () => {
 export default Rules;
 
 const Wrapper = styled.div`
+  position: relative;
   width: 100vw;
   min-height: 100vh;
   background-color: ${(props) => props.theme.color.pantone};
@@ -72,7 +73,7 @@ const Wrapper = styled.div`
 
 const Background = styled.div`
   position: absolute;
-  top: 30vh;
+  top: 20vh;
   right: -97px;
   line-height: 16rem;
   font-size: 20rem;
