@@ -1,14 +1,17 @@
 
 # MOMO Project  _SERVER
-## Iam MoMo Project
+## Iam MoMo Project 
+개발 기간: 2022-04-18 ~ 2022-04-27
 * 본격 '일상 공감' 프로젝트입니다.
 * 모든 글은 '모모'라는 닉네임을 사용하며 가벼운 일상에서 부터 진솔한 감정까지 다양한 이야기로 서로의 삶을 공유하는 서비스입니다.
 * 무슨 글을 써야 할지 모를때는 다양한 예시 질문을 보고 선택해서 글을 시작해 보세요 :)
 
+
 ## Project Member
-* BackEnd : 김남주, 신동금
-* FrontEnd : 강수영, 조윤식
-* 개발기간 : 2022-04-18 ~ 2022-04-27
+* Planner : Team Iam ground 
+* Backend : 김남주, 신동금
+* Frontend : 강수영, 조윤식
+
 
 ## Tech Stack
 * SpringBoot
@@ -50,7 +53,7 @@
 <br>
 
 ### 질문
-* 기본 질문을 데이터베이스에 넣어 유저가 바로 이용가능 하도록 수행
+* 기본 질문을 유저가 바로 이용가능 하도록 sql을 사용
 
 ![main1](https://user-images.githubusercontent.com/73453283/165477152-22b730d0-aa6e-4947-88b7-b06e866a48bd.gif)
 
