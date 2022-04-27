@@ -28,7 +28,7 @@ https://iammomoproject.netlify.app/
 <br>
 
 
-## 3. 구성
+## 3. Project Architecture
 
 ![](/server/momo_arch.png)
 
