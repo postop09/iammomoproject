@@ -8,6 +8,7 @@
 ## Project Member
 * BackEnd : 김남주, 신동금
 * FrontEnd : 강수영, 조윤식
+* 개발기간 : 2022-04-18 ~ 2022-04-27
 
 ## Tech Stack
 * SpringBoot
