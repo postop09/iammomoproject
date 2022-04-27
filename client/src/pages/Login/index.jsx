@@ -42,7 +42,7 @@ const Login = () => {
   const onLogin = useCallback(() => {
     axios
       .post(
-        "/auth/signin",
+        "http://52.79.45.37:8080/auth/signin",
         { email: email, password: password },
         { withCredentials: true }
       )
