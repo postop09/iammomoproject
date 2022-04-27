@@ -25,7 +25,10 @@ https://iammomoproject.netlify.app/
 * Backend : 김남주, 신동금
 * Frontend : 강수영, 조윤식
 
-## 3. 구성
+<br>
+
+
+## 3. Project Architecture
 
 ![](/server/momo_arch.png)
 
