@@ -22,7 +22,7 @@ const MenuBar = (props) => {
     props.setModal(!props.modal);
   };
   const modalclose = (e) => {
-    if (e.target.nodeName === 'ARTICLE') {
+    if (e.target.nodeName === "ARTICLE") {
       props.setModal(false);
     }
   };
@@ -36,15 +36,16 @@ const MenuBar = (props) => {
     //   )
     //   .then(() => window.localStorage.clear());
     window.localStorage.clear();
+
     window.location.reload();
-    console.log(1);
   });
 
   return (
     <OverWrap onClick={modalclose}>
       <Wrapper>
         <HeadSection>
-          {window.localStorage.getItem("data") || window.localStorage.getItem("apiData") ? (
+          {window.localStorage.getItem("data") ||
+          window.localStorage.getItem("apiData") ? (
             <div>
               <button onClick={onLogout}>로그아웃</button>
               <button>설정</button>
@@ -57,10 +58,42 @@ const MenuBar = (props) => {
           )}
         </HeadSection>
         <BodySection>
-          <button type="button" onClick={() => {navigate('/beamomo');modalHandler();}}>MOMO 되기</button>
-          <button type="button" onClick={() => {navigate('/mymomo');modalHandler();}}>나의 MOMO</button>
-          <button type="button" onClick={() => {navigate('/');modalHandler();}}>나만의 질문</button>
-          <button type="button" onClick={() => {navigate('/momoshare');modalHandler();}}>MOMO 글모음</button>
+          <button
+            type="button"
+            onClick={() => {
+              navigate("/beamomo");
+              modalHandler();
+            }}
+          >
+            MOMO 되기
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              navigate("/mymomo");
+              modalHandler();
+            }}
+          >
+            나의 MOMO
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              navigate("/");
+              modalHandler();
+            }}
+          >
+            나만의 질문
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              navigate("/momoshare");
+              modalHandler();
+            }}
+          >
+            MOMO 글모음
+          </button>
         </BodySection>
         <FooterSection>
           <button
@@ -95,7 +128,7 @@ const OverWrap = styled.article`
   width: 100%;
   height: 100%;
   background-color: #00000050;
-`
+`;
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;

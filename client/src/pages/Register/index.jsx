@@ -113,7 +113,7 @@ const Register = () => {
     await axios
       .post("/auth/signup", {
         // name: userName,
-        username: userName,
+        // username: userName,
         email: email,
         password: password,
       })
@@ -151,7 +151,7 @@ const Register = () => {
         </OauthRegister>
         <FormWrapper>
           <form>
-            <InputWrapper>
+            {/* <InputWrapper>
               <label>이름</label>
               <input
                 name="name"
@@ -163,7 +163,7 @@ const Register = () => {
               {userName.length > 0 && (
                 <div className={isName ? "green" : "red"}>{nameError}</div>
               )}
-            </InputWrapper>
+            </InputWrapper> */}
             <InputWrapper>
               <label>이메일 주소</label>
               <input
