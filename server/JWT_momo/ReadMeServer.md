@@ -53,7 +53,7 @@
 <br>
 
 ### 질문
-* 기본 질문을 유저가 바로 이용가능 하도록 sql을 사용
+* 유저가 바로 이용가능 하도록 서버 실행시 sql로 질문 리스트 데이터 삽입
 
 ![main1](https://user-images.githubusercontent.com/73453283/165477152-22b730d0-aa6e-4947-88b7-b06e866a48bd.gif)
 
