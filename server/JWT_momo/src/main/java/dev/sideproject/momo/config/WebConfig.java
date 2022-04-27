@@ -15,7 +15,8 @@ public class WebConfig implements WebMvcConfigurer {
                 .allowedOrigins("http://localhost:8080", "http://52.79.45.3:8080",
                         "http://localhost:3000",
                         "https://localhost:3000",
-                        "https://127.0.0.1:3000"
+                        "https://127.0.0.1:3000",
+                        "https://iammomoproject.netlify.app"
                 )
                 .allowedMethods("GET", "POST", "PUT", "DELETE")
                 .allowedHeaders("*")
