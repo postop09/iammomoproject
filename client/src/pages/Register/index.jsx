@@ -111,7 +111,7 @@ const Register = () => {
 
   const submitHanler = async () => {
     await axios
-      .post("/auth/signup", {
+      .post("http://52.79.45.37:8080/auth/signup", {
         // name: userName,
         // username: userName,
         email: email,
