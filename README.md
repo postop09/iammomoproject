@@ -165,8 +165,7 @@ npm run start
 ![image](https://user-images.githubusercontent.com/73453283/165444933-79d1659d-5185-4523-a6e7-2f1bcf6298cd.png)
 
 
----
-## 4. demo(시연화면)
+### demo(시연화면)
 
 ### 회원가입 & 로그인
 ![siginin](https://user-images.githubusercontent.com/73453283/165477392-e7c6d852-9dbd-49fd-9ac9-19ec251d4f61.gif)
@@ -211,8 +210,10 @@ npm run start
 
 <br>
 
+---
 
-## 5. 개발일정
+
+## 4. 개발일정
 
 ### 2022-04-18 개발상황
 * API 명세서 제작
