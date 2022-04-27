@@ -119,21 +119,20 @@ const Register = () => {
       })
       .then((data) => {
         console.log(data);
-      })
-      // .catch((err) => console.log(err));
-    
+      });
+    // .catch((err) => console.log(err));
   };
   // api/user
-  const fetchPOSTuser = async() => {
+  const fetchPOSTuser = async () => {
     const res = await axios.post(`http://52.79.45.37:8080/api/user`, {
       username: userName,
       email: email,
-      password: password
-    })
+      password: password,
+    });
     console.log(res);
-    localStorage.setItem('apiData', JSON.stringify(res.data));
+    localStorage.setItem("apiData", JSON.stringify(res.data));
     navigate("/login");
-  }
+  };
 
   return (
     <Wrapper>
@@ -151,7 +150,7 @@ const Register = () => {
         </OauthRegister>
         <FormWrapper>
           <form>
-            {/* <InputWrapper>
+            <InputWrapper>
               <label>이름</label>
               <input
                 name="name"
@@ -163,7 +162,7 @@ const Register = () => {
               {userName.length > 0 && (
                 <div className={isName ? "green" : "red"}>{nameError}</div>
               )}
-            </InputWrapper> */}
+            </InputWrapper>
             <InputWrapper>
               <label>이메일 주소</label>
               <input
@@ -270,7 +269,10 @@ const Register = () => {
               check2
             )
           }
-          onClick={() => {submitHanler();fetchPOSTuser();}}
+          onClick={() => {
+            submitHanler();
+            fetchPOSTuser();
+          }}
         >
           회원가입
         </RegisterButton>
