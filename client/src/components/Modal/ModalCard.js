@@ -114,7 +114,7 @@ const WrapModalCard = styled.div`
   left: 50%;
   transform: translate(-50%, -55%);
   width: 72vw;
-  height: 55vh;
+  height: 390px;
   perspective: 500px;
   `
 
@@ -151,7 +151,7 @@ const FrontBox = styled.form`
 const TxtQuestion = styled.strong`
   line-height: 1.4rem;
   font-family: ${theme.font.basic_font};
-  font-size: 1.1rem;
+  font-size: 1rem;
 `
 const TxtArea = styled.textarea`
   border: 1px solid ${theme.color.camel};
