@@ -28,7 +28,7 @@ https://iammomoproject.netlify.app/
 
 ## 3. 구성
 
-![](/momo_arch.png)
+![](/before/img/momo_arch.png)
 
 
 <br>
