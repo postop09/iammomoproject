@@ -119,6 +119,9 @@ npm run start
 - 내가 작성한 글 삭제
 - 질문 만들기
 
+<img width="499" alt="스크린샷 2022-05-23 오후 4 08 44" src="https://user-images.githubusercontent.com/93017923/169788591-849b24e4-f568-4f1a-8bcf-4b7bab4de60f.png">
+
+
 ### MOMO 글모음
 다른 모든 모모가 작성한 글의 목록이 제시되는 페이지
 
