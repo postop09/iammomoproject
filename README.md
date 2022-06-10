@@ -15,9 +15,7 @@ IamMOMOproject
 <br>
 
 ### 배포 링크
-*서버 닫혀있음
-
-https://iammomoproject.netlify.app/
+[I am MOMO로 이동](https://iammomoproject.netlify.app/) (*API 서버 닫혀있음*)
 
 <br>
 
