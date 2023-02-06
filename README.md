@@ -16,6 +16,7 @@ IamMOMOproject
 
 ### 배포 링크
 [I am MOMO로 이동](https://iammomoproject.netlify.app/) (*API 서버 닫혀있음*)
+모바일 환경에서 실행해주세요.
 
 <br>
 
